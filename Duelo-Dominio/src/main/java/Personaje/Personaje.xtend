@@ -1,0 +1,5 @@
+package Personaje
+
+class Personaje {
+	
+}
