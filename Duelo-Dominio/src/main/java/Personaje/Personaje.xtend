@@ -9,7 +9,7 @@ class Personaje {
 	@Accessors
 	
 	var String nombre;
-	var Linea rolIdea;
+	var Linea rolIdeal;
 	var List<String> debilidades;
 	var List<String> fortalezas;
 	

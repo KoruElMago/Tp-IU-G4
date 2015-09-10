@@ -10,15 +10,17 @@ public class Personaje {
   @Accessors
   private String nombre;
   
-  private Linea rolIdea;
+  private Linea rolIdeal;
   
   private List<String> debilidades;
   
   private List<String> fortalezas;
   
   public Personaje(final String nombre, final Linea rolIdeal, final List<String> fortalezas, final List<String> debilidades) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field rolIdeal is undefined for the type Personaje");
+    this.nombre = nombre;
+    this.rolIdeal = rolIdeal;
+    this.debilidades = debilidades;
+    this.fortalezas = fortalezas;
   }
   
   @Pure
