@@ -14,6 +14,7 @@ class Jugador {
 	this.nombreJugador = nombre
 	this.calificacion = 0
 	this.estadisticas = new ArrayList<Estadistica>
+	
 	}
 	
 }
