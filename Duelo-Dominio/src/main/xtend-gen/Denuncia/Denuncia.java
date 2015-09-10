@@ -2,6 +2,9 @@ package Denuncia;
 
 import Denuncia.TipoDenuncia;
 import Jugador.Jugador;
+import com.google.common.base.Objects;
+import java.util.List;
+import org.eclipse.xtext.xbase.lib.Conversions;
 
 @SuppressWarnings("all")
 public class Denuncia {
@@ -21,6 +24,32 @@ public class Denuncia {
     this.validarse();
   }
   
+  public boolean esValida() {
+    boolean valor = true;
+    int contPalabras = 0;
+    char[] chars = this.descripcion.toCharArray();
+    for (int i = 0; (i < ((List<Character>)Conversions.doWrapArray(chars)).size()); i++) {
+      char _get = chars[i];
+      boolean _equals = Objects.equal(Character.valueOf(_get), " ");
+      if (_equals) {
+        i++;
+      } else {
+        contPalabras++;
+      }
+    }
+    boolean _and = false;
+    final char[] _converted_chars = (char[])chars;
+    int _size = ((List<Character>)Conversions.doWrapArray(_converted_chars)).size();
+    boolean _lessThan = (_size < 20);
+    if (!_lessThan) {
+      _and = false;
+    } else {
+      _and = (contPalabras > 3);
+    }
+    valor = _and;
+    return valor;
+  }
+  
   public TipoDenuncia validarse() {
     throw new Error("Unresolved compilation problems:"
       + "\nmissing \'(\' at \'this\'"
@@ -28,11 +57,6 @@ public class Denuncia {
       + "\nThe method nombre is undefined for the type Denuncia"
       + "\nThe method tipo is undefined for the type Denuncia"
       + "\nAbusoSistDenuncia cannot be resolved."
-      + "\nType mismatch: cannot convert from Object to boolean"
       + "\nThis expression is not allowed in this context, since it doesn\'t cause any side effects.");
-  }
-  
-  public Object esValida() {
-    return null;
   }
 }

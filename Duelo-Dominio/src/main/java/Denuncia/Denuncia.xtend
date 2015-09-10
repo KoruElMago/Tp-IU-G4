@@ -19,6 +19,24 @@ class Denuncia {
 		
 	}
 
+	def esValida() {
+	
+		var valor = true
+		var contPalabras = 0
+		var chars = this.descripcion.toCharArray
+		for(var int i=0; i <chars.size ; i++){
+			if (chars.get(i) == " "){
+				i++;
+			}
+			else{
+				
+				contPalabras ++
+			}
+		}
+		valor = (chars.size < 20) && (contPalabras > 3)
+		return valor
+		
+	}
 	def validarse(){
 		
 		if this.esValida(){
@@ -37,9 +55,6 @@ class Denuncia {
 		
 	}
 	
-	def esValida() {
-		
-		
-	}
+	
 
 }
