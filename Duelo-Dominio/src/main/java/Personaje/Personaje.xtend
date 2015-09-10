@@ -2,6 +2,7 @@ package Personaje
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
+import TarjetaDeDuelo.Linea
 
 class Personaje {
 	
