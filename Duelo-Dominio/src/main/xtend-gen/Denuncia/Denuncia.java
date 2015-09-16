@@ -1,11 +1,13 @@
 package Denuncia;
 
+import Denuncia.AbusoSistDenuncia;
 import Denuncia.TipoDenuncia;
 import Jugador.Jugador;
 import com.google.common.base.Objects;
-import java.util.List;
-import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtend.lib.annotations.Accessors;
+import org.eclipse.xtext.xbase.lib.Pure;
 
+@Accessors
 @SuppressWarnings("all")
 public class Denuncia {
   private String descripcion;
@@ -24,39 +26,85 @@ public class Denuncia {
     this.validarse();
   }
   
-  public boolean esValida() {
-    boolean valor = true;
-    int contPalabras = 0;
-    char[] chars = this.descripcion.toCharArray();
-    for (int i = 0; (i < ((List<Character>)Conversions.doWrapArray(chars)).size()); i++) {
-      char _get = chars[i];
-      boolean _equals = Objects.equal(Character.valueOf(_get), " ");
-      if (_equals) {
-        i++;
-      } else {
-        contPalabras++;
+  public TipoDenuncia validarse() {
+    TipoDenuncia _xifexpression = null;
+    boolean _esValida = this.esValida();
+    if (_esValida) {
+      TipoDenuncia _xblockexpression = null;
+      {
+        String _nombreJugador = this.denunciado.getNombreJugador();
+        String _plus = ("El jugador intenta denunciar a:" + _nombreJugador);
+        String _plus_1 = (_plus + "por:");
+        String _tipo = this.tipo.getTipo();
+        String _plus_2 = (_plus_1 + _tipo);
+        String _plus_3 = (_plus_2 + "sin tener una justificación suficiente:");
+        String _plus_4 = (_plus_3 + this.descripcion);
+        this.descripcion = _plus_4;
+        this.denunciado = this.denunciante;
+        AbusoSistDenuncia _abusoSistDenuncia = new AbusoSistDenuncia();
+        _xblockexpression = this.tipo = _abusoSistDenuncia;
       }
+      _xifexpression = _xblockexpression;
     }
-    boolean _and = false;
-    final char[] _converted_chars = (char[])chars;
-    int _size = ((List<Character>)Conversions.doWrapArray(_converted_chars)).size();
-    boolean _lessThan = (_size < 20);
-    if (!_lessThan) {
-      _and = false;
-    } else {
-      _and = (contPalabras > 3);
-    }
-    valor = _and;
-    return valor;
+    return _xifexpression;
   }
   
-  public TipoDenuncia validarse() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nmissing \'(\' at \'this\'"
-      + "\nmissing \')\' at \'{\'"
-      + "\nThe method nombre is undefined for the type Denuncia"
-      + "\nThe method tipo is undefined for the type Denuncia"
-      + "\nAbusoSistDenuncia cannot be resolved."
-      + "\nThis expression is not allowed in this context, since it doesn\'t cause any side effects.");
+  public boolean esValida() {
+    char ant = ' ';
+    int cantPal = 0;
+    char[] _charArray = this.descripcion.toCharArray();
+    for (final char c : _charArray) {
+      {
+        boolean _and = false;
+        boolean _notEquals = (!Objects.equal(Character.valueOf(c), " "));
+        if (!_notEquals) {
+          _and = false;
+        } else {
+          boolean _equals = Objects.equal(Character.valueOf(ant), " ");
+          _and = _equals;
+        }
+        if (_and) {
+          cantPal++;
+        }
+        ant = c;
+      }
+    }
+    return (cantPal > 3);
+  }
+  
+  @Pure
+  public String getDescripcion() {
+    return this.descripcion;
+  }
+  
+  public void setDescripcion(final String descripcion) {
+    this.descripcion = descripcion;
+  }
+  
+  @Pure
+  public TipoDenuncia getTipo() {
+    return this.tipo;
+  }
+  
+  public void setTipo(final TipoDenuncia tipo) {
+    this.tipo = tipo;
+  }
+  
+  @Pure
+  public Jugador getDenunciante() {
+    return this.denunciante;
+  }
+  
+  public void setDenunciante(final Jugador denunciante) {
+    this.denunciante = denunciante;
+  }
+  
+  @Pure
+  public Jugador getDenunciado() {
+    return this.denunciado;
+  }
+  
+  public void setDenunciado(final Jugador denunciado) {
+    this.denunciado = denunciado;
   }
 }

@@ -5,9 +5,9 @@ import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
 
+@Accessors
 @SuppressWarnings("all")
 public class Personaje {
-  @Accessors
   private String nombre;
   
   private Linea rolIdeal;
@@ -30,5 +30,32 @@ public class Personaje {
   
   public void setNombre(final String nombre) {
     this.nombre = nombre;
+  }
+  
+  @Pure
+  public Linea getRolIdeal() {
+    return this.rolIdeal;
+  }
+  
+  public void setRolIdeal(final Linea rolIdeal) {
+    this.rolIdeal = rolIdeal;
+  }
+  
+  @Pure
+  public List<String> getDebilidades() {
+    return this.debilidades;
+  }
+  
+  public void setDebilidades(final List<String> debilidades) {
+    this.debilidades = debilidades;
+  }
+  
+  @Pure
+  public List<String> getFortalezas() {
+    return this.fortalezas;
+  }
+  
+  public void setFortalezas(final List<String> fortalezas) {
+    this.fortalezas = fortalezas;
   }
 }
