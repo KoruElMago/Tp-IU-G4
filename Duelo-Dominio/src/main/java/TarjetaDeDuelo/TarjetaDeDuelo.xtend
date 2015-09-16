@@ -1,9 +1,8 @@
 package TarjetaDeDuelo
 
-import Personaje.Personaje
 import Jugador.Jugador
+import Personaje.Personaje
 import org.eclipse.xtend.lib.annotations.Accessors
-import Jugador.Estadistica
 
 @Accessors
 
@@ -23,6 +22,18 @@ class TarjetaDeDuelo {
 		var estadisticas = jugador.obtenerEstadisticas(personaje)
 		return (jugador.calificacion + ((estadisticas.kills + estadisticas.assists) / 2  - estadisticas.deads) 
 		       * estadisticas.vecesQueInicio)
+	}
+	
+	def actualizarVictoria() {
+		this.jugador.victoria(this.personaje)
+	}
+	
+	def actualizarDerrota() {
+		this.jugador.derrota(this.personaje)
+	}
+	
+	def actulizarEmpate() {
+		this.jugador.empate(this.personaje)
 	}
 	
 	

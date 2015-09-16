@@ -39,14 +39,16 @@ class Duelo {
 	}
 	
 	def empate() {
-		
+		this.jugador1.actulizarEmpate();
+		this.jugador2.actualizarEmpate();
 	}
 	
 	def perdio(TarjetaDeDuelo duelo) {
-		
+		duelo.actualizarDerrota();
 	}
 	
 	def gano(TarjetaDeDuelo duelo) {
+		duelo.actualizarVictoria()
 		
 	}
 	

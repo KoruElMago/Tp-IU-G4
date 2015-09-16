@@ -6,17 +6,20 @@ import TarjetaDeDuelo.TarjetaDeDuelo
 import Exepcion.DueloEnEspera
 import Duelo.Duelo
 import java.util.ArrayList
+import Personaje.Personaje
 
 @Accessors
 
 class DueloEntreLeyendas {
 	
+	List<Personaje> personajes
 	List<TarjetaDeDuelo> buscadores
 	TarjetaDeDuelo tddBoot 
 	
 	new(TarjetaDeDuelo tddBoot){
 		this.buscadores = new ArrayList
 		this.tddBoot = tddBoot
+		this.personajes = new ArrayList
 		
 	}
 	

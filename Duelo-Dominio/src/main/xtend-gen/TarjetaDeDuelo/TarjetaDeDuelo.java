@@ -47,6 +47,18 @@ public class TarjetaDeDuelo {
     return (_calificacion + _multiply);
   }
   
+  public void actualizarVictoria() {
+    this.jugador.victoria(this.personaje);
+  }
+  
+  public void actualizarDerrota() {
+    this.jugador.derrota(this.personaje);
+  }
+  
+  public void actulizarEmpate() {
+    this.jugador.empate(this.personaje);
+  }
+  
   @Pure
   public String getLinea() {
     return this.linea;

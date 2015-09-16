@@ -47,15 +47,16 @@ public class Duelo {
   }
   
   public Object empate() {
-    return null;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method actualizarEmpate is undefined for the type Duelo");
   }
   
-  public Object perdio(final TarjetaDeDuelo duelo) {
-    return null;
+  public void perdio(final TarjetaDeDuelo duelo) {
+    duelo.actualizarDerrota();
   }
   
-  public Object gano(final TarjetaDeDuelo duelo) {
-    return null;
+  public void gano(final TarjetaDeDuelo duelo) {
+    duelo.actualizarVictoria();
   }
   
   @Pure

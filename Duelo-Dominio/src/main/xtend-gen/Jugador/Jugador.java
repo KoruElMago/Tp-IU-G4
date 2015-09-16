@@ -36,6 +36,22 @@ public class Jugador {
     return res;
   }
   
+  public void derrota(final Personaje personaje) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nmissing \'(\' at \'personaje\'"
+      + "\nmismatched input \'}\' expecting \';\'"
+      + "\nThe method this is undefined for the type Jugador"
+      + "\nestadisticas cannot be resolved");
+  }
+  
+  public void victoria(final Personaje personaje) {
+    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  }
+  
+  public void empate(final Personaje personaje) {
+    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  }
+  
   @Pure
   public String getNombreJugador() {
     return this.nombreJugador;

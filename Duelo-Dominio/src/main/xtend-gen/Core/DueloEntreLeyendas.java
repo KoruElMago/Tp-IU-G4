@@ -2,6 +2,7 @@ package Core;
 
 import Duelo.Duelo;
 import Exepcion.DueloEnEspera;
+import Personaje.Personaje;
 import TarjetaDeDuelo.TarjetaDeDuelo;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ import org.eclipse.xtext.xbase.lib.Pure;
 @Accessors
 @SuppressWarnings("all")
 public class DueloEntreLeyendas {
+  private List<Personaje> personajes;
+  
   private List<TarjetaDeDuelo> buscadores;
   
   private TarjetaDeDuelo tddBoot;
@@ -21,6 +24,8 @@ public class DueloEntreLeyendas {
     ArrayList<TarjetaDeDuelo> _arrayList = new ArrayList<TarjetaDeDuelo>();
     this.buscadores = _arrayList;
     this.tddBoot = tddBoot;
+    ArrayList<Personaje> _arrayList_1 = new ArrayList<Personaje>();
+    this.personajes = _arrayList_1;
   }
   
   public Duelo buscarDuelo(final TarjetaDeDuelo tdd) {
@@ -58,6 +63,15 @@ public class DueloEntreLeyendas {
   
   public Duelo dueloConBoot(final TarjetaDeDuelo tdd) {
     return new Duelo(tdd, this.tddBoot);
+  }
+  
+  @Pure
+  public List<Personaje> getPersonajes() {
+    return this.personajes;
+  }
+  
+  public void setPersonajes(final List<Personaje> personajes) {
+    this.personajes = personajes;
   }
   
   @Pure

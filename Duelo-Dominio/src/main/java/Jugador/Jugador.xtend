@@ -30,4 +30,16 @@ class Jugador {
 			return res
 	}
 	
+	def derrota(Personaje personaje) {
+		for personaje.this.estadisticas
+	}
+	
+	def victoria(Personaje personaje) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+	def empate(Personaje personaje) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
 }
