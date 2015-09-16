@@ -2,6 +2,9 @@ package Denuncia
 
 import Jugador.Jugador
 import Denuncia.TipoDenuncia
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
 class Denuncia {
 	
 	String descripcion
