@@ -4,11 +4,9 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import TarjetaDeDuelo.Linea
 
-@Accessors 
-
 class Personaje {
 	
-	
+	@Accessors
 	
 	var String nombre;
 	var Linea rolIdeal;
