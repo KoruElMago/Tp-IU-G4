@@ -1,7 +1,9 @@
 package Jugador;
 
-import Jugador.Estadistica;
+import Duelo.Duelo;
+import Jugador.Estadisticas;
 import Personaje.Personaje;
+import TarjetaDeDuelo.TarjetaDeDuelo;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,18 +17,18 @@ public class Jugador {
   
   private int calificacion;
   
-  private List<Estadistica> estadisticas;
+  private List<Estadisticas> estadisticas;
   
   public Jugador(final String nombre) {
     this.nombreJugador = nombre;
     this.calificacion = 0;
-    ArrayList<Estadistica> _arrayList = new ArrayList<Estadistica>();
+    ArrayList<Estadisticas> _arrayList = new ArrayList<Estadisticas>();
     this.estadisticas = _arrayList;
   }
   
-  public Estadistica obtenerEstadisticas(final Personaje personaje) {
-    Estadistica res = null;
-    for (final Estadistica e : this.estadisticas) {
+  public Estadisticas obtenerEstadisticas(final Personaje personaje) {
+    Estadisticas res = null;
+    for (final Estadisticas e : this.estadisticas) {
       Personaje _personaje = e.getPersonaje();
       boolean _equals = Objects.equal(_personaje, personaje);
       if (_equals) {
@@ -36,20 +38,73 @@ public class Jugador {
     return res;
   }
   
-  public void derrota(final Personaje personaje) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nmissing \'(\' at \'personaje\'"
-      + "\nmismatched input \'}\' expecting \';\'"
-      + "\nThe method this is undefined for the type Jugador"
-      + "\nestadisticas cannot be resolved");
+  public Object derrota(final Duelo duelo) {
+    Object _xblockexpression = null;
+    {
+      Estadisticas eAux = null;
+      TarjetaDeDuelo _tarjetaDe = duelo.tarjetaDe(this);
+      Personaje personaje = _tarjetaDe.getPersonaje();
+      for (final Estadisticas e1 : this.estadisticas) {
+        Personaje _personaje = e1.getPersonaje();
+        boolean _equals = Objects.equal(_personaje, personaje);
+        if (_equals) {
+          eAux = e1;
+        }
+      }
+      boolean _equals_1 = Objects.equal(eAux, null);
+      if (_equals_1) {
+        Estadisticas _estadisticas = new Estadisticas(personaje);
+        eAux = _estadisticas;
+      }
+      _xblockexpression = eAux.gano(duelo, this);
+    }
+    return _xblockexpression;
   }
   
-  public void victoria(final Personaje personaje) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  public int victoria(final Duelo duelo) {
+    int _xblockexpression = (int) 0;
+    {
+      Estadisticas eAux = null;
+      TarjetaDeDuelo _tarjetaDe = duelo.tarjetaDe(this);
+      Personaje personaje = _tarjetaDe.getPersonaje();
+      for (final Estadisticas e1 : this.estadisticas) {
+        Personaje _personaje = e1.getPersonaje();
+        boolean _equals = Objects.equal(_personaje, personaje);
+        if (_equals) {
+          eAux = e1;
+        }
+      }
+      boolean _equals_1 = Objects.equal(eAux, null);
+      if (_equals_1) {
+        Estadisticas _estadisticas = new Estadisticas(personaje);
+        eAux = _estadisticas;
+      }
+      _xblockexpression = eAux.perdio(duelo, this);
+    }
+    return _xblockexpression;
   }
   
-  public void empate(final Personaje personaje) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  public int empate(final Duelo duelo) {
+    int _xblockexpression = (int) 0;
+    {
+      Estadisticas eAux = null;
+      TarjetaDeDuelo _tarjetaDe = duelo.tarjetaDe(this);
+      Personaje personaje = _tarjetaDe.getPersonaje();
+      for (final Estadisticas e1 : this.estadisticas) {
+        Personaje _personaje = e1.getPersonaje();
+        boolean _equals = Objects.equal(_personaje, personaje);
+        if (_equals) {
+          eAux = e1;
+        }
+      }
+      boolean _equals_1 = Objects.equal(eAux, null);
+      if (_equals_1) {
+        Estadisticas _estadisticas = new Estadisticas(personaje);
+        eAux = _estadisticas;
+      }
+      _xblockexpression = eAux.empato(duelo, this);
+    }
+    return _xblockexpression;
   }
   
   @Pure
@@ -71,11 +126,11 @@ public class Jugador {
   }
   
   @Pure
-  public List<Estadistica> getEstadisticas() {
+  public List<Estadisticas> getEstadisticas() {
     return this.estadisticas;
   }
   
-  public void setEstadisticas(final List<Estadistica> estadisticas) {
+  public void setEstadisticas(final List<Estadisticas> estadisticas) {
     this.estadisticas = estadisticas;
   }
 }

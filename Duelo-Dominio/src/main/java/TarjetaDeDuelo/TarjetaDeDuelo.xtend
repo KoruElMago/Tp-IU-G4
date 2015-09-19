@@ -3,12 +3,13 @@ package TarjetaDeDuelo
 import Jugador.Jugador
 import Personaje.Personaje
 import org.eclipse.xtend.lib.annotations.Accessors
+import Duelo.Duelo
 
 @Accessors
 
 class TarjetaDeDuelo {
 	
-	var String linea
+	var Linea linea
 	var Personaje personaje
 	var Jugador   jugador
 	
@@ -20,20 +21,21 @@ class TarjetaDeDuelo {
 	
 	def obtenerPoderDeAtaque() {
 		var estadisticas = jugador.obtenerEstadisticas(personaje)
-		return (jugador.calificacion + ((estadisticas.kills + estadisticas.assists) / 2  - estadisticas.deads) 
+		return (jugador.calificacion + (((estadisticas.kills + estadisticas.assists) / 2)  - estadisticas.deads) 
 		       * estadisticas.vecesQueInicio)
 	}
 	
-	def actualizarVictoria() {
-		this.jugador.victoria(this.personaje)
+	def actualizarVictoria(Duelo duelo) {
+				this.jugador.victoria(duelo)
 	}
 	
-	def actualizarDerrota() {
-		this.jugador.derrota(this.personaje)
+	def actualizarDerrota(Duelo duelo) {
+		this.jugador.derrota(duelo)
 	}
 	
-	def actulizarEmpate() {
-		this.jugador.empate(this.personaje)
+	def actualizarEmpate(Duelo duelo) {
+		
+		this.jugador.empate(duelo)
 	}
 	
 	

@@ -1,15 +1,17 @@
 package TarjetaDeDuelo;
 
-import Jugador.Estadistica;
+import Duelo.Duelo;
+import Jugador.Estadisticas;
 import Jugador.Jugador;
 import Personaje.Personaje;
+import TarjetaDeDuelo.Linea;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
 
 @Accessors
 @SuppressWarnings("all")
 public class TarjetaDeDuelo {
-  private String linea;
+  private Linea linea;
   
   private Personaje personaje;
   
@@ -34,7 +36,7 @@ public class TarjetaDeDuelo {
   }
   
   public int obtenerPoderDeAtaque() {
-    Estadistica estadisticas = this.jugador.obtenerEstadisticas(this.personaje);
+    Estadisticas estadisticas = this.jugador.obtenerEstadisticas(this.personaje);
     int _calificacion = this.jugador.getCalificacion();
     int _kills = estadisticas.getKills();
     int _assists = estadisticas.getAssists();
@@ -47,24 +49,24 @@ public class TarjetaDeDuelo {
     return (_calificacion + _multiply);
   }
   
-  public void actualizarVictoria() {
-    this.jugador.victoria(this.personaje);
+  public int actualizarVictoria(final Duelo duelo) {
+    return this.jugador.victoria(duelo);
   }
   
-  public void actualizarDerrota() {
-    this.jugador.derrota(this.personaje);
+  public Object actualizarDerrota(final Duelo duelo) {
+    return this.jugador.derrota(duelo);
   }
   
-  public void actulizarEmpate() {
-    this.jugador.empate(this.personaje);
+  public int actualizarEmpate(final Duelo duelo) {
+    return this.jugador.empate(duelo);
   }
   
   @Pure
-  public String getLinea() {
+  public Linea getLinea() {
     return this.linea;
   }
   
-  public void setLinea(final String linea) {
+  public void setLinea(final Linea linea) {
     this.linea = linea;
   }
   

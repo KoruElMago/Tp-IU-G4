@@ -2,54 +2,67 @@ package Duelo
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import TarjetaDeDuelo.TarjetaDeDuelo
+import Jugador.Jugador
 
 @Accessors
 
 class Duelo {
 	
 	
-	var TarjetaDeDuelo jugador1;
-	var TarjetaDeDuelo jugador2;
-	var TarjetaDeDuelo ganador;
+	var TarjetaDeDuelo tarjetaJugador1;
+	var TarjetaDeDuelo tarjetaJugador2;
+	var TarjetaDeDuelo tarjetaGanador;
 	
 	new(TarjetaDeDuelo j1, TarjetaDeDuelo j2){
-		this.jugador1 = j1
-		this.jugador2 = j2
-		this.ganador = null
+		this.tarjetaJugador1 = j1
+		this.tarjetaJugador2 = j2
+		this.tarjetaGanador = null
 		this.resolverse()
 	}
 	
 	def resolverse() {
 		
-		var poderJ1 = jugador1.obtenerPoderDeAtaque()
-		var poderJ2 = jugador2.obtenerPoderDeAtaque()
+		var  poderJ1 = tarjetaJugador1.obtenerPoderDeAtaque()
+		var  poderJ2 = tarjetaJugador2.obtenerPoderDeAtaque()
 		if (poderJ1 > poderJ2){
-			this.ganador = jugador1	
-			this.gano(jugador1)
-			this.perdio(jugador2)
+			this.tarjetaGanador = tarjetaJugador1	
+			this.gano(tarjetaJugador1)
+			this.perdio(tarjetaJugador2)
 		}
 		if (poderJ2 > poderJ1){
-			this.ganador = jugador2	
-			this.gano(jugador2)
-			this.perdio(jugador1)
+			this.tarjetaGanador = tarjetaJugador2	
+			this.gano(tarjetaJugador2)
+			this.perdio(tarjetaJugador1)
 		}
-		if (this.ganador == null){
+		if (this.tarjetaGanador == null){
 			this.empate()
 		}
 	}
 	
+	
+	
+	
 	def empate() {
-		this.jugador1.actulizarEmpate();
-		this.jugador2.actualizarEmpate();
+		this.tarjetaJugador1.actualizarEmpate(this);
+		this.tarjetaJugador2.actualizarEmpate(this);
 	}
 	
 	def perdio(TarjetaDeDuelo duelo) {
-		duelo.actualizarDerrota();
+		duelo.actualizarDerrota(this);
 	}
 	
 	def gano(TarjetaDeDuelo duelo) {
-		duelo.actualizarVictoria()
+		duelo.actualizarVictoria(this)
 		
+	}
+	
+	def tarjetaDe(Jugador jugador) {
+		if(tarjetaJugador1 == jugador){
+			return tarjetaJugador1
+		}
+		else{
+			tarjetaJugador2
+		}
 	}
 	
 	

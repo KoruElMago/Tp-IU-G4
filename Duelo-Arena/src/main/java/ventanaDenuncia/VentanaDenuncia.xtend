@@ -1,8 +1,13 @@
 package ventanaDenuncia
 
-import org.uqbar.arena.Application
+import java.awt.Panel
+import org.uqbar.arena.windows.MainWindow
 
-class VentanaDenuncia extends Aplicacion{
+class VentanaDenuncia extends MainWindow<Object>{
+	
+	new(Object model) {
+		super(model)
+	}
 	
 	override createContents(Panel mainPanel) {
    
