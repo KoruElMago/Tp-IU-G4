@@ -5,7 +5,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 class TipoDenuncia {
 	
-	String tipo 
+	var String name 
 	
 	new(){}
 	

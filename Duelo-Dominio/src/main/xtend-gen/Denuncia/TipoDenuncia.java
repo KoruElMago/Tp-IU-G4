@@ -6,17 +6,17 @@ import org.eclipse.xtext.xbase.lib.Pure;
 @Accessors
 @SuppressWarnings("all")
 public class TipoDenuncia {
-  private String tipo;
+  private String name;
   
   public TipoDenuncia() {
   }
   
   @Pure
-  public String getTipo() {
-    return this.tipo;
+  public String getName() {
+    return this.name;
   }
   
-  public void setTipo(final String tipo) {
-    this.tipo = tipo;
+  public void setName(final String name) {
+    this.name = name;
   }
 }

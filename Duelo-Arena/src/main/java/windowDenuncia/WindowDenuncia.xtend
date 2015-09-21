@@ -1,6 +1,10 @@
 package windowDenuncia
 
-
+import Jugador.Jugador
+import controladores.ControladorDenuncia
+import controladores.ControladorJugador
+import controladores.ControladorTipoDenuncia
+import java.awt.Color
 import org.uqbar.arena.actions.MessageSend
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
@@ -8,18 +12,20 @@ import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.MainWindow
-import java.awt.Color
-import org.uqbar.arena.widgets.Selector
-import ejemplos.EjemploDenuncia
 
-class WindowDenuncia extends MainWindow<EjemploDenuncia>{
+class WindowDenuncia extends MainWindow<ControladorDenuncia>{
 	
 	
-	new() {
-		super(new EjemploDenuncia)
-	}
+	
+	new(ControladorJugador denunciado, ControladorJugador denunciante) {
+		super(new ControladorDenuncia (denunciado, denunciante))
+		
+		}
+		
+		
 	
 	override createContents(Panel panel) {
 		this.setTitle("Duelo de leyendas")
@@ -30,7 +36,7 @@ class WindowDenuncia extends MainWindow<EjemploDenuncia>{
 			setBackground(Color.BLACK)
 			width = 400
 			height = 50
-			fontSize = 35
+			fontSize = 25
 		    setForeground(Color.WHITE)
 			
 			]
@@ -58,10 +64,9 @@ class WindowDenuncia extends MainWindow<EjemploDenuncia>{
 			setText("Estas queriendo denunciar a: ")
 			width = 200
 			]
-		new Label(panelDenunciaA) => [
-			setText("<Un usuario>")
-			width = 200
-			]
+		
+		new Label(panelDenunciaA).bindValueToProperty("denunciado.nombreJugador")
+			
 
         val panelMotivo = new Panel(panel)
         panelMotivo.setLayout(new HorizontalLayout)
@@ -72,9 +77,10 @@ class WindowDenuncia extends MainWindow<EjemploDenuncia>{
 			]
 			
 			
-		new Selector<EjemploDenuncia>(panelMotivo) => [
+		new Selector<ControladorTipoDenuncia>(panelMotivo) => [
+            
             allowNull = false
-            bindItemsToProperty("unMotivo")
+            bindItemsToProperty("motivos")
             bindValueToProperty("motivo")
 			]            
 			
@@ -88,18 +94,22 @@ class WindowDenuncia extends MainWindow<EjemploDenuncia>{
 			
 		 new TextBox(panelDetalles) => [
 			width = 200
-			//height = 150
 			fontSize = 12
+			bindValueToProperty("detalles")
 			]	
 			
 		val panelOpciones = new Panel(panel)
 		panelOpciones.setLayout(new HorizontalLayout)
+		panelOpciones.layout = new ColumnLayout(2)
 		
 		new Button(panelOpciones) => [
 			setCaption("Denunciar")
-			onClick = new MessageSend(this.modelObject, "realizarDenuncia")
+			onClick = new MessageSend(
+				this.modelObject, ("realizarDenuncia(" + (this.modelObject.motivo) + " , " + (this.modelObject.detalles) + ")")
+			)					 //realizarDenuncia(motivo , detalles)
 			]
 			
+		
 		new Button(panelOpciones) => [
 			setCaption("Cancelar")
 			onClick = new MessageSend(this.modelObject, "cancelarDenuncia")
@@ -115,6 +125,8 @@ class WindowDenuncia extends MainWindow<EjemploDenuncia>{
 	
 	
 	def static main(String[] args){
-		new WindowDenuncia().startApplication
+		var Jugador jug1 = new Jugador("magow")
+		var Jugador jug2 = new Jugador("pablinguis")
+		new WindowDenuncia(new ControladorJugador(jug1),new ControladorJugador(jug2)).startApplication
 	}
 }

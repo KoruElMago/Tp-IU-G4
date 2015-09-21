@@ -35,7 +35,7 @@ public class TarjetaDeDuelo {
     return _and;
   }
   
-  public int obtenerPoderDeAtaque() {
+  public Object obtenerPoderDeAtaque() {
     Estadisticas estadisticas = this.jugador.obtenerEstadisticas(this.personaje);
     int _calificacion = this.jugador.getCalificacion();
     int _kills = estadisticas.getKills();
@@ -46,7 +46,7 @@ public class TarjetaDeDuelo {
     int _minus = (_divide - _deads);
     int _vecesQueInicio = estadisticas.getVecesQueInicio();
     int _multiply = (_minus * _vecesQueInicio);
-    return (_calificacion + _multiply);
+    return Integer.valueOf((_calificacion + _multiply));
   }
   
   public int actualizarVictoria(final Duelo duelo) {

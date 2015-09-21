@@ -29,7 +29,7 @@ class Denuncia {
 			this.descripcion = ("El jugador intenta denunciar a:"
 								+ this.denunciado.nombreJugador 
 								+ "por:" 
-								+ this.tipo.tipo 
+								+ this.tipo.name 
 								+ "sin tener una justificación suficiente:" 
 								+ this.descripcion)
 			this.denunciado = this.denunciante

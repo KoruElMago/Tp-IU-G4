@@ -35,8 +35,8 @@ public class Denuncia {
         String _nombreJugador = this.denunciado.getNombreJugador();
         String _plus = ("El jugador intenta denunciar a:" + _nombreJugador);
         String _plus_1 = (_plus + "por:");
-        String _tipo = this.tipo.getTipo();
-        String _plus_2 = (_plus_1 + _tipo);
+        String _name = this.tipo.getName();
+        String _plus_2 = (_plus_1 + _name);
         String _plus_3 = (_plus_2 + "sin tener una justificación suficiente:");
         String _plus_4 = (_plus_3 + this.descripcion);
         this.descripcion = _plus_4;
