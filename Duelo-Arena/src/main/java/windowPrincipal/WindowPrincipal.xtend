@@ -27,16 +27,25 @@ class WindowPrincipal extends MainWindow<Object>{
 			width = 400
 			height = 50
 			]
-			//override createContents(Panel mainPanel) {
-        
-        //panel.layout = new ColumnLayout(3)
-        new Selector(panel) => [
-        	
-        ]
+		
+		new Label(panel) => [
+			setText("Usuario: " + modelObject.usuario)
+			width = 200
+			]
+				
         new Button(panel) => [
 			caption = "Buscar Duelo"
-			onClick = new MessageSend(this.modelObject, "buscarDuelo")
-			
+			onClick = this.openDialog(
+							new WindowCreadorTarjetaDeDuelo
+								(this , modelObject))
+			onAccept=>[
+				try{
+					new MessageSend(this.modelObject,"buscarDuelo"))
+					this.openDialog(new WindowDuelo(this,modelObject))
+				}
+				catch(Exepcion e){
+					this.openDialog(new WindowNoRival(this, modelObject))
+				}	
 			]
         
         new Label(panel) => [
@@ -62,13 +71,13 @@ class WindowPrincipal extends MainWindow<Object>{
         
        new Button(panelPerfil) => [
 			caption = "Personajes"
-			onClick = new MessageSend(this.modelObject, "personajes")
+			onClick = this.openDialog(new WindowPersonajes(this , modelObject))
 			width = 200
-			//setBackground(Color.GREEN)
+			
 			]
 		new Button(panelPerfil) => [
 			caption = "Estadisticas"
-			onClick = new MessageSend(this.modelObject, "estadisticas")
+			onClick =  this.openDialog(new WindowEstadisticas(this , modelObject))
 			width = 200
 			
 			]        

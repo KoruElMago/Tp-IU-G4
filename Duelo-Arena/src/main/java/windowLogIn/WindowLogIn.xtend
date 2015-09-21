@@ -15,7 +15,7 @@ import org.uqbar.arena.widgets.Widget
 import org.uqbar.arena.actions.MessageSend
 import org.uqbar.arena.layout.HorizontalLayout
 
-class WindowLogIn extends MainWindow<Object>{
+class WindowLogIn extends MainWindow<ControladorLogIn>{
 	
 	new(Object model) {
 		super(model)
@@ -30,10 +30,7 @@ class WindowLogIn extends MainWindow<Object>{
 			width = 400
 			height = 50
 			]
-			//override createContents(Panel mainPanel) {
-        
-        //panel.layout = new ColumnLayout(3)
-        
+			
         val panelUsuario = new Panel(panel)
         panelUsuario.setLayout(new HorizontalLayout)
         
@@ -44,6 +41,7 @@ class WindowLogIn extends MainWindow<Object>{
 			]
 		new TextBox(panelUsuario) => [
 			width = 200
+			bindValueToProperty("nombre")
 			]
 
         val panelContraseña = new Panel(panel)
@@ -52,45 +50,35 @@ class WindowLogIn extends MainWindow<Object>{
         new Label(panelContraseña) => [
 			setText("Contraseña")
 			width = 200
+			
+			
 			]
 		new TextBox(panelContraseña) => [
 			width = 200
+			width = 200
+			bindValueToProperty("password")
 			]
         
         val panelBotones = new Panel(panel)
-       panelBotones.setLayout(new HorizontalLayout)
-       panelBotones.layout = new ColumnLayout(2)
+        panelBotones.setLayout(new HorizontalLayout)
+        panelBotones.layout = new ColumnLayout(2)
         
      
         new Button(panelBotones) => [
 			caption = "Log In"
-			//onClick [|this.modelObject.logIn ]
-			onClick = new MessageSend(this.modelObject, "convertir")
+			onClick = new MessageSend(this.modelObject, "loguearUsuario(" +this.modelObject. )
 			width = 100
 			]
 			
 		new Button(panelBotones) => [
 			caption = "Registrarse"
-			//onClick [|this.modelObject.logIn ]
-			onClick = new MessageSend(this.modelObject, "registrarse")
-			width = 100
+			onClick =>[
+			val confirmarContraseña = new ConfirmacionWindow(this, modelObject)
+			confirmarContraseña.onAccept[|modelObject.registrarUsuario(nombre)
 			]
 		
-				
-			
-			
-		//panel.setLayout(new HorizontalLayout)
-		
-			//bindValueToProperty("fecha").transformer = new DateAdapter
-		
-		
-		
 	}
-	
-	
-	
-	
-	
+
 	
 	def static main(String[] args){
 		new WindowLogIn(String).startApplication

@@ -112,7 +112,7 @@ class WindowDenuncia extends MainWindow<ControladorDenuncia>{
 		
 		new Button(panelOpciones) => [
 			setCaption("Cancelar")
-			onClick = new MessageSend(this.modelObject, "cancelarDenuncia")
+			onClick = this.cancel
 		]
 			
 			
