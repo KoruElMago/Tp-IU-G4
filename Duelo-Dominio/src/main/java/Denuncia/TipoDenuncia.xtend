@@ -6,7 +6,6 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class TipoDenuncia {
 	
 	String tipo 
-	int peso
 	
 	new(){}
 	
