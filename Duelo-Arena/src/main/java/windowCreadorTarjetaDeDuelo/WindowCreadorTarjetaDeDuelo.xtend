@@ -1,4 +1,4 @@
-package windowPrincipal
+package windowCreadorTarjetaDeDuelo
 
 import org.uqbar.arena.actions.MessageSend
 import org.uqbar.arena.layout.HorizontalLayout
@@ -10,12 +10,16 @@ import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.MainWindow
 import java.awt.Color
 import org.uqbar.arena.widgets.Selector
+import windowLogIn.WindowLogIn
+import controladores.ControladorUsuario
 
-class WindowPrincipal extends MainWindow<Object>{
+class WindowCreadorTarjetaDuelo extends MainWindow<Object>{
 	
 		new(Object model) {
 		super(model)
 	}
+	
+	
 	
 	override createContents(Panel panel) {
 		this.setTitle("Duelo de leyendas")

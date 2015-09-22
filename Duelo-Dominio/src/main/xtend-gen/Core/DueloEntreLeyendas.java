@@ -10,6 +10,7 @@ import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Pure;
+import usuario.Usuario;
 
 @Accessors
 @SuppressWarnings("all")
@@ -20,12 +21,25 @@ public class DueloEntreLeyendas {
   
   private TarjetaDeDuelo tddBoot;
   
+  private List<Usuario> usuarios;
+  
   public DueloEntreLeyendas(final TarjetaDeDuelo tddBoot) {
     ArrayList<TarjetaDeDuelo> _arrayList = new ArrayList<TarjetaDeDuelo>();
     this.buscadores = _arrayList;
     this.tddBoot = tddBoot;
     ArrayList<Personaje> _arrayList_1 = new ArrayList<Personaje>();
     this.personajes = _arrayList_1;
+    ArrayList<Usuario> _arrayList_2 = new ArrayList<Usuario>();
+    this.usuarios = _arrayList_2;
+  }
+  
+  public DueloEntreLeyendas() {
+    ArrayList<TarjetaDeDuelo> _arrayList = new ArrayList<TarjetaDeDuelo>();
+    this.buscadores = _arrayList;
+    ArrayList<Personaje> _arrayList_1 = new ArrayList<Personaje>();
+    this.personajes = _arrayList_1;
+    ArrayList<Usuario> _arrayList_2 = new ArrayList<Usuario>();
+    this.usuarios = _arrayList_2;
   }
   
   public Duelo buscarDuelo(final TarjetaDeDuelo tdd) {
@@ -90,5 +104,14 @@ public class DueloEntreLeyendas {
   
   public void setTddBoot(final TarjetaDeDuelo tddBoot) {
     this.tddBoot = tddBoot;
+  }
+  
+  @Pure
+  public List<Usuario> getUsuarios() {
+    return this.usuarios;
+  }
+  
+  public void setUsuarios(final List<Usuario> usuarios) {
+    this.usuarios = usuarios;
   }
 }

@@ -35,7 +35,7 @@ public class TarjetaDeDuelo {
     return _and;
   }
   
-  public Object obtenerPoderDeAtaque() {
+  public Integer obtenerPoderDeAtaque() {
     Estadisticas estadisticas = this.jugador.obtenerEstadisticas(this.personaje);
     int _calificacion = this.jugador.getCalificacion();
     int _kills = estadisticas.getKills();
@@ -57,7 +57,7 @@ public class TarjetaDeDuelo {
     return this.jugador.derrota(duelo);
   }
   
-  public int actualizarEmpate(final Duelo duelo) {
+  public Object actualizarEmpate(final Duelo duelo) {
     return this.jugador.empate(duelo);
   }
   

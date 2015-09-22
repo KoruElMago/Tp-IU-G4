@@ -5,18 +5,29 @@ import org.eclipse.xtext.xbase.lib.Pure;
 
 @Accessors
 @SuppressWarnings("all")
-public class TipoDenuncia {
-  private String name;
+public abstract class TipoDenuncia {
+  private String tipo;
+  
+  private Integer peso;
   
   public TipoDenuncia() {
   }
   
   @Pure
-  public String getName() {
-    return this.name;
+  public String getTipo() {
+    return this.tipo;
   }
   
-  public void setName(final String name) {
-    this.name = name;
+  public void setTipo(final String tipo) {
+    this.tipo = tipo;
+  }
+  
+  @Pure
+  public Integer getPeso() {
+    return this.peso;
+  }
+  
+  public void setPeso(final Integer peso) {
+    this.peso = peso;
   }
 }

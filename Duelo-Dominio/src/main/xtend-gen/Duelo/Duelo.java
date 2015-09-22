@@ -22,14 +22,35 @@ public class Duelo {
     this.resolverse();
   }
   
-  public int resolverse() {
-    throw new Error("Unresolved compilation problems:"
-      + "\n> cannot be resolved."
-      + "\n> cannot be resolved.");
+  public Object resolverse() {
+    Object _xblockexpression = null;
+    {
+      Integer poderJ1 = this.tarjetaJugador1.obtenerPoderDeAtaque();
+      Integer poderJ2 = this.tarjetaJugador2.obtenerPoderDeAtaque();
+      boolean _greaterThan = (poderJ1.compareTo(poderJ2) > 0);
+      if (_greaterThan) {
+        this.tarjetaGanador = this.tarjetaJugador1;
+        this.gano(this.tarjetaJugador1);
+        this.perdio(this.tarjetaJugador2);
+      }
+      boolean _greaterThan_1 = (poderJ2.compareTo(poderJ1) > 0);
+      if (_greaterThan_1) {
+        this.tarjetaGanador = this.tarjetaJugador2;
+        this.gano(this.tarjetaJugador2);
+        this.perdio(this.tarjetaJugador1);
+      }
+      Object _xifexpression = null;
+      boolean _equals = Objects.equal(this.tarjetaGanador, null);
+      if (_equals) {
+        _xifexpression = this.empate();
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
   
-  public int empate() {
-    int _xblockexpression = (int) 0;
+  public Object empate() {
+    Object _xblockexpression = null;
     {
       this.tarjetaJugador1.actualizarEmpate(this);
       _xblockexpression = this.tarjetaJugador2.actualizarEmpate(this);

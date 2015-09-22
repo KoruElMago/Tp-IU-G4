@@ -3,4 +3,18 @@
   <groupId>tp-ui-g4</groupId>
   <artifactId>duelo-de-leyendas</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <dependency>
+	<groupId>org.uqbar-project</groupId>
+	<artifactId>uqbar-domain</artifactId>
+	<version>3.5.0</version>
+</dependency>
+  
+  
+<dependency>
+	<groupId>org.uqbar-project</groupId>
+	<artifactId>uqbar-domain</artifactId>
+	<version>3.5.1</version>
+</dependency>
+  	
 </project>

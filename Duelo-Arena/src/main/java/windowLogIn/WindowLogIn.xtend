@@ -14,10 +14,17 @@ import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Widget
 import org.uqbar.arena.actions.MessageSend
 import org.uqbar.arena.layout.HorizontalLayout
+import controladores.ControladorDueloEntreLeyendas
+import windowPrincipal.WindowPrincipal
+import org.uqbar.arena.windows.Dialog
+import Core.DueloEntreLeyendas
+import java.awt.Color
+import usuario.Usuario
+import Jugador.Jugador
 
-class WindowLogIn extends MainWindow<ControladorLogIn>{
+class WindowLogIn extends MainWindow<ControladorDueloEntreLeyendas>{
 	
-	new(Object model) {
+	new(ControladorDueloEntreLeyendas model) {
 		super(model)
 	}
 	
@@ -41,7 +48,7 @@ class WindowLogIn extends MainWindow<ControladorLogIn>{
 			]
 		new TextBox(panelUsuario) => [
 			width = 200
-			bindValueToProperty("nombre")
+			bindValueToProperty("nombreUsuario")
 			]
 
         val panelContraseña = new Panel(panel)
@@ -49,15 +56,21 @@ class WindowLogIn extends MainWindow<ControladorLogIn>{
         
         new Label(panelContraseña) => [
 			setText("Contraseña")
-			width = 200
-			
-			
+			width = 200	
 			]
+			
 		new TextBox(panelContraseña) => [
 			width = 200
 			width = 200
-			bindValueToProperty("password")
+			bindValueToProperty("contraseñaUsuario")
 			]
+			
+			new Label(panel) => [
+			width = 200
+			foreground = Color.RED
+			bindValueToProperty("mensajeLogIn")
+			]
+			
         
         val panelBotones = new Panel(panel)
         panelBotones.setLayout(new HorizontalLayout)
@@ -66,22 +79,75 @@ class WindowLogIn extends MainWindow<ControladorLogIn>{
      
         new Button(panelBotones) => [
 			caption = "Log In"
-			onClick = new MessageSend(this.modelObject, "loguearUsuario(" +this.modelObject. )
+			//onClick = new MessageSend(this.modelObject, "loguearUsuario(" +this.modelObject. )
+			onClick [ | loguearUsuario ]
 			width = 100
 			]
 			
 		new Button(panelBotones) => [
 			caption = "Registrarse"
-			onClick =>[
-			val confirmarContraseña = new ConfirmacionWindow(this, modelObject)
-			confirmarContraseña.onAccept[|modelObject.registrarUsuario(nombre)
+			onClick [ |
+			//val confirmarContraseña = new ConfirmacionWindow(this, modelObject)
+			//confirmarContraseña.onAccept[|modelObject.registrarUsuario(nombre)]
+			registrarUsuario
 			]
+			
+			
+]		
+	}
+	
+	def loguearUsuario(){
+		if(modelObject.esUsuario)
+			{
+				if(modelObject.esContraseña)
+					{
+						
+						logueandoUsuario()
+						modelObject.nombreUsuario = ""
+						modelObject.contraseñaUsuario = ""
+					}
+					else
+					{
+						modelObject.mensajeLogIn = "Contraseña Incorrecta. Vuelva a intentar"
+						modelObject.nombreUsuario = ""
+						modelObject.contraseñaUsuario = ""
+					}
+			}
+			else
+			{
+			modelObject.mensajeLogIn = "Usuario Inexistente"
+			modelObject.nombreUsuario = ""
+			modelObject.contraseñaUsuario = ""
+			}
+	}
+	
+	def void logueandoUsuario(){
+      this.openDialog(new WindowPrincipal(this, modelObject.loguear))
+	}
+	
+	def openDialog(Dialog<?> dialog) {
+		dialog.onAccept[|modelObject.loguear]
+		dialog.open
+	}
+	
+	def registrarUsuario(){
+		modelObject.registrarUsuario()
 		
 	}
+	
+	
+	
+	
 
 	
 	def static main(String[] args){
-		new WindowLogIn(String).startApplication
+		val del = new DueloEntreLeyendas()
+		//val user = new Usuario("Usario92", "abc123" , "TeemoTiamat" )
+		val user = new Usuario("unUsuario", "abc123" )
+		del.usuarios.add(user)
+		
+		new WindowLogIn(new ControladorDueloEntreLeyendas(del)).startApplication
+		
 	}
 	
 	

@@ -10,15 +10,19 @@ import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.MainWindow
 import java.awt.Color
 import org.uqbar.arena.widgets.Selector
+import org.uqbar.arena.aop.windows.TransactionalDialog
+import org.uqbar.arena.windows.WindowOwner
+import controladores.ControladorUsuario
 
-class WindowPrincipal extends MainWindow<Object>{
+class WindowPrincipal extends TransactionalDialog<ControladorUsuario>{
 	
-		new(Object model) {
-		super(model)
+	new(WindowOwner owner, ControladorUsuario model) {
+		super(owner, model)
+		//title = defaultTitle
 	}
 	
 	override createContents(Panel panel) {
-		this.setTitle("Duelo de leyendas")
+		//this.setTitle("Duelo de leyendas")
 		panel.setLayout(new VerticalLayout)
 		
 		new Label(panel) => [
@@ -29,24 +33,30 @@ class WindowPrincipal extends MainWindow<Object>{
 			]
 		
 		new Label(panel) => [
-			setText("Usuario: " + modelObject.usuario)
+			setText("Usuario: " + modelObject.toString)
 			width = 200
 			]
 				
         new Button(panel) => [
 			caption = "Buscar Duelo"
-			onClick = this.openDialog(
-							new WindowCreadorTarjetaDeDuelo
+			//onClick[|]
+			]
+		/*	onClick = this.openDialog(
+						new WindowCreadorTarjetaDeDuelo
 								(this , modelObject))
 			onAccept=>[
 				try{
 					new MessageSend(this.modelObject,"buscarDuelo"))
 					this.openDialog(new WindowDuelo(this,modelObject))
 				}
-				catch(Exepcion e){
-					this.openDialog(new WindowNoRival(this, modelObject))
-				}	
-			]
+				*/
+				
+				
+				
+				//catch(Exepcion e){
+					//this.openDialog(new WindowNoRival(this, modelObject))
+				//}	
+			//]
         
         new Label(panel) => [
         	
@@ -71,27 +81,31 @@ class WindowPrincipal extends MainWindow<Object>{
         
        new Button(panelPerfil) => [
 			caption = "Personajes"
-			onClick = this.openDialog(new WindowPersonajes(this , modelObject))
+			//onClick = this.openDialog(new WindowPersonajes(this , modelObject))
 			width = 200
 			
 			]
 		new Button(panelPerfil) => [
 			caption = "Estadisticas"
-			onClick =  this.openDialog(new WindowEstadisticas(this , modelObject))
+			//onClick =  this.openDialog(new WindowEstadisticas(this , modelObject))
 			width = 200
 			
 			]        
 		
 	}
 	
-	
-	
-	
-	
-	
-	def static main(String[] args){
-		new WindowPrincipal(String).startApplication
+	override protected createFormPanel(Panel mainPanel) {
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
+	
+	
+	
+	
+	
+	
+	//def static main(String[] args){
+		//new WindowPrincipal(String).startApplication
+	//}
 	
 	
 	

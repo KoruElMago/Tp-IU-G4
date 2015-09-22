@@ -84,8 +84,8 @@ public class Jugador {
     return _xblockexpression;
   }
   
-  public int empate(final Duelo duelo) {
-    int _xblockexpression = (int) 0;
+  public Object empate(final Duelo duelo) {
+    Object _xblockexpression = null;
     {
       Estadisticas eAux = null;
       TarjetaDeDuelo _tarjetaDe = duelo.tarjetaDe(this);

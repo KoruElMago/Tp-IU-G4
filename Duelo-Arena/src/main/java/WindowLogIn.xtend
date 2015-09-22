@@ -12,10 +12,11 @@ import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Widget
 import org.uqbar.arena.actions.MessageSend
 import org.uqbar.arena.layout.HorizontalLayout
+import controladores.ControladorDueloEntreLeyendas
 
-class WindowLogIn extends MainWindow<Object>{
+class WindowLogIn extends MainWindow<ControladorDueloEntreLeyendas>{
 	
-	new(Object model) {
+	new(ControladorDueloEntreLeyendas model) {
 		super(model)
 	}
 	
@@ -61,14 +62,15 @@ class WindowLogIn extends MainWindow<Object>{
         new Button(panelBotones) => [
 			caption = "Log In"
 			//onClick [|this.modelObject.logIn ]
-			onClick = new MessageSend(this.modelObject, "convertir")
+			onClick = new MessageSend(this.modelObject, "LogIn")
 			]
 			
 		new Button(panelBotones) => [
 			caption = "Registrarse"
 			//onClick [|this.modelObject.logIn ]
-			onClick = new MessageSend(this.modelObject, "convertir")
+			onClick = new MessageSend(this.modelObject, "Register")
 			]
+			
 			
 			
 			
@@ -86,7 +88,7 @@ class WindowLogIn extends MainWindow<Object>{
 	
 	
 	def static main(String[] args){
-		new WindowLogIn(String).startApplication
+		new WindowLogIn(new ControladorDueloEntreLeyendas).startApplication
 	}
 	
 	

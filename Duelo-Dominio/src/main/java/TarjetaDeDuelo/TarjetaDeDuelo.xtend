@@ -19,10 +19,10 @@ class TarjetaDeDuelo {
 		
 	}
 	
-	def obtenerPoderDeAtaque() {
+	def Integer obtenerPoderDeAtaque() {
 		var estadisticas = jugador.obtenerEstadisticas(personaje)
 		return (jugador.calificacion + (((estadisticas.kills + estadisticas.assists) / 2)  - estadisticas.deads) 
-		       * estadisticas.vecesQueInicio)
+		       * estadisticas.vecesQueInicio) 
 	}
 	
 	def actualizarVictoria(Duelo duelo) {

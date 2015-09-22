@@ -7,6 +7,7 @@ import Exepcion.DueloEnEspera
 import Duelo.Duelo
 import java.util.ArrayList
 import Personaje.Personaje
+import usuario.Usuario
 
 @Accessors
 
@@ -14,13 +15,23 @@ class DueloEntreLeyendas {
 	
 	List<Personaje> personajes
 	List<TarjetaDeDuelo> buscadores
-	TarjetaDeDuelo tddBoot 
+	TarjetaDeDuelo tddBoot
+	//agregado por chibi:
+	List<Usuario> usuarios; 
 	
 	new(TarjetaDeDuelo tddBoot){
 		this.buscadores = new ArrayList
 		this.tddBoot = tddBoot
 		this.personajes = new ArrayList
+		this.usuarios = new ArrayList
 		
+	}
+	
+	new(){
+		this.buscadores = new ArrayList
+		//this.tddBoot = tddBoot
+		this.personajes = new ArrayList
+		this.usuarios = new ArrayList
 	}
 	
 	def buscarDuelo(TarjetaDeDuelo tdd){

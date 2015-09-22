@@ -2,6 +2,7 @@ package Denuncia
 
 class AbusoSistDenuncia extends TipoDenuncia {
 	new(){
-		name = "Abuso del Sistema de Denuncia"
+		tipo = "Abuso del Sistema de Denuncia"
+		peso = 25
 	}
 }

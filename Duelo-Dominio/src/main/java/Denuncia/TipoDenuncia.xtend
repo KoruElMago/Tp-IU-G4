@@ -3,9 +3,10 @@ package Denuncia
 import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 
-class TipoDenuncia {
+abstract class TipoDenuncia {
 	
-	var String name 
+	var String tipo
+	var Integer peso 
 	
 	new(){}
 	

@@ -22,8 +22,8 @@ class Duelo {
 	
 	def resolverse() {
 		
-		var  poderJ1 = tarjetaJugador1.obtenerPoderDeAtaque()
-		var  poderJ2 = tarjetaJugador2.obtenerPoderDeAtaque()
+		var  Integer poderJ1 = tarjetaJugador1.obtenerPoderDeAtaque()
+		var  Integer poderJ2 = tarjetaJugador2.obtenerPoderDeAtaque()
 		if (poderJ1 > poderJ2){
 			this.tarjetaGanador = tarjetaJugador1	
 			this.gano(tarjetaJugador1)

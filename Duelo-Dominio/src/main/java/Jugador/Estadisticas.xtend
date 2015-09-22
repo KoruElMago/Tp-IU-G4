@@ -7,6 +7,7 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
+
 class Estadisticas {
 	
 	Personaje personaje
@@ -33,7 +34,7 @@ class Estadisticas {
 	def empato(Duelo duelo,Jugador jug) {
 		this.assists ++
 		this.ubicaciones.add(duelo.tarjetaDe(jug).linea)
-		this.calificacionEnDuelo = duelo.tarjetaDe(jug).obtenerPoderDeAtaque
+		this.calificacionEnDuelo = duelo.tarjetaDe(jug).obtenerPoderDeAtaque as Integer
 		
 		if (duelo.tarjetaJugador1.jugador == jug){
 		this.vecesQueInicio ++	
@@ -45,7 +46,7 @@ class Estadisticas {
 	def gano(Duelo duelo,Jugador jug) {
 		this.victorias ++
 		this.ubicaciones.add(duelo.tarjetaDe(jug).linea)
-		this.calificacionEnDuelo = duelo.tarjetaDe(jug).obtenerPoderDeAtaque
+		this.calificacionEnDuelo = duelo.tarjetaDe(jug).obtenerPoderDeAtaque as Integer
 		
 		if (duelo.tarjetaJugador1.jugador == jug){
 			this.vecesQueInicio ++	
@@ -58,7 +59,7 @@ class Estadisticas {
 	
 	def perdio(Duelo duelo, Jugador jug) {
 		this.ubicaciones.add(duelo.tarjetaDe(jug).linea)
-		this.calificacionEnDuelo = duelo.tarjetaDe(jug).obtenerPoderDeAtaque
+		this.calificacionEnDuelo = duelo.tarjetaDe(jug).obtenerPoderDeAtaque as Integer
 		
 		if (duelo.tarjetaJugador1.jugador == jug){
 			this.vecesQueInicio ++	
