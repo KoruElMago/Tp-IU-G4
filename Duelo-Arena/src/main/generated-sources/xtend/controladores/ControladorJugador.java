@@ -57,8 +57,8 @@ public class ControladorJugador {
   }
   
   public ControladorEstadisticas seleccionar() {
-    Estadisticas _estadisticaPersonaje = this.getEstadisticaPersonaje();
-    return new ControladorEstadisticas(_estadisticaPersonaje);
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Estadisticas to Jugador");
   }
   
   @Pure

@@ -1,8 +1,11 @@
 package controladores;
 
 import Jugador.Estadisticas;
+import Jugador.Jugador;
 import Personaje.Personaje;
 import TarjetaDeDuelo.Linea;
+import com.google.common.base.Objects;
+import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
@@ -12,72 +15,202 @@ import org.uqbar.commons.utils.TransactionalAndObservable;
 @TransactionalAndObservable
 @SuppressWarnings("all")
 public class ControladorEstadisticas {
-  private Estadisticas estadisticas;
+  private Jugador jugador;
   
-  public ControladorEstadisticas(final Estadisticas estadisticas) {
-    this.estadisticas = estadisticas;
+  private String nombrePersonaje;
+  
+  private Estadisticas estadisticaSeleccionada;
+  
+  private Integer vecesQueInicio;
+  
+  private Integer kills;
+  
+  private Integer deads;
+  
+  private Integer assist;
+  
+  private Integer victorias;
+  
+  private Linea mejorLinea;
+  
+  private List<Linea> ubicaciones = new ArrayList<Linea>();
+  
+  private Integer calificacionEnDuelo;
+  
+  public ControladorEstadisticas(final Jugador jugador) {
+    this.jugador = jugador;
   }
   
-  /**
-   * this.personaje = personaje
-   * this.vecesQueInicio = 1
-   * this.kills = 2
-   * this.deads = 3
-   * this.assist = 4
-   * this.victorias = 5
-   * this.mejorLinea = Linea.Top
-   * this.ubicaciones = new ArrayList<Linea>()
-   * this.ubicaciones.add(Linea.Top);
-   * this.ubicaciones.add(Linea.Bottom);
-   * this.calificacionEnDuelo = 5
-   */
-  public Personaje getPersonaje() {
-    return this.estadisticas.getPersonaje();
+  public String getNombreJugador() {
+    return this.jugador.getNombreJugador();
   }
   
-  public String getNombre() {
-    Personaje _personaje = this.estadisticas.getPersonaje();
-    return _personaje.getNombre();
+  public ArrayList<String> getNombreEstadisticas() {
+    final ArrayList<String> nombres = new ArrayList<String>();
+    List<Estadisticas> _estadisticas = this.jugador.getEstadisticas();
+    for (final Estadisticas es : _estadisticas) {
+      Personaje _personaje = es.getPersonaje();
+      String _nombre = _personaje.getNombre();
+      nombres.add(_nombre);
+    }
+    return nombres;
   }
   
-  public Integer getVecesQueInicio() {
-    return Integer.valueOf(this.estadisticas.getVecesQueInicio());
+  public List<Estadisticas> getEstadisticas() {
+    return this.jugador.getEstadisticas();
   }
   
-  public Integer getKills() {
-    return Integer.valueOf(this.estadisticas.getKills());
+  public Estadisticas getEstadisticaPersonaje() {
+    Estadisticas est = null;
+    List<Estadisticas> _estadisticas = this.getEstadisticas();
+    for (final Estadisticas s : _estadisticas) {
+      Personaje _personaje = s.getPersonaje();
+      String _nombre = _personaje.getNombre();
+      boolean _equals = Objects.equal(_nombre, this.nombrePersonaje);
+      if (_equals) {
+        est = s;
+      }
+    }
+    return est;
   }
   
-  public Integer getDeads() {
-    return Integer.valueOf(this.estadisticas.getDeads());
+  public Integer actualizar(final Estadisticas estadisticas) {
+    Integer _xblockexpression = null;
+    {
+      int _vecesQueInicio = estadisticas.getVecesQueInicio();
+      this.vecesQueInicio = Integer.valueOf(_vecesQueInicio);
+      int _kills = estadisticas.getKills();
+      this.kills = Integer.valueOf(_kills);
+      int _deads = estadisticas.getDeads();
+      this.deads = Integer.valueOf(_deads);
+      int _assists = estadisticas.getAssists();
+      this.assist = Integer.valueOf(_assists);
+      int _victorias = estadisticas.getVictorias();
+      this.victorias = Integer.valueOf(_victorias);
+      Linea _mejorLinea = estadisticas.getMejorLinea();
+      this.mejorLinea = _mejorLinea;
+      List<Linea> _ubicaciones = estadisticas.getUbicaciones();
+      this.ubicaciones = _ubicaciones;
+      int _calificacionEnDuelo = estadisticas.getCalificacionEnDuelo();
+      _xblockexpression = this.calificacionEnDuelo = Integer.valueOf(_calificacionEnDuelo);
+    }
+    return _xblockexpression;
   }
   
-  public Integer getAssist() {
-    return Integer.valueOf(this.estadisticas.getAssists());
+  public Object seleccionar() {
+    return null;
   }
   
-  public Integer getVictorias() {
-    return Integer.valueOf(this.estadisticas.getVictorias());
+  public void abrirEstadistica() {
+    List<Estadisticas> _estadisticas = this.jugador.getEstadisticas();
+    for (final Estadisticas est : _estadisticas) {
+      Personaje _personaje = est.getPersonaje();
+      String _nombre = _personaje.getNombre();
+      boolean _equals = Objects.equal(_nombre, this.nombrePersonaje);
+      if (_equals) {
+        this.actualizar(est);
+        this.setEstadisticaSeleccionada(est);
+      }
+    }
   }
   
-  public Linea getMejorLinea() {
-    return this.estadisticas.getMejorLinea();
-  }
-  
-  public List<Linea> getUbicaciones() {
-    return this.estadisticas.getUbicaciones();
-  }
-  
-  public Integer getCalificacionEnDuelo() {
-    return Integer.valueOf(this.estadisticas.getCalificacionEnDuelo());
+  public void setNombrePersonaje(final String nombrePersonaje) {
+    this.nombrePersonaje = nombrePersonaje;
+    this.abrirEstadistica();
   }
   
   @Pure
-  public Estadisticas getEstadisticas() {
-    return this.estadisticas;
+  public Jugador getJugador() {
+    return this.jugador;
   }
   
-  public void setEstadisticas(final Estadisticas estadisticas) {
-    this.estadisticas = estadisticas;
+  public void setJugador(final Jugador jugador) {
+    this.jugador = jugador;
+  }
+  
+  @Pure
+  public String getNombrePersonaje() {
+    return this.nombrePersonaje;
+  }
+  
+  @Pure
+  public Estadisticas getEstadisticaSeleccionada() {
+    return this.estadisticaSeleccionada;
+  }
+  
+  public void setEstadisticaSeleccionada(final Estadisticas estadisticaSeleccionada) {
+    this.estadisticaSeleccionada = estadisticaSeleccionada;
+  }
+  
+  @Pure
+  public Integer getVecesQueInicio() {
+    return this.vecesQueInicio;
+  }
+  
+  public void setVecesQueInicio(final Integer vecesQueInicio) {
+    this.vecesQueInicio = vecesQueInicio;
+  }
+  
+  @Pure
+  public Integer getKills() {
+    return this.kills;
+  }
+  
+  public void setKills(final Integer kills) {
+    this.kills = kills;
+  }
+  
+  @Pure
+  public Integer getDeads() {
+    return this.deads;
+  }
+  
+  public void setDeads(final Integer deads) {
+    this.deads = deads;
+  }
+  
+  @Pure
+  public Integer getAssist() {
+    return this.assist;
+  }
+  
+  public void setAssist(final Integer assist) {
+    this.assist = assist;
+  }
+  
+  @Pure
+  public Integer getVictorias() {
+    return this.victorias;
+  }
+  
+  public void setVictorias(final Integer victorias) {
+    this.victorias = victorias;
+  }
+  
+  @Pure
+  public Linea getMejorLinea() {
+    return this.mejorLinea;
+  }
+  
+  public void setMejorLinea(final Linea mejorLinea) {
+    this.mejorLinea = mejorLinea;
+  }
+  
+  @Pure
+  public List<Linea> getUbicaciones() {
+    return this.ubicaciones;
+  }
+  
+  public void setUbicaciones(final List<Linea> ubicaciones) {
+    this.ubicaciones = ubicaciones;
+  }
+  
+  @Pure
+  public Integer getCalificacionEnDuelo() {
+    return this.calificacionEnDuelo;
+  }
+  
+  public void setCalificacionEnDuelo(final Integer calificacionEnDuelo) {
+    this.calificacionEnDuelo = calificacionEnDuelo;
   }
 }

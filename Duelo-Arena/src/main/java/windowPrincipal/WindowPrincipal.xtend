@@ -13,6 +13,9 @@ import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.aop.windows.TransactionalDialog
 import org.uqbar.arena.windows.WindowOwner
 import controladores.ControladorUsuario
+import ventanaEstadisticas.WindowSeleccionEstadistica
+import org.uqbar.arena.windows.Dialog
+import ventanaEstadisticas.WindowEstadistica
 
 class WindowPrincipal extends TransactionalDialog<ControladorUsuario>{
 	
@@ -88,6 +91,7 @@ class WindowPrincipal extends TransactionalDialog<ControladorUsuario>{
 		new Button(panelPerfil) => [
 			caption = "Estadisticas"
 			//onClick =  this.openDialog(new WindowEstadisticas(this , modelObject))
+			onClick [| verEstadisticas]
 			width = 200
 			
 			]        
@@ -98,6 +102,14 @@ class WindowPrincipal extends TransactionalDialog<ControladorUsuario>{
 		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
+	def verEstadisticas(){
+		this.openDialog(new WindowEstadistica(this, modelObject.abrirSeleccionEstadistica() ))
+	}
+	
+	def openDialog(Dialog<?> dialog) {
+		dialog.onAccept[| modelObject.abrirSeleccionEstadistica]
+		dialog.open
+	}
 	
 	
 	

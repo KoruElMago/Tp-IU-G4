@@ -21,6 +21,10 @@ import Core.DueloEntreLeyendas
 import java.awt.Color
 import usuario.Usuario
 import Jugador.Jugador
+import Jugador.Estadisticas
+import Personaje.Personaje
+import java.util.ArrayList
+import TarjetaDeDuelo.Linea
 
 class WindowLogIn extends MainWindow<ControladorDueloEntreLeyendas>{
 	
@@ -144,7 +148,30 @@ class WindowLogIn extends MainWindow<ControladorDueloEntreLeyendas>{
 		val del = new DueloEntreLeyendas()
 		//val user = new Usuario("Usario92", "abc123" , "TeemoTiamat" )
 		val user = new Usuario("unUsuario", "abc123" )
+		
+		
+		val ashe = new Personaje("Ashe" , Linea.Bottom, new ArrayList, new ArrayList)
+		val amumu = new Personaje("Amumu" , Linea.Jungle, new ArrayList, new ArrayList)
+		val orianna = new Personaje("Orianna" , Linea.Mid, new ArrayList, new ArrayList)
+		val annie = new Personaje("Annie" , Linea.Mid, new ArrayList, new ArrayList)
+		val raven = new Personaje("Raven" , Linea.Top, new ArrayList, new ArrayList)
+		
+		val est1 = new Estadisticas(ashe)
+		val est2 = new Estadisticas(amumu)
+		val est3 = new Estadisticas(orianna)
+		val est4 = new Estadisticas(annie)
+		val est5 = new Estadisticas(raven)
+		
+		user.jugador.estadisticas.add(est1)
+		user.jugador.estadisticas.add(est2)
+		user.jugador.estadisticas.add(est3)
+		user.jugador.estadisticas.add(est4)
+		user.jugador.estadisticas.add(est5)
+		
 		del.usuarios.add(user)
+		
+		
+		
 		
 		new WindowLogIn(new ControladorDueloEntreLeyendas(del)).startApplication
 		

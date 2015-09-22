@@ -14,6 +14,8 @@ import controladores.ControladorPersonaje
 import org.uqbar.arena.aop.windows.TransactionalDialog
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Selector
+import org.uqbar.arena.windows.Dialog
 
 class WindowEstadistica extends TransactionalDialog<ControladorEstadisticas>{
 	
@@ -27,6 +29,27 @@ class WindowEstadistica extends TransactionalDialog<ControladorEstadisticas>{
 	 val panelPersonaje = new Panel(mainPanel)
 	 panelPersonaje.setLayout(new HorizontalLayout)
 	 
+	 new Label(mainPanel) => [
+			setText("Seleccione Personaje")
+			//setBackground(Color.BLACK)
+			//width = 600
+			//height = 10
+			fontSize = 15
+		    //setForeground(Color.WHITE)
+			]
+		
+		new Selector<ControladorEstadisticas>(mainPanel) => [
+            
+            allowNull = false
+            bindItemsToProperty("nombreEstadisticas")
+            bindValueToProperty("nombrePersonaje")
+			]
+			
+			val panelOpciones = new Panel(mainPanel)
+			panelOpciones.setLayout(new HorizontalLayout)
+	 
+	 
+	 
 	 new Label(panelPersonaje) => [
 			setText("Personaje:")
 			//setBackground(Color.BLACK)
@@ -37,7 +60,8 @@ class WindowEstadistica extends TransactionalDialog<ControladorEstadisticas>{
 			]
 			
 			new Label(panelPersonaje) => [
-			bindValueToProperty("nombre")
+			//bindValueToProperty("estadisticaSeleccionada.personaje.nombre")
+			bindValueToProperty("nombrePersonaje")
 			//setBackground(Color.BLACK)
 			//width = 600
 			//height = 10
@@ -54,6 +78,7 @@ class WindowEstadistica extends TransactionalDialog<ControladorEstadisticas>{
 			]
 			
 			new Label(panelPartidas) => [
+			//bindValueToProperty("estadisticaSeleccionada.vecesQueInicio")
 			bindValueToProperty("vecesQueInicio")
 			fontSize = 15
 			]
@@ -67,6 +92,7 @@ class WindowEstadistica extends TransactionalDialog<ControladorEstadisticas>{
 			]
 			
 			new Label(panelKills) => [
+			//bindValueToProperty("estadisticaSeleccionada.kills")
 			bindValueToProperty("kills")
 			fontSize = 15
 			]
@@ -81,6 +107,7 @@ class WindowEstadistica extends TransactionalDialog<ControladorEstadisticas>{
 			]
 			
 			new Label(panelDeads) => [
+			//bindValueToProperty("estadisticaSeleccionada.deads")
 			bindValueToProperty("deads")
 			fontSize = 15
 			]
@@ -94,6 +121,7 @@ class WindowEstadistica extends TransactionalDialog<ControladorEstadisticas>{
 			]
 			
 			new Label(panelAssist) => [
+			//bindValueToProperty("estadisticaSeleccionada.assists")
 			bindValueToProperty("assist")
 			fontSize = 15
 			]
@@ -108,6 +136,7 @@ class WindowEstadistica extends TransactionalDialog<ControladorEstadisticas>{
 			]
 			
 			new Label(panelVictorias) => [
+			//bindValueToProperty("estadisticaSeleccionada.victorias")
 			bindValueToProperty("victorias")
 			fontSize = 15
 			]
@@ -121,6 +150,7 @@ class WindowEstadistica extends TransactionalDialog<ControladorEstadisticas>{
 			]
 			
 			new Label(panelMejorLinea) => [
+			//bindValueToProperty("estadisticaSeleccionada.mejorLinea")
 			bindValueToProperty("mejorLinea")
 			fontSize = 15
 			]
@@ -134,6 +164,7 @@ class WindowEstadistica extends TransactionalDialog<ControladorEstadisticas>{
 			]
 			
 			new List(panelUbicaciones) => [
+			//bindValueToProperty("estadisticaSeleccionada.ubicaciones")
 			bindValueToProperty("ubicaciones")
 			]
 			
@@ -146,6 +177,7 @@ class WindowEstadistica extends TransactionalDialog<ControladorEstadisticas>{
 			]
 			
 			new Label(panelCalificacion) => [
+			//bindValueToProperty("estadisticaSeleccionada.calificacionEnDuelo")
 			bindValueToProperty("calificacionEnDuelo")
 			fontSize = 15
 			]
@@ -160,6 +192,17 @@ class WindowEstadistica extends TransactionalDialog<ControladorEstadisticas>{
 	
 	
 	}
+	
+	def openDialog(Dialog<?> dialog) {
+		dialog.onAccept[|modelObject.seleccionar]
+		dialog.open
+	}
+	
+	def void abrirEstadistica() {
+      //this.openDialog(new WindowEstadistica(this, modelObject.seleccionar))
+      modelObject.abrirEstadistica()
+}
+	
 	
 	
 	def static main(String[] args){

@@ -1,5 +1,6 @@
 package windowPrincipal;
 
+import controladores.ControladorEstadisticas;
 import controladores.ControladorUsuario;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -9,7 +10,10 @@ import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
+import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
+import org.uqbar.lacar.ui.model.Action;
+import ventanaEstadisticas.WindowEstadistica;
 
 @SuppressWarnings("all")
 public class WindowPrincipal extends TransactionalDialog<ControladorUsuario> {
@@ -79,6 +83,12 @@ public class WindowPrincipal extends TransactionalDialog<ControladorUsuario> {
     final Procedure1<Button> _function_6 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Estadisticas");
+        final Action _function = new Action() {
+          public void execute() {
+            WindowPrincipal.this.verEstadisticas();
+          }
+        };
+        it.onClick(_function);
         it.setWidth(200);
       }
     };
@@ -86,5 +96,23 @@ public class WindowPrincipal extends TransactionalDialog<ControladorUsuario> {
   }
   
   protected void createFormPanel(final Panel mainPanel) {
+  }
+  
+  public void verEstadisticas() {
+    ControladorUsuario _modelObject = this.getModelObject();
+    ControladorEstadisticas _abrirSeleccionEstadistica = _modelObject.abrirSeleccionEstadistica();
+    WindowEstadistica _windowEstadistica = new WindowEstadistica(this, _abrirSeleccionEstadistica);
+    this.openDialog(_windowEstadistica);
+  }
+  
+  public void openDialog(final Dialog<?> dialog) {
+    final Action _function = new Action() {
+      public void execute() {
+        ControladorUsuario _modelObject = WindowPrincipal.this.getModelObject();
+        _modelObject.abrirSeleccionEstadistica();
+      }
+    };
+    dialog.onAccept(_function);
+    dialog.open();
   }
 }

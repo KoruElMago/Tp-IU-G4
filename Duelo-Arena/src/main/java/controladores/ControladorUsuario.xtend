@@ -1,10 +1,13 @@
 package controladores
 
 import usuario.Usuario
+import Jugador.Estadisticas
 
 class ControladorUsuario {
 	
 	Usuario usuario
+	
+	
 	
 	new(Usuario usuario){
 		this.usuario = usuario
@@ -14,4 +17,15 @@ class ControladorUsuario {
 		return usuario.jugador.nombreJugador
 		
 		}
+	
+	def abrirSeleccionEstadistica() {
+		new ControladorEstadisticas(usuario.jugador)
+	}
+	
+	
+	
+	//adds
+	
+	
+	
 }
