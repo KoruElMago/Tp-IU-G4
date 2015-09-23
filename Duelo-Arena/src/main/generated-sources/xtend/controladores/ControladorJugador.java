@@ -42,7 +42,7 @@ public class ControladorJugador {
     return this.jugador.getEstadisticas();
   }
   
-  public Estadisticas getEstadisticaPersonaje() {
+  public Personaje getEstadisticaPersonaje() {
     Estadisticas est = null;
     List<Estadisticas> _estadisticas = this.getEstadisticas();
     for (final Estadisticas s : _estadisticas) {
@@ -53,12 +53,12 @@ public class ControladorJugador {
         est = s;
       }
     }
-    return est;
+    return est.getPersonaje();
   }
   
   public ControladorEstadisticas seleccionar() {
     throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from Estadisticas to Jugador");
+      + "\nType mismatch: cannot convert from Personaje to Jugador");
   }
   
   @Pure

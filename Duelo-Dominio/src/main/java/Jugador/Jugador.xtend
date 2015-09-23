@@ -21,7 +21,7 @@ class Jugador {
 	this.nombreJugador = nombre
 	this.calificacion = 0
 	this.estadisticas = new ArrayList<Estadisticas>
-	
+	this.denuncias = new ArrayList<Denuncia>
 	}
 	
 	
@@ -77,6 +77,10 @@ class Jugador {
  		}
 		
 		}
+	
+	def agregarDenuncia(Denuncia denuncia) {
+		this.denuncias.add(denuncia)
+	}
 		
 	
 	

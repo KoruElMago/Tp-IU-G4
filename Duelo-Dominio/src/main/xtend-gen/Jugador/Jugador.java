@@ -27,6 +27,8 @@ public class Jugador {
     this.calificacion = 0;
     ArrayList<Estadisticas> _arrayList = new ArrayList<Estadisticas>();
     this.estadisticas = _arrayList;
+    ArrayList<Denuncia> _arrayList_1 = new ArrayList<Denuncia>();
+    this.denuncias = _arrayList_1;
   }
   
   public Estadisticas obtenerEstadisticas(final Personaje personaje) {
@@ -89,6 +91,10 @@ public class Jugador {
         e1.setVecesQueInicio(_plus_1);
       }
     }
+  }
+  
+  public boolean agregarDenuncia(final Denuncia denuncia) {
+    return this.denuncias.add(denuncia);
   }
   
   @Pure

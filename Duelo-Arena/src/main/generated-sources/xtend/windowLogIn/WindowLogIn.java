@@ -41,8 +41,9 @@ public class WindowLogIn extends MainWindow<ControladorDueloEntreLeyendas> {
     final Procedure1<Label> _function = new Procedure1<Label>() {
       public void apply(final Label it) {
         it.setText("Duelo de leyendas");
-        it.setWidth(400);
-        it.setHeight(50);
+        it.setFontSize(30);
+        it.setWidth(600);
+        it.setHeight(60);
       }
     };
     ObjectExtensions.<Label>operator_doubleArrow(_label, _function);

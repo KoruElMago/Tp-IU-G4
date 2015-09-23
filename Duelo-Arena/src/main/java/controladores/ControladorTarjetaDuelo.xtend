@@ -11,6 +11,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.TransactionalAndObservable
 import TarjetaDeDuelo.TarjetaDeDuelo
 import Duelo.Duelo
+import java.util.Random
 
 @Accessors
 @TransactionalAndObservable
@@ -41,7 +42,7 @@ class ControladorTarjetaDuelo {
 		var tarjeta = new TarjetaDeDuelo(personajeElegido, usuario.jugador, lineaElegida)
 		//del.entrarEnCola(duelo)
 		var rival = del.buscarRivalDigno(tarjeta)
-		if(rival.equals(del.tddBoot) || rival.equals(null))
+		if(rival.equals(null))
 			{
 			return crearDueloConBot(del, tarjeta)				
 			}
@@ -62,10 +63,19 @@ class ControladorTarjetaDuelo {
 		var text = "No se ha encontrado rival que te haga frente.
 					¿Deseas jugar contra bot MR-X de todas maneras?" 
 		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
-		var TarjetaDeDuelo bot = null 
+		
+		var  bot = new TarjetaDeDuelo(personajeAlAzar(del.personajes), del.bot.jugador, usuario.linea)
+		
 		return (new ControladorBuscadorDuelo(del, usuario, bot, text))
 	}
 	
+	
+	def personajeAlAzar(List<Personaje> personajes){
+		var int seleccion = new Random().nextInt(personajes.length)
+		return personajes.get(seleccion)
+		
+		 
+	}
 	
 	
 }

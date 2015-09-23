@@ -1,6 +1,7 @@
 package windowDenuncia;
 
 import controladores.ControladorDenuncia;
+import controladores.ControladorDenunciaEnviada;
 import controladores.ControladorTipoDenuncia;
 import java.awt.Color;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
@@ -14,9 +15,11 @@ import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.Selector;
 import org.uqbar.arena.widgets.TextBox;
+import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
+import windowDenunciaEnviada.WindowDenunciaEnviada;
 
 @SuppressWarnings("all")
 public class WindowDenuncia extends TransactionalDialog<ControladorDenuncia> {
@@ -60,7 +63,7 @@ public class WindowDenuncia extends TransactionalDialog<ControladorDenuncia> {
     };
     ObjectExtensions.<Label>operator_doubleArrow(_label_2, _function_2);
     Label _label_3 = new Label(panelDenunciaA);
-    _label_3.<Object, ControlBuilder>bindValueToProperty("denunciado.nombreJugador");
+    _label_3.<Object, ControlBuilder>bindValueToProperty("nombreDenunciado");
     final Panel panelMotivo = new Panel(panel);
     HorizontalLayout _horizontalLayout_1 = new HorizontalLayout();
     panelMotivo.setLayout(_horizontalLayout_1);
@@ -134,9 +137,15 @@ public class WindowDenuncia extends TransactionalDialog<ControladorDenuncia> {
     ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_8);
   }
   
-  public Object enviarDenuncia() {
+  public void enviarDenuncia() {
     ControladorDenuncia _modelObject = this.getModelObject();
-    return _modelObject.realizarDenuncia();
+    ControladorDenunciaEnviada _crearDenuncia = _modelObject.crearDenuncia();
+    WindowDenunciaEnviada _windowDenunciaEnviada = new WindowDenunciaEnviada(this, _crearDenuncia);
+    this.openDialog(_windowDenunciaEnviada);
+  }
+  
+  public void openDialog(final Dialog<?> dialog) {
+    dialog.open();
   }
   
   protected void createFormPanel(final Panel mainPanel) {

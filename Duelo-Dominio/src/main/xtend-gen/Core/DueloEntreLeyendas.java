@@ -22,18 +22,18 @@ public class DueloEntreLeyendas {
   
   private List<TarjetaDeDuelo> buscadores;
   
-  private TarjetaDeDuelo tddBoot;
+  private Usuario bot;
   
   private List<Usuario> usuarios;
   
   public DueloEntreLeyendas(final TarjetaDeDuelo tddBoot) {
     ArrayList<TarjetaDeDuelo> _arrayList = new ArrayList<TarjetaDeDuelo>();
     this.buscadores = _arrayList;
-    this.tddBoot = tddBoot;
     ArrayList<Personaje> _arrayList_1 = new ArrayList<Personaje>();
     this.personajes = _arrayList_1;
     ArrayList<Usuario> _arrayList_2 = new ArrayList<Usuario>();
     this.usuarios = _arrayList_2;
+    Usuario Jugadorbot = new Usuario("TX-M", "");
   }
   
   public DueloEntreLeyendas() {
@@ -87,10 +87,6 @@ public class DueloEntreLeyendas {
   
   public boolean salirDeLaCola(final TarjetaDeDuelo tdd) {
     return this.buscadores.remove(tdd);
-  }
-  
-  public Duelo dueloConBoot(final TarjetaDeDuelo tdd) {
-    return new Duelo(tdd, this.tddBoot);
   }
   
   public boolean agregarUsuario(final String nombre, final String contraseña) throws Exception {
@@ -152,12 +148,12 @@ public class DueloEntreLeyendas {
   }
   
   @Pure
-  public TarjetaDeDuelo getTddBoot() {
-    return this.tddBoot;
+  public Usuario getBot() {
+    return this.bot;
   }
   
-  public void setTddBoot(final TarjetaDeDuelo tddBoot) {
-    this.tddBoot = tddBoot;
+  public void setBot(final Usuario bot) {
+    this.bot = bot;
   }
   
   @Pure

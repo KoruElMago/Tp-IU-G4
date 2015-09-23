@@ -18,10 +18,11 @@ class Denuncia {
 		this.tipo = tipo
 		this.denunciante = denunciante
 		this.denunciado = denunciado
-		this.validarse()
+		//this.validarse()
 		
 	}
 
+	
 	def validarse(){
 		
 		if (this.esValida()){
@@ -38,17 +39,21 @@ class Denuncia {
 		}
 				
 	}
-	
+	 
+	 
 	def esValida() {
+		var char comp = " "
 		var char ant = " "
 		var cantPal = 0
 		for(char c: this.descripcion.toCharArray){
-			if((c!=" ")&& (ant == " ")){
+			if((c != comp)&& (ant == comp)){
 				cantPal++
 			}
 			ant = c
 		}
 		return(cantPal>3)
+		
+		//return descripcion.length > 20
 	}
 
 }

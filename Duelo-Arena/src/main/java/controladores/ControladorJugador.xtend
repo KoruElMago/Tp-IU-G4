@@ -52,13 +52,13 @@ class ControladorJugador {
 					
 		//new ControladorEstadisticas(s).start
 		}
-		return est
+		return est.personaje
 		//new WindowEstadistica(new ControladorEstadisticas(est)).startApplication
 	}
 	
 	def seleccionar() {
 		
-		return new ControladorEstadisticas(this.getEstadisticaPersonaje)
+		return new ControladorEstadisticas(this.getEstadisticaPersonaje())
 		
 		
 		//throw new UnsupportedOperationException("TODO: auto-generated method stub")

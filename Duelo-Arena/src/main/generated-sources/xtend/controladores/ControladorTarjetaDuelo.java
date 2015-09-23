@@ -8,7 +8,9 @@ import TarjetaDeDuelo.TarjetaDeDuelo;
 import controladores.ControladorBuscadorDuelo;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import org.eclipse.xtend.lib.annotations.Accessors;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.uqbar.commons.utils.TransactionalAndObservable;
 import usuario.Usuario;
@@ -46,16 +48,8 @@ public class ControladorTarjetaDuelo {
     Jugador _jugador = this.usuario.getJugador();
     TarjetaDeDuelo tarjeta = new TarjetaDeDuelo(this.personajeElegido, _jugador, this.lineaElegida);
     TarjetaDeDuelo rival = this.del.buscarRivalDigno(tarjeta);
-    boolean _or = false;
-    TarjetaDeDuelo _tddBoot = this.del.getTddBoot();
-    boolean _equals = rival.equals(_tddBoot);
+    boolean _equals = rival.equals(null);
     if (_equals) {
-      _or = true;
-    } else {
-      boolean _equals_1 = rival.equals(null);
-      _or = _equals_1;
-    }
-    if (_or) {
       return this.crearDueloConBot(this.del, tarjeta);
     } else {
       return this.crearDueloNormal(this.del, tarjeta, rival);
@@ -69,8 +63,20 @@ public class ControladorTarjetaDuelo {
   
   public ControladorBuscadorDuelo crearDueloConBot(final DueloEntreLeyendas del, final TarjetaDeDuelo usuario) {
     String text = "No se ha encontrado rival que te haga frente.\n\t\t\t\t\t¿Deseas jugar contra bot MR-X de todas maneras?";
-    TarjetaDeDuelo bot = null;
+    List<Personaje> _personajes = del.getPersonajes();
+    Personaje _personajeAlAzar = this.personajeAlAzar(_personajes);
+    Usuario _bot = del.getBot();
+    Jugador _jugador = _bot.getJugador();
+    Linea _linea = usuario.getLinea();
+    TarjetaDeDuelo bot = new TarjetaDeDuelo(_personajeAlAzar, _jugador, _linea);
     return new ControladorBuscadorDuelo(del, usuario, bot, text);
+  }
+  
+  public Personaje personajeAlAzar(final List<Personaje> personajes) {
+    Random _random = new Random();
+    int _length = ((Object[])Conversions.unwrapArray(personajes, Object.class)).length;
+    int seleccion = _random.nextInt(_length);
+    return personajes.get(seleccion);
   }
   
   @Pure

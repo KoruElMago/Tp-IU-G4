@@ -117,6 +117,10 @@ public class Estadisticas {
     return _xblockexpression;
   }
   
+  public String toString() {
+    return this.personaje.getNombre();
+  }
+  
   @Pure
   public Personaje getPersonaje() {
     return this.personaje;

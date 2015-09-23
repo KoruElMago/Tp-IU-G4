@@ -3,9 +3,11 @@ package controladores;
 import Core.DueloEntreLeyendas;
 import Denuncia.AbusoHabilDenuncia;
 import Denuncia.ComAbusivaDenuncia;
+import Denuncia.Denuncia;
 import Denuncia.FeedIntencionalDenuncia;
 import Denuncia.TipoDenuncia;
 import Jugador.Jugador;
+import controladores.ControladorDenunciaEnviada;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
@@ -28,6 +30,8 @@ public class ControladorDenuncia {
   
   private String detalles;
   
+  private String nombreDenunciado;
+  
   public ControladorDenuncia(final DueloEntreLeyendas del, final Jugador denunciante, final Jugador denunciado) {
     this.del = del;
     this.denunciado = denunciado;
@@ -38,12 +42,13 @@ public class ControladorDenuncia {
     this.motivos.add(_comAbusivaDenuncia);
     FeedIntencionalDenuncia _feedIntencionalDenuncia = new FeedIntencionalDenuncia();
     this.motivos.add(_feedIntencionalDenuncia);
+    String _nombreJugador = denunciado.getNombreJugador();
+    this.nombreDenunciado = _nombreJugador;
   }
   
-  public Object realizarDenuncia() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nno viable alternative at input \')\'"
-      + "\nno viable alternative at input \'}\'");
+  public ControladorDenunciaEnviada crearDenuncia() {
+    final Denuncia denuncia = new Denuncia(this.detalles, this.motivo, this.denunciante, this.denunciado);
+    return new ControladorDenunciaEnviada(this.del, denuncia);
   }
   
   @Pure
@@ -98,5 +103,14 @@ public class ControladorDenuncia {
   
   public void setDetalles(final String detalles) {
     this.detalles = detalles;
+  }
+  
+  @Pure
+  public String getNombreDenunciado() {
+    return this.nombreDenunciado;
+  }
+  
+  public void setNombreDenunciado(final String nombreDenunciado) {
+    this.nombreDenunciado = nombreDenunciado;
   }
 }

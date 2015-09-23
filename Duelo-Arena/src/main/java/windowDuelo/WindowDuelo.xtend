@@ -145,7 +145,7 @@ class WindowDuelo extends TransactionalDialog<ControladorDuelo>{
 	}
 	
 	def openDialog(Dialog<?> dialog) {
-		dialog.onAccept[|modelObject.comenzarDenuncia()]
+		//dialog.onAccept[|modelObject.comenzarDenuncia()]
 		dialog.open
 	}	
 	}

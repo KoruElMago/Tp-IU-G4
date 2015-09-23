@@ -13,6 +13,7 @@ import Denuncia.ComAbusivaDenuncia
 import Denuncia.FeedIntencionalDenuncia
 import Core.DueloEntreLeyendas
 import Jugador.Jugador
+import Denuncia.Denuncia
 
 @TransactionalAndObservable
 @Accessors
@@ -27,6 +28,8 @@ class ControladorDenuncia {
 	var List<TipoDenuncia> motivos = new ArrayList
 	//var Map<String, TipoDenuncia> map = new HashMap<String, TipoDenuncia>();
 	var String detalles
+	
+	var String nombreDenunciado
 			
 	
 	
@@ -39,6 +42,7 @@ class ControladorDenuncia {
 		this.motivos.add(new AbusoHabilDenuncia())
 		this.motivos.add(new ComAbusivaDenuncia())
 		this.motivos.add(new FeedIntencionalDenuncia())
+		this.nombreDenunciado = denunciado.nombreJugador
 		
 		//this.motivos.add("Feed Intencional")
 		//this.motivos.add("Abuso del Sistema de Denuncia")
@@ -46,16 +50,12 @@ class ControladorDenuncia {
 		
 	}
 	
-	def realizarDenuncia(){
-		
-		if()
+	def crearDenuncia(){
+		val denuncia = new Denuncia(detalles, motivo, denunciante, denunciado)
+		return new ControladorDenunciaEnviada(del, denuncia)
 		//Aqui se agrega la denuncia al jugador...
 		//Depende de si es correcta o no, en WindowDenuncia se abrira una ventana
 		//diciendo si es correcta o no, y el boton aceptar (label detales, boton aceptar) ylisto
-		
-		
-		
-		
 	}
 	
 	

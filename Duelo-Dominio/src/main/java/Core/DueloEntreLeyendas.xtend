@@ -12,6 +12,7 @@ import Jugador.Estadisticas
 import Exepcion.ContraseñaIncorrectaException
 import Exepcion.UsuarioExisteException
 import Exepcion.UsuarioNoExisteException
+import Jugador.Jugador
 
 @Accessors
 
@@ -19,15 +20,21 @@ class DueloEntreLeyendas {
 	
 	List<Personaje> personajes
 	List<TarjetaDeDuelo> buscadores
-	TarjetaDeDuelo tddBoot
+	//TarjetaDeDuelo tddBoot
+	Usuario bot
 	//agregado por chibi:
 	List<Usuario> usuarios; 
 	
 	new(TarjetaDeDuelo tddBoot){
 		this.buscadores = new ArrayList
-		this.tddBoot = tddBoot
+		//this.tddBoot = tddBoot
 		this.personajes = new ArrayList
 		this.usuarios = new ArrayList
+		
+		var Jugadorbot = new Usuario("TX-M", "")
+		
+		
+		
 		
 	}
 	
@@ -74,9 +81,9 @@ class DueloEntreLeyendas {
 		this.buscadores.remove(tdd)
 	}
 	
-	def dueloConBoot(TarjetaDeDuelo tdd){
-		return new Duelo(tdd, this.tddBoot)
-	}
+	//def dueloConBoot(TarjetaDeDuelo tdd){
+		//return new Duelo(tdd, this.tddBoot)
+	//}
 	
 	def agregarUsuario(String nombre, String contraseña) throws Exception{
 		for(Usuario us : this.usuarios)

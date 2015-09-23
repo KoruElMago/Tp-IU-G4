@@ -17,6 +17,8 @@ import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.MainWindow
 import org.uqbar.arena.aop.windows.TransactionalDialog
 import org.uqbar.arena.windows.WindowOwner
+import windowDenunciaEnviada.WindowDenunciaEnviada
+import org.uqbar.arena.windows.Dialog
 
 class WindowDenuncia extends TransactionalDialog<ControladorDenuncia>{
 	
@@ -71,7 +73,7 @@ class WindowDenuncia extends TransactionalDialog<ControladorDenuncia>{
 			width = 200
 			]
 		
-		new Label(panelDenunciaA).bindValueToProperty("denunciado.nombreJugador")
+		new Label(panelDenunciaA).bindValueToProperty("nombreDenunciado")
 			
 
         val panelMotivo = new Panel(panel)
@@ -125,8 +127,17 @@ class WindowDenuncia extends TransactionalDialog<ControladorDenuncia>{
 	}
 	
 	def enviarDenuncia(){
-		modelObject.realizarDenuncia()
+		this.openDialog(new WindowDenunciaEnviada(this, modelObject.crearDenuncia()))
 	}
+	
+	def openDialog(Dialog<?> dialog) {
+		//dialog.onAccept[|modelObject.crearDenuncia()]
+		dialog.open
+	}
+		
+		
+		
+		//modelObject.realizarDenuncia()
 	
 	
 	override protected createFormPanel(Panel mainPanel) {

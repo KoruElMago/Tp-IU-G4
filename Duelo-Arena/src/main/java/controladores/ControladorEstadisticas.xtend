@@ -17,9 +17,14 @@ class ControladorEstadisticas {
 	//de control de jugador
 	Jugador jugador
 	
+	List<Estadisticas> estadisticas
+	Estadisticas estadisticaSeleccionada
+	
 	String nombrePersonaje
 	
-	Estadisticas estadisticaSeleccionada
+	
+	
+	
 	
 		Integer vecesQueInicio
 		Integer kills
@@ -30,7 +35,7 @@ class ControladorEstadisticas {
 		List<Linea> ubicaciones = new ArrayList<Linea>()
 		//ubicaciones.add(Linea.Top);
 		//this.ubicaciones.add(Linea.Bottom);
-		Integer calificacionEnDuelo
+		double calificacionEnDuelo
 	
 	new(Jugador jugador)
 	{
@@ -88,7 +93,7 @@ class ControladorEstadisticas {
 		ubicaciones = estadisticas.ubicaciones 
 		//ubicaciones.add(Linea.Top);
 		//this.ubicaciones.add(Linea.Bottom);
-		calificacionEnDuelo = estadisticas.calificacionEnDuelo 
+		calificacionEnDuelo = estadisticas.calificacionEnDuelo
 	}
 	
 	def seleccionar() {
@@ -116,5 +121,9 @@ class ControladorEstadisticas {
 		this.abrirEstadistica()
 	}
 	
+	def void setEstadisticaSeleccionada(Estadisticas s){
+		estadisticaSeleccionada = s
+		this.actualizar(s)
+	}
 	
 }

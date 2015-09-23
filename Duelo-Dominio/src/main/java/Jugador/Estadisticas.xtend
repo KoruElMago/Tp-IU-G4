@@ -68,4 +68,9 @@ class Estadisticas {
   			this.deads ++
   		}
   	}
+  	
+  	
+  	override toString(){
+  		this.personaje.nombre
+  	}
 }

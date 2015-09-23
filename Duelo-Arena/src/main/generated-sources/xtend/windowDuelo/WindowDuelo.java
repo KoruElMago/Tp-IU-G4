@@ -203,13 +203,6 @@ public class WindowDuelo extends TransactionalDialog<ControladorDuelo> {
   }
   
   public void openDialog(final Dialog<?> dialog) {
-    final Action _function = new Action() {
-      public void execute() {
-        ControladorDuelo _modelObject = WindowDuelo.this.getModelObject();
-        _modelObject.comenzarDenuncia();
-      }
-    };
-    dialog.onAccept(_function);
     dialog.open();
   }
 }

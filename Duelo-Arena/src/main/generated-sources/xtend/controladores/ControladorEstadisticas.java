@@ -17,9 +17,11 @@ import org.uqbar.commons.utils.TransactionalAndObservable;
 public class ControladorEstadisticas {
   private Jugador jugador;
   
-  private String nombrePersonaje;
+  private List<Estadisticas> estadisticas;
   
   private Estadisticas estadisticaSeleccionada;
+  
+  private String nombrePersonaje;
   
   private Integer vecesQueInicio;
   
@@ -35,7 +37,7 @@ public class ControladorEstadisticas {
   
   private List<Linea> ubicaciones = new ArrayList<Linea>();
   
-  private Integer calificacionEnDuelo;
+  private double calificacionEnDuelo;
   
   public ControladorEstadisticas(final Jugador jugador) {
     this.jugador = jugador;
@@ -74,9 +76,27 @@ public class ControladorEstadisticas {
     return est;
   }
   
-  public Integer actualizar(final Estadisticas estadisticas) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from double to Integer");
+  public double actualizar(final Estadisticas estadisticas) {
+    double _xblockexpression = (double) 0;
+    {
+      int _vecesQueInicio = estadisticas.getVecesQueInicio();
+      this.vecesQueInicio = Integer.valueOf(_vecesQueInicio);
+      int _kills = estadisticas.getKills();
+      this.kills = Integer.valueOf(_kills);
+      int _deads = estadisticas.getDeads();
+      this.deads = Integer.valueOf(_deads);
+      int _assists = estadisticas.getAssists();
+      this.assist = Integer.valueOf(_assists);
+      int _victorias = estadisticas.getVictorias();
+      this.victorias = Integer.valueOf(_victorias);
+      Linea _mejorLinea = estadisticas.getMejorLinea();
+      this.mejorLinea = _mejorLinea;
+      List<Linea> _ubicaciones = estadisticas.getUbicaciones();
+      this.ubicaciones = _ubicaciones;
+      double _calificacionEnDuelo = estadisticas.getCalificacionEnDuelo();
+      _xblockexpression = this.calificacionEnDuelo = _calificacionEnDuelo;
+    }
+    return _xblockexpression;
   }
   
   public Object seleccionar() {
@@ -101,6 +121,11 @@ public class ControladorEstadisticas {
     this.abrirEstadistica();
   }
   
+  public void setEstadisticaSeleccionada(final Estadisticas s) {
+    this.estadisticaSeleccionada = s;
+    this.actualizar(s);
+  }
+  
   @Pure
   public Jugador getJugador() {
     return this.jugador;
@@ -110,9 +135,8 @@ public class ControladorEstadisticas {
     this.jugador = jugador;
   }
   
-  @Pure
-  public String getNombrePersonaje() {
-    return this.nombrePersonaje;
+  public void setEstadisticas(final List<Estadisticas> estadisticas) {
+    this.estadisticas = estadisticas;
   }
   
   @Pure
@@ -120,8 +144,9 @@ public class ControladorEstadisticas {
     return this.estadisticaSeleccionada;
   }
   
-  public void setEstadisticaSeleccionada(final Estadisticas estadisticaSeleccionada) {
-    this.estadisticaSeleccionada = estadisticaSeleccionada;
+  @Pure
+  public String getNombrePersonaje() {
+    return this.nombrePersonaje;
   }
   
   @Pure
@@ -188,11 +213,11 @@ public class ControladorEstadisticas {
   }
   
   @Pure
-  public Integer getCalificacionEnDuelo() {
+  public double getCalificacionEnDuelo() {
     return this.calificacionEnDuelo;
   }
   
-  public void setCalificacionEnDuelo(final Integer calificacionEnDuelo) {
+  public void setCalificacionEnDuelo(final double calificacionEnDuelo) {
     this.calificacionEnDuelo = calificacionEnDuelo;
   }
 }

@@ -39,8 +39,10 @@ class WindowLogIn extends MainWindow<ControladorDueloEntreLeyendas>{
 		
 		new Label(panel) => [
 			setText("Duelo de leyendas")
-			width = 400
-			height = 50
+			fontSize = 30
+			width = 600
+			height = 60
+			
 			]
 			
         val panelUsuario = new Panel(panel)
@@ -68,6 +70,7 @@ class WindowLogIn extends MainWindow<ControladorDueloEntreLeyendas>{
 			width = 200
 			width = 200
 			bindValueToProperty("contraseñaUsuario")
+			
 			]
 			
 			new Label(panel) => [

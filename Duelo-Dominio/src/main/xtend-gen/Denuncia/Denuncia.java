@@ -3,7 +3,6 @@ package Denuncia;
 import Denuncia.AbusoSistDenuncia;
 import Denuncia.TipoDenuncia;
 import Jugador.Jugador;
-import com.google.common.base.Objects;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
 
@@ -23,7 +22,6 @@ public class Denuncia {
     this.tipo = tipo;
     this.denunciante = denunciante;
     this.denunciado = denunciado;
-    this.validarse();
   }
   
   public TipoDenuncia validarse() {
@@ -50,20 +48,13 @@ public class Denuncia {
   }
   
   public boolean esValida() {
+    char comp = ' ';
     char ant = ' ';
     int cantPal = 0;
     char[] _charArray = this.descripcion.toCharArray();
     for (final char c : _charArray) {
       {
-        boolean _and = false;
-        boolean _notEquals = (!Objects.equal(Character.valueOf(c), " "));
-        if (!_notEquals) {
-          _and = false;
-        } else {
-          boolean _equals = Objects.equal(Character.valueOf(ant), " ");
-          _and = _equals;
-        }
-        if (_and) {
+        if (((c != comp) && (ant == comp))) {
           cantPal++;
         }
         ant = c;
