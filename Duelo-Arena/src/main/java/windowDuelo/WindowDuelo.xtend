@@ -8,6 +8,7 @@ import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.layout.HorizontalLayout
 
 class WindowDuelo extends TransactionalDialog<ControladorDuelo>{
 	
@@ -104,11 +105,8 @@ class WindowDuelo extends TransactionalDialog<ControladorDuelo>{
 			//]
 			//]
 		
-		new Button(panel) => [
-			caption = "Denunciar"
-			//onClick [ | comenzarDuelo 	]
-			
-			]
+		
+		
 			
 			new Label(panel) =>[
 			setText("ganador")		
@@ -116,6 +114,23 @@ class WindowDuelo extends TransactionalDialog<ControladorDuelo>{
 		new Label(panel) =>[
 			bindValueToProperty("nombreGanador")		
 		]
+		
+		
+		val panelBotones = new Panel(panel)
+		panelBotones.setLayout(new HorizontalLayout())
+		
+		new Button(panelBotones) => [
+			caption = "Denunciar"
+			//onClick [ | comenzarDuelo 	]
+			
+			]
+			
+			new Button(panelBotones) => [
+			caption = "Irse con Dignidad"
+			//onClick [ | comenzarDuelo 	]
+			
+			]
+		
 			this.comenzarDuelo
 	}
 	

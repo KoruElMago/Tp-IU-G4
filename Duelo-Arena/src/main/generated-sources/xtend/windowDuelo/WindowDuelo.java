@@ -5,6 +5,7 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.aop.windows.TransactionalDialog;
 import org.uqbar.arena.layout.ColumnLayout;
+import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
@@ -145,27 +146,37 @@ public class WindowDuelo extends TransactionalDialog<ControladorDuelo> {
       }
     };
     ObjectExtensions.<Label>operator_doubleArrow(_label_5, _function_5);
-    Button _button = new Button(panel);
-    final Procedure1<Button> _function_6 = new Procedure1<Button>() {
-      public void apply(final Button it) {
-        it.setCaption("Denunciar");
-      }
-    };
-    ObjectExtensions.<Button>operator_doubleArrow(_button, _function_6);
     Label _label_6 = new Label(panel);
-    final Procedure1<Label> _function_7 = new Procedure1<Label>() {
+    final Procedure1<Label> _function_6 = new Procedure1<Label>() {
       public void apply(final Label it) {
         it.setText("ganador");
       }
     };
-    ObjectExtensions.<Label>operator_doubleArrow(_label_6, _function_7);
+    ObjectExtensions.<Label>operator_doubleArrow(_label_6, _function_6);
     Label _label_7 = new Label(panel);
-    final Procedure1<Label> _function_8 = new Procedure1<Label>() {
+    final Procedure1<Label> _function_7 = new Procedure1<Label>() {
       public void apply(final Label it) {
         it.<Object, ControlBuilder>bindValueToProperty("nombreGanador");
       }
     };
-    ObjectExtensions.<Label>operator_doubleArrow(_label_7, _function_8);
+    ObjectExtensions.<Label>operator_doubleArrow(_label_7, _function_7);
+    final Panel panelBotones = new Panel(panel);
+    HorizontalLayout _horizontalLayout = new HorizontalLayout();
+    panelBotones.setLayout(_horizontalLayout);
+    Button _button = new Button(panelBotones);
+    final Procedure1<Button> _function_8 = new Procedure1<Button>() {
+      public void apply(final Button it) {
+        it.setCaption("Denunciar");
+      }
+    };
+    ObjectExtensions.<Button>operator_doubleArrow(_button, _function_8);
+    Button _button_1 = new Button(panelBotones);
+    final Procedure1<Button> _function_9 = new Procedure1<Button>() {
+      public void apply(final Button it) {
+        it.setCaption("Irse con Dignidad");
+      }
+    };
+    ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_9);
     this.comenzarDuelo();
   }
   
