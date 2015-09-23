@@ -1,5 +1,6 @@
 package Jugador;
 
+import Denuncia.Denuncia;
 import Duelo.Duelo;
 import Jugador.Estadisticas;
 import Personaje.Personaje;
@@ -18,6 +19,8 @@ public class Jugador {
   private int calificacion;
   
   private List<Estadisticas> estadisticas;
+  
+  private List<Denuncia> denuncias;
   
   public Jugador(final String nombre) {
     this.nombreJugador = nombre;
@@ -113,5 +116,14 @@ public class Jugador {
   
   public void setEstadisticas(final List<Estadisticas> estadisticas) {
     this.estadisticas = estadisticas;
+  }
+  
+  @Pure
+  public List<Denuncia> getDenuncias() {
+    return this.denuncias;
+  }
+  
+  public void setDenuncias(final List<Denuncia> denuncias) {
+    this.denuncias = denuncias;
   }
 }

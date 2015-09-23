@@ -47,9 +47,13 @@ class ControladorDenuncia {
 	}
 	
 	def realizarDenuncia(){
+		
+		if()
 		//Aqui se agrega la denuncia al jugador...
 		//Depende de si es correcta o no, en WindowDenuncia se abrira una ventana
 		//diciendo si es correcta o no, y el boton aceptar (label detales, boton aceptar) ylisto
+		
+		
 		
 		
 	}

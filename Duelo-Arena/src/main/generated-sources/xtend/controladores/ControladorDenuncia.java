@@ -41,7 +41,9 @@ public class ControladorDenuncia {
   }
   
   public Object realizarDenuncia() {
-    return null;
+    throw new Error("Unresolved compilation problems:"
+      + "\nno viable alternative at input \')\'"
+      + "\nno viable alternative at input \'}\'");
   }
   
   @Pure

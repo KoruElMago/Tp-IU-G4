@@ -6,6 +6,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import Personaje.Personaje
 import TarjetaDeDuelo.TarjetaDeDuelo
 import Duelo.Duelo
+import Denuncia.Denuncia
 
 @Accessors
 class Jugador {
@@ -13,6 +14,7 @@ class Jugador {
 	String nombreJugador
 	int calificacion
 	List<Estadisticas> estadisticas
+	List<Denuncia> denuncias
 	
 	
 	new(String nombre){
