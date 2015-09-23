@@ -17,7 +17,7 @@ class Duelo {
 		this.tarjetaJugador1 = j1
 		this.tarjetaJugador2 = j2
 		this.tarjetaGanador = null
-		this.resolverse()
+		//this.resolverse()
 	}
 	
 	def resolverse() {

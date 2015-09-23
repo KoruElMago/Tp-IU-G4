@@ -81,7 +81,7 @@ public class ControladorDueloEntreLeyendas {
   
   public ControladorUsuario loguear() {
     Usuario _usuario = this.getUsuario();
-    return new ControladorUsuario(_usuario);
+    return new ControladorUsuario(_usuario, this.del);
   }
   
   public String registrarUsuario() {

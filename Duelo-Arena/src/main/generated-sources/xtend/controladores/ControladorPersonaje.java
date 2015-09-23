@@ -1,5 +1,6 @@
 package controladores;
 
+import Personaje.Personaje;
 import TarjetaDeDuelo.Linea;
 import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
@@ -10,6 +11,10 @@ import org.uqbar.commons.utils.TransactionalAndObservable;
 @TransactionalAndObservable
 @SuppressWarnings("all")
 public class ControladorPersonaje {
+  private List<Personaje> personajes;
+  
+  private Personaje unPersonaje;
+  
   private String nombre;
   
   private Linea rolIdeal;
@@ -18,11 +23,42 @@ public class ControladorPersonaje {
   
   private List<String> fortalezas;
   
-  public ControladorPersonaje(final String nombre, final Linea rolIdeal, final List<String> fortalezas, final List<String> debilidades) {
-    this.nombre = nombre;
-    this.rolIdeal = rolIdeal;
-    this.debilidades = debilidades;
-    this.fortalezas = fortalezas;
+  public ControladorPersonaje(final List<Personaje> personajes) {
+    this.personajes = personajes;
+  }
+  
+  public void setUnPersonaje(final Personaje p) {
+    this.unPersonaje = p;
+    this.actualizar();
+  }
+  
+  public List<String> actualizar() {
+    List<String> _xblockexpression = null;
+    {
+      String _nombre = this.unPersonaje.getNombre();
+      this.nombre = _nombre;
+      Linea _rolIdeal = this.unPersonaje.getRolIdeal();
+      this.rolIdeal = _rolIdeal;
+      List<String> _fortalezas = this.unPersonaje.getFortalezas();
+      this.fortalezas = _fortalezas;
+      List<String> _debilidades = this.unPersonaje.getDebilidades();
+      _xblockexpression = this.debilidades = _debilidades;
+    }
+    return _xblockexpression;
+  }
+  
+  @Pure
+  public List<Personaje> getPersonajes() {
+    return this.personajes;
+  }
+  
+  public void setPersonajes(final List<Personaje> personajes) {
+    this.personajes = personajes;
+  }
+  
+  @Pure
+  public Personaje getUnPersonaje() {
+    return this.unPersonaje;
   }
   
   @Pure

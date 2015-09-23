@@ -41,7 +41,7 @@ public class Estadisticas {
     this.mejorLinea = Linea.Bottom;
   }
   
-  public Object empato(final Duelo duelo, final Jugador jug) {
+  public int empato(final Duelo duelo, final Jugador jug) {
     int _xblockexpression = (int) 0;
     {
       this.assists++;
@@ -60,7 +60,7 @@ public class Estadisticas {
       }
       _xblockexpression = _xifexpression;
     }
-    return Integer.valueOf(_xblockexpression);
+    return _xblockexpression;
   }
   
   public Object gano(final Duelo duelo, final Jugador jug) {

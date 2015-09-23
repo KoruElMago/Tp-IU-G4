@@ -1,6 +1,8 @@
 package windowPrincipal;
 
 import controladores.ControladorEstadisticas;
+import controladores.ControladorPersonaje;
+import controladores.ControladorTarjetaDuelo;
 import controladores.ControladorUsuario;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -14,6 +16,8 @@ import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import ventanaEstadisticas.WindowEstadistica;
+import windowCreadorTarjetaDeDuelo.WindowCreadorTarjetaDuelo;
+import windowPersonajes.WindowPersonajes;
 
 @SuppressWarnings("all")
 public class WindowPrincipal extends TransactionalDialog<ControladorUsuario> {
@@ -48,6 +52,12 @@ public class WindowPrincipal extends TransactionalDialog<ControladorUsuario> {
     final Procedure1<Button> _function_2 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Buscar Duelo");
+        final Action _function = new Action() {
+          public void execute() {
+            WindowPrincipal.this.buscarDuelo();
+          }
+        };
+        it.onClick(_function);
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button, _function_2);
@@ -75,6 +85,12 @@ public class WindowPrincipal extends TransactionalDialog<ControladorUsuario> {
     final Procedure1<Button> _function_5 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Personajes");
+        final Action _function = new Action() {
+          public void execute() {
+            WindowPrincipal.this.verPersonajes();
+          }
+        };
+        it.onClick(_function);
         it.setWidth(200);
       }
     };
@@ -95,6 +111,20 @@ public class WindowPrincipal extends TransactionalDialog<ControladorUsuario> {
     ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_6);
   }
   
+  public void buscarDuelo() {
+    ControladorUsuario _modelObject = this.getModelObject();
+    ControladorTarjetaDuelo _buscarDuelo = _modelObject.buscarDuelo();
+    WindowCreadorTarjetaDuelo _windowCreadorTarjetaDuelo = new WindowCreadorTarjetaDuelo(this, _buscarDuelo);
+    this.openDialog(_windowCreadorTarjetaDuelo);
+  }
+  
+  public void verPersonajes() {
+    ControladorUsuario _modelObject = this.getModelObject();
+    ControladorPersonaje _abrirPersonajes = _modelObject.abrirPersonajes();
+    WindowPersonajes _windowPersonajes = new WindowPersonajes(this, _abrirPersonajes);
+    this.openDialog(_windowPersonajes);
+  }
+  
   protected void createFormPanel(final Panel mainPanel) {
   }
   
@@ -106,13 +136,6 @@ public class WindowPrincipal extends TransactionalDialog<ControladorUsuario> {
   }
   
   public void openDialog(final Dialog<?> dialog) {
-    final Action _function = new Action() {
-      public void execute() {
-        ControladorUsuario _modelObject = WindowPrincipal.this.getModelObject();
-        _modelObject.abrirSeleccionEstadistica();
-      }
-    };
-    dialog.onAccept(_function);
     dialog.open();
   }
 }

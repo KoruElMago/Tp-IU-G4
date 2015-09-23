@@ -17,6 +17,12 @@ public class TarjetaDeDuelo {
   
   private Jugador jugador;
   
+  public TarjetaDeDuelo(final Personaje personaje, final Jugador jugador, final Linea linea) {
+    this.linea = linea;
+    this.personaje = personaje;
+    this.jugador = jugador;
+  }
+  
   public boolean esRivalDigno(final TarjetaDeDuelo duelo) {
     boolean _and = false;
     int _calificacion = duelo.jugador.getCalificacion();
@@ -57,7 +63,7 @@ public class TarjetaDeDuelo {
     return this.jugador.derrota(duelo);
   }
   
-  public Object actualizarEmpate(final Duelo duelo) {
+  public int actualizarEmpate(final Duelo duelo) {
     return this.jugador.empate(duelo);
   }
   

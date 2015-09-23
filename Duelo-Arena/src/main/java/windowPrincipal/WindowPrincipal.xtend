@@ -13,9 +13,11 @@ import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.aop.windows.TransactionalDialog
 import org.uqbar.arena.windows.WindowOwner
 import controladores.ControladorUsuario
-import ventanaEstadisticas.WindowSeleccionEstadistica
 import org.uqbar.arena.windows.Dialog
 import ventanaEstadisticas.WindowEstadistica
+import windowPersonajes.WindowPersonajes
+import controladores.ControladorPersonaje
+import windowCreadorTarjetaDeDuelo.WindowCreadorTarjetaDuelo
 
 class WindowPrincipal extends TransactionalDialog<ControladorUsuario>{
 	
@@ -42,7 +44,7 @@ class WindowPrincipal extends TransactionalDialog<ControladorUsuario>{
 				
         new Button(panel) => [
 			caption = "Buscar Duelo"
-			//onClick[|]
+			onClick[| buscarDuelo]
 			]
 		/*	onClick = this.openDialog(
 						new WindowCreadorTarjetaDeDuelo
@@ -85,6 +87,7 @@ class WindowPrincipal extends TransactionalDialog<ControladorUsuario>{
        new Button(panelPerfil) => [
 			caption = "Personajes"
 			//onClick = this.openDialog(new WindowPersonajes(this , modelObject))
+			onClick [| verPersonajes]
 			width = 200
 			
 			]
@@ -98,6 +101,16 @@ class WindowPrincipal extends TransactionalDialog<ControladorUsuario>{
 		
 	}
 	
+	def buscarDuelo() {
+		this.openDialog(new WindowCreadorTarjetaDuelo(this, modelObject.buscarDuelo()))
+	}
+	
+	def verPersonajes() {
+
+	 this.openDialog(new WindowPersonajes(this, modelObject.abrirPersonajes()))	
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
 	override protected createFormPanel(Panel mainPanel) {
 		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
@@ -107,7 +120,7 @@ class WindowPrincipal extends TransactionalDialog<ControladorUsuario>{
 	}
 	
 	def openDialog(Dialog<?> dialog) {
-		dialog.onAccept[| modelObject.abrirSeleccionEstadistica]
+		//dialog.onAccept[| modelObject.abrirSeleccionEstadistica]
 		dialog.open
 	}
 	

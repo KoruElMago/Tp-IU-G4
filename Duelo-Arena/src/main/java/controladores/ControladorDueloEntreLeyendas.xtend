@@ -79,11 +79,11 @@ class ControladorDueloEntreLeyendas {
 				if(us.nombre == nombreUsuario)
 					return us
 			}
-		}
+		}	
 	
 	
 	def loguear(){
-		new ControladorUsuario(this.getUsuario)
+		new ControladorUsuario(this.getUsuario, del)
 	}
 	
 	def registrarUsuario() {

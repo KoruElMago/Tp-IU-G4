@@ -12,11 +12,17 @@ import java.awt.Color
 import org.uqbar.arena.widgets.Selector
 import windowLogIn.WindowLogIn
 import controladores.ControladorUsuario
+import org.uqbar.arena.aop.windows.TransactionalDialog
+import controladores.ControladorTarjetaDuelo
+import org.uqbar.arena.windows.WindowOwner
+import TarjetaDeDuelo.TarjetaDeDuelo
+import org.uqbar.arena.windows.Dialog
+import windowDuelo.WindowDuelo
 
-class WindowCreadorTarjetaDuelo extends MainWindow<Object>{
+class WindowCreadorTarjetaDuelo extends TransactionalDialog<ControladorTarjetaDuelo>{
 	
-		new(Object model) {
-		super(model)
+		new(WindowOwner owner, ControladorTarjetaDuelo model) {
+		super(owner, model)
 	}
 	
 	
@@ -32,23 +38,35 @@ class WindowCreadorTarjetaDuelo extends MainWindow<Object>{
 			height = 50
 			]
 		
-		val panelSelector = new (new HorizontalLayout)
-        panelSelector.layout = new ColumnLayout(2) 
+		val panelSelector = new Panel(panel)
+        //panelSelector.layout = new ColumnLayout(2)
+        panelSelector.setLayout(new VerticalLayout) 
 		
-		val panelSelector2 = new (new VerticalLayout)
+		//val panelSelector2 = new (new VerticalLayout)
 		
-		new Selector (panelSelector2) =>[
+		
+		new Label(panel) =>[
+			setText("Elige tu personaje")
+		]
+		
+		
+		new Selector<ControladorTarjetaDuelo>(panel) =>[
 			allowNull(false)
-			bindItems(new ObservableProperty(this, "personajes"))
-			bindValueToProperty("personajeElegido")]
+			bindItemsToProperty("personajes")
+            bindValueToProperty("personajeElegido")
+			]
 		
-		new Label(panelSelector2) =>[
+		new Label(panel) =>[
+			setText("Elige tu rol")
+		]
 		
-			bindValueToProperty("efectividad")
+		new Selector<ControladorTarjetaDuelo>(panel) =>[
+			allowNull(false)
+			bindItemsToProperty("lineas")
+            bindValueToProperty("lineaElegida")
 			]
 			
-			
-		val panelSelector3 = new (new VerticalLayout)
+		/*val panelSelector3 = new (new VerticalLayout)
 		new RadioSelector (panelSelector3) =>[
 			allowNull(false)
 			bindItems(new ObservableProperty(this, "lineas"))
@@ -56,25 +74,50 @@ class WindowCreadorTarjetaDuelo extends MainWindow<Object>{
 			onSelection(new MessageSend(
 				this.modelObject,"calcularEfectividadEnLinea"))
 		]
+		*/
 		
 		
-		val panelEstadisticas //to complete when the stats format :P
+		//val panelEstadisticas //to complete when the stats format :P
 		
 		
 		val panelBotones = new Panel(panel)
         panelBotones.setLayout(new HorizontalLayout)
-        panelBotones.layout = new ColumnLayout(2)
+        //panelBotones.layout = new ColumnLayout(2)
 		
 		new Button(panelBotones) => [
-			caption = "Aceptar"
-			onClick = this.accept
+			caption = "BuscarDuelo"
+			onClick [|buscarDuelo]
 			width = 100
 			]
 			
 		new Button(panelBotones) => [
 			caption = "Cancelar"
-			onClick = this.cancel
+			onClick [|cancel]
 			width = 100
 			]
 		
+	
+	
 	}
+	
+	def void buscarDuelo() {
+		this.openDialog(new WindowDuelo(this, modelObject.buscarDuelo()))
+	}
+	
+	def openDialog(Dialog<?> dialog) {
+		dialog.onAccept[|modelObject.buscarDuelo()]
+		dialog.open
+	}
+	
+	override protected createFormPanel(Panel mainPanel) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+}
+
+
+
+	
+	
+	
+	

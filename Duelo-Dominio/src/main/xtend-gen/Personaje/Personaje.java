@@ -23,6 +23,10 @@ public class Personaje {
     this.fortalezas = fortalezas;
   }
   
+  public String toString() {
+    return this.nombre;
+  }
+  
   @Pure
   public String getNombre() {
     return this.nombre;

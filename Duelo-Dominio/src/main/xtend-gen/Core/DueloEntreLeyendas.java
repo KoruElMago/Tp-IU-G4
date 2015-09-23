@@ -59,12 +59,23 @@ public class DueloEntreLeyendas {
   public TarjetaDeDuelo buscarRivalDigno(final TarjetaDeDuelo duelo) {
     TarjetaDeDuelo rival = duelo;
     for (final TarjetaDeDuelo posibleRival : this.buscadores) {
+      boolean _and = false;
       boolean _esRivalDigno = duelo.esRivalDigno(posibleRival);
-      if (_esRivalDigno) {
-        rival = posibleRival;
+      if (!_esRivalDigno) {
+        _and = false;
+      } else {
+        boolean _notEquals = (!Objects.equal(duelo, posibleRival));
+        _and = _notEquals;
+      }
+      if (_and) {
+        return posibleRival;
       }
     }
-    return rival;
+    return this.tarjetaTDDBoot(duelo);
+  }
+  
+  public TarjetaDeDuelo tarjetaTDDBoot(final TarjetaDeDuelo duelo) {
+    return duelo;
   }
   
   public boolean entrarEnCola(final TarjetaDeDuelo tdd) {

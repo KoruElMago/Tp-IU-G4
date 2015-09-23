@@ -19,11 +19,10 @@ public class Duelo {
     this.tarjetaJugador1 = j1;
     this.tarjetaJugador2 = j2;
     this.tarjetaGanador = null;
-    this.resolverse();
   }
   
-  public Object resolverse() {
-    Object _xblockexpression = null;
+  public int resolverse() {
+    int _xblockexpression = (int) 0;
     {
       Integer poderJ1 = this.tarjetaJugador1.obtenerPoderDeAtaque();
       Integer poderJ2 = this.tarjetaJugador2.obtenerPoderDeAtaque();
@@ -39,7 +38,7 @@ public class Duelo {
         this.gano(this.tarjetaJugador2);
         this.perdio(this.tarjetaJugador1);
       }
-      Object _xifexpression = null;
+      int _xifexpression = (int) 0;
       boolean _equals = Objects.equal(this.tarjetaGanador, null);
       if (_equals) {
         _xifexpression = this.empate();
@@ -49,8 +48,8 @@ public class Duelo {
     return _xblockexpression;
   }
   
-  public Object empate() {
-    Object _xblockexpression = null;
+  public int empate() {
+    int _xblockexpression = (int) 0;
     {
       this.tarjetaJugador1.actualizarEmpate(this);
       _xblockexpression = this.tarjetaJugador2.actualizarEmpate(this);

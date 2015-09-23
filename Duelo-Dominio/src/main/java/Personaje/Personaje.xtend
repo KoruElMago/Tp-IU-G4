@@ -25,5 +25,9 @@ class Personaje {
 	}
 	
 	
+	override toString(){
+		this.nombre
+	}
+	
 	
 }

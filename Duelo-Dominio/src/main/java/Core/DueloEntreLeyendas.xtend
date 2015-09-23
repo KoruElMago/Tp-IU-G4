@@ -48,11 +48,18 @@ class DueloEntreLeyendas {
 	def buscarRivalDigno(TarjetaDeDuelo duelo) {
 		var rival = duelo 
 		for(TarjetaDeDuelo posibleRival : buscadores){
-			if(duelo.esRivalDigno(posibleRival)){
-				rival = posibleRival
+			if(duelo.esRivalDigno(posibleRival) && duelo != posibleRival){
+				return posibleRival
 			}
 		}
-		return rival
+		//return tddBoot
+		return tarjetaTDDBoot(duelo)
+	}
+	
+	def tarjetaTDDBoot(TarjetaDeDuelo duelo) {
+		//Crea una opcion de personaje random y la misma linea que el retador
+				return duelo
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	def entrarEnCola(TarjetaDeDuelo tdd){
