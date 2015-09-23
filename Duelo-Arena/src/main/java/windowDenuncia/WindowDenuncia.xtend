@@ -15,15 +15,21 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.MainWindow
+import org.uqbar.arena.aop.windows.TransactionalDialog
+import org.uqbar.arena.windows.WindowOwner
 
-class WindowDenuncia extends MainWindow<ControladorDenuncia>{
+class WindowDenuncia extends TransactionalDialog<ControladorDenuncia>{
+	
+	new(WindowOwner owner, ControladorDenuncia model) {
+		super(owner, model)
+	}
 	
 	
 	
-	new(ControladorJugador denunciado, ControladorJugador denunciante) {
-		super(new ControladorDenuncia (denunciado, denunciante))
+	//new(ControladorJugador denunciado, ControladorJugador denunciante) {
+		//super(new ControladorDenuncia (denunciado, denunciante))
 		
-		}
+	//	}
 		
 		
 	
@@ -104,29 +110,27 @@ class WindowDenuncia extends MainWindow<ControladorDenuncia>{
 		
 		new Button(panelOpciones) => [
 			setCaption("Denunciar")
-			onClick = new MessageSend(
-				this.modelObject, ("realizarDenuncia(" + (this.modelObject.motivo) + " , " + (this.modelObject.detalles) + ")")
-			)					 //realizarDenuncia(motivo , detalles)
+			onClick[| enviarDenuncia]
+			
 			]
 			
 		
 		new Button(panelOpciones) => [
 			setCaption("Cancelar")
-			onClick = this.cancel
+			onClick [|cancel]
 		]
 			
 			
    
 	}
 	
-	
-	
-	
-	
-	
-	def static main(String[] args){
-		var Jugador jug1 = new Jugador("magow")
-		var Jugador jug2 = new Jugador("pablinguis")
-		new WindowDenuncia(new ControladorJugador(jug1),new ControladorJugador(jug2)).startApplication
+	def enviarDenuncia(){
+		modelObject.realizarDenuncia()
 	}
+	
+	
+	override protected createFormPanel(Panel mainPanel) {
+//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
 }

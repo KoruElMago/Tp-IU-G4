@@ -9,6 +9,8 @@ import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.windows.Dialog
+import windowDenuncia.WindowDenuncia
 
 class WindowDuelo extends TransactionalDialog<ControladorDuelo>{
 	
@@ -121,7 +123,7 @@ class WindowDuelo extends TransactionalDialog<ControladorDuelo>{
 		
 		new Button(panelBotones) => [
 			caption = "Denunciar"
-			//onClick [ | comenzarDuelo 	]
+			onClick [ | comenzarDenuncia() 	]
 			
 			]
 			
@@ -138,6 +140,12 @@ class WindowDuelo extends TransactionalDialog<ControladorDuelo>{
 		modelObject.comenzarDuelo()
 	}
 	
+	def comenzarDenuncia(){
+		this.openDialog(new WindowDenuncia(this, modelObject.comenzarDenuncia()))
+	}
 	
-	
-}
+	def openDialog(Dialog<?> dialog) {
+		dialog.onAccept[|modelObject.comenzarDenuncia()]
+		dialog.open
+	}	
+	}

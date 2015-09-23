@@ -59,4 +59,11 @@ class ControladorDuelo {
 		
 	}
 	
+	def comenzarDenuncia() {
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		new ControladorDenuncia(del, t1.jugador, t2.jugador)
+	}
+	
+	
+	
 }

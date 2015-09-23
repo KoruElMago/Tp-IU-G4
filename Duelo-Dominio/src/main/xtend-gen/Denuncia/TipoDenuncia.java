@@ -13,6 +13,10 @@ public abstract class TipoDenuncia {
   public TipoDenuncia() {
   }
   
+  public String toString() {
+    return this.tipo;
+  }
+  
   @Pure
   public String getTipo() {
     return this.tipo;

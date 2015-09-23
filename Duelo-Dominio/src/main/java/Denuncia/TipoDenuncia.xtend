@@ -10,5 +10,8 @@ abstract class TipoDenuncia {
 	
 	new(){}
 	
+	override toString(){
+		return tipo
+	}
 	
 }

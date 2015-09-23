@@ -1,5 +1,6 @@
 package windowDuelo;
 
+import controladores.ControladorDenuncia;
 import controladores.ControladorDuelo;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -10,8 +11,11 @@ import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
+import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
+import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
+import windowDenuncia.WindowDenuncia;
 
 @SuppressWarnings("all")
 public class WindowDuelo extends TransactionalDialog<ControladorDuelo> {
@@ -167,6 +171,12 @@ public class WindowDuelo extends TransactionalDialog<ControladorDuelo> {
     final Procedure1<Button> _function_8 = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Denunciar");
+        final Action _function = new Action() {
+          public void execute() {
+            WindowDuelo.this.comenzarDenuncia();
+          }
+        };
+        it.onClick(_function);
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button, _function_8);
@@ -183,5 +193,23 @@ public class WindowDuelo extends TransactionalDialog<ControladorDuelo> {
   public String comenzarDuelo() {
     ControladorDuelo _modelObject = this.getModelObject();
     return _modelObject.comenzarDuelo();
+  }
+  
+  public void comenzarDenuncia() {
+    ControladorDuelo _modelObject = this.getModelObject();
+    ControladorDenuncia _comenzarDenuncia = _modelObject.comenzarDenuncia();
+    WindowDenuncia _windowDenuncia = new WindowDenuncia(this, _comenzarDenuncia);
+    this.openDialog(_windowDenuncia);
+  }
+  
+  public void openDialog(final Dialog<?> dialog) {
+    final Action _function = new Action() {
+      public void execute() {
+        ControladorDuelo _modelObject = WindowDuelo.this.getModelObject();
+        _modelObject.comenzarDenuncia();
+      }
+    };
+    dialog.onAccept(_function);
+    dialog.open();
   }
 }

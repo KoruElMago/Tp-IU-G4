@@ -7,6 +7,7 @@ import Personaje.Personaje;
 import TarjetaDeDuelo.Linea;
 import TarjetaDeDuelo.TarjetaDeDuelo;
 import com.google.common.base.Objects;
+import controladores.ControladorDenuncia;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.uqbar.commons.utils.TransactionalAndObservable;
@@ -89,6 +90,12 @@ public class ControladorDuelo {
       _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
+  }
+  
+  public ControladorDenuncia comenzarDenuncia() {
+    Jugador _jugador = this.t1.getJugador();
+    Jugador _jugador_1 = this.t2.getJugador();
+    return new ControladorDenuncia(this.del, _jugador, _jugador_1);
   }
   
   @Pure

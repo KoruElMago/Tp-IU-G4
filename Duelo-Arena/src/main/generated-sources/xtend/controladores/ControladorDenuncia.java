@@ -1,12 +1,13 @@
 package controladores;
 
-import Denuncia.AbusoSistDenuncia;
+import Core.DueloEntreLeyendas;
+import Denuncia.AbusoHabilDenuncia;
+import Denuncia.ComAbusivaDenuncia;
+import Denuncia.FeedIntencionalDenuncia;
 import Denuncia.TipoDenuncia;
-import controladores.ControladorJugador;
+import Jugador.Jugador;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.uqbar.commons.utils.TransactionalAndObservable;
@@ -15,74 +16,77 @@ import org.uqbar.commons.utils.TransactionalAndObservable;
 @Accessors
 @SuppressWarnings("all")
 public class ControladorDenuncia {
-  private ControladorJugador denunciante;
+  private DueloEntreLeyendas del;
   
-  private ControladorJugador denunciado;
+  private Jugador denunciante;
   
-  private String motivo;
+  private Jugador denunciado;
   
-  private List<String> motivos = new ArrayList<String>();
+  private TipoDenuncia motivo;
   
-  private Map<String, TipoDenuncia> map = new HashMap<String, TipoDenuncia>();
+  private List<TipoDenuncia> motivos = new ArrayList<TipoDenuncia>();
   
   private String detalles;
   
-  public ControladorDenuncia(final ControladorJugador denunciante, final ControladorJugador denunciado) {
+  public ControladorDenuncia(final DueloEntreLeyendas del, final Jugador denunciante, final Jugador denunciado) {
+    this.del = del;
     this.denunciado = denunciado;
     this.denunciante = denunciante;
-    this.motivos.add("Feed Intencional");
-    this.motivos.add("Abuso del Sistema de Denuncia");
-    AbusoSistDenuncia _abusoSistDenuncia = new AbusoSistDenuncia();
-    this.map.put("Abuso del Sistema de Denuncia", _abusoSistDenuncia);
+    AbusoHabilDenuncia _abusoHabilDenuncia = new AbusoHabilDenuncia();
+    this.motivos.add(_abusoHabilDenuncia);
+    ComAbusivaDenuncia _comAbusivaDenuncia = new ComAbusivaDenuncia();
+    this.motivos.add(_comAbusivaDenuncia);
+    FeedIntencionalDenuncia _feedIntencionalDenuncia = new FeedIntencionalDenuncia();
+    this.motivos.add(_feedIntencionalDenuncia);
   }
   
-  public Object realizarDenuncia(final String motivo, final String detalles) {
+  public Object realizarDenuncia() {
     return null;
   }
   
   @Pure
-  public ControladorJugador getDenunciante() {
+  public DueloEntreLeyendas getDel() {
+    return this.del;
+  }
+  
+  public void setDel(final DueloEntreLeyendas del) {
+    this.del = del;
+  }
+  
+  @Pure
+  public Jugador getDenunciante() {
     return this.denunciante;
   }
   
-  public void setDenunciante(final ControladorJugador denunciante) {
+  public void setDenunciante(final Jugador denunciante) {
     this.denunciante = denunciante;
   }
   
   @Pure
-  public ControladorJugador getDenunciado() {
+  public Jugador getDenunciado() {
     return this.denunciado;
   }
   
-  public void setDenunciado(final ControladorJugador denunciado) {
+  public void setDenunciado(final Jugador denunciado) {
     this.denunciado = denunciado;
   }
   
   @Pure
-  public String getMotivo() {
+  public TipoDenuncia getMotivo() {
     return this.motivo;
   }
   
-  public void setMotivo(final String motivo) {
+  public void setMotivo(final TipoDenuncia motivo) {
     this.motivo = motivo;
   }
   
   @Pure
-  public List<String> getMotivos() {
+  public List<TipoDenuncia> getMotivos() {
     return this.motivos;
   }
   
-  public void setMotivos(final List<String> motivos) {
+  public void setMotivos(final List<TipoDenuncia> motivos) {
     this.motivos = motivos;
-  }
-  
-  @Pure
-  public Map<String, TipoDenuncia> getMap() {
-    return this.map;
-  }
-  
-  public void setMap(final Map<String, TipoDenuncia> map) {
-    this.map = map;
   }
   
   @Pure
