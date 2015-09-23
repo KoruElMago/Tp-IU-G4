@@ -29,7 +29,7 @@ public class Estadisticas {
   
   private List<Linea> ubicaciones;
   
-  private int calificacionEnDuelo;
+  private double calificacionEnDuelo;
   
   public Estadisticas(final Personaje personaje) {
     this.personaje = personaje;
@@ -190,11 +190,11 @@ public class Estadisticas {
   }
   
   @Pure
-  public int getCalificacionEnDuelo() {
+  public double getCalificacionEnDuelo() {
     return this.calificacionEnDuelo;
   }
   
-  public void setCalificacionEnDuelo(final int calificacionEnDuelo) {
+  public void setCalificacionEnDuelo(final double calificacionEnDuelo) {
     this.calificacionEnDuelo = calificacionEnDuelo;
   }
 }

@@ -1,6 +1,8 @@
 package Duelo;
 
+import Jugador.Estadisticas;
 import Jugador.Jugador;
+import Personaje.Personaje;
 import TarjetaDeDuelo.TarjetaDeDuelo;
 import com.google.common.base.Objects;
 import org.eclipse.xtend.lib.annotations.Accessors;
@@ -21,53 +23,51 @@ public class Duelo {
     this.tarjetaGanador = null;
   }
   
-  public int resolverse() {
-    int _xblockexpression = (int) 0;
-    {
-      Integer poderJ1 = this.tarjetaJugador1.obtenerPoderDeAtaque();
-      Integer poderJ2 = this.tarjetaJugador2.obtenerPoderDeAtaque();
-      boolean _greaterThan = (poderJ1.compareTo(poderJ2) > 0);
-      if (_greaterThan) {
-        this.tarjetaGanador = this.tarjetaJugador1;
-        this.gano(this.tarjetaJugador1);
-        this.perdio(this.tarjetaJugador2);
-      }
-      boolean _greaterThan_1 = (poderJ2.compareTo(poderJ1) > 0);
-      if (_greaterThan_1) {
-        this.tarjetaGanador = this.tarjetaJugador2;
-        this.gano(this.tarjetaJugador2);
-        this.perdio(this.tarjetaJugador1);
-      }
-      int _xifexpression = (int) 0;
-      boolean _equals = Objects.equal(this.tarjetaGanador, null);
-      if (_equals) {
-        _xifexpression = this.empate();
-      }
-      _xblockexpression = _xifexpression;
+  public void resolverse() {
+    double suerteJ1 = Math.random();
+    double suerteJ2 = Math.random();
+    double poderJ1 = (this.tarjetaJugador1.obtenerPoderDeAtaque()).intValue();
+    double poderJ2 = (this.tarjetaJugador2.obtenerPoderDeAtaque()).intValue();
+    this.actualizarPuntaje(this.tarjetaJugador1, (poderJ1 * suerteJ1));
+    this.actualizarPuntaje(this.tarjetaJugador2, (poderJ2 * suerteJ2));
+    if (((poderJ1 * suerteJ1) > (poderJ2 * suerteJ2))) {
+      this.tarjetaGanador = this.tarjetaJugador1;
+      this.gano(this.tarjetaJugador1);
+      this.perdio(this.tarjetaJugador2);
     }
-    return _xblockexpression;
-  }
-  
-  public int empate() {
-    int _xblockexpression = (int) 0;
-    {
-      this.tarjetaJugador1.actualizarEmpate(this);
-      _xblockexpression = this.tarjetaJugador2.actualizarEmpate(this);
+    if (((poderJ2 * suerteJ2) > (poderJ1 * suerteJ1))) {
+      this.tarjetaGanador = this.tarjetaJugador2;
+      this.gano(this.tarjetaJugador2);
+      this.perdio(this.tarjetaJugador1);
+    } else {
+      this.empate();
     }
-    return _xblockexpression;
   }
   
-  public Object perdio(final TarjetaDeDuelo duelo) {
-    return duelo.actualizarDerrota(this);
+  public void actualizarPuntaje(final TarjetaDeDuelo t, final double d) {
+    final Personaje p = t.getPersonaje();
+    Jugador _jugador = t.getJugador();
+    Estadisticas _obtenerEstadisticas = _jugador.obtenerEstadisticas(p);
+    _obtenerEstadisticas.setCalificacionEnDuelo(d);
   }
   
-  public int gano(final TarjetaDeDuelo duelo) {
-    return duelo.actualizarVictoria(this);
+  public void empate() {
+    this.tarjetaJugador1.actualizarEmpate(this);
+    this.tarjetaJugador2.actualizarEmpate(this);
+  }
+  
+  public void perdio(final TarjetaDeDuelo duelo) {
+    duelo.actualizarDerrota(this);
+  }
+  
+  public void gano(final TarjetaDeDuelo duelo) {
+    duelo.actualizarVictoria(this);
   }
   
   public TarjetaDeDuelo tarjetaDe(final Jugador jugador) {
     TarjetaDeDuelo _xifexpression = null;
-    boolean _equals = Objects.equal(this.tarjetaJugador1, jugador);
+    Jugador _jugador = this.tarjetaJugador1.getJugador();
+    boolean _equals = Objects.equal(_jugador, jugador);
     if (_equals) {
       return this.tarjetaJugador1;
     } else {

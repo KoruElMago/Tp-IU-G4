@@ -1,6 +1,6 @@
 package windowCreadorTarjetaDeDuelo;
 
-import controladores.ControladorDuelo;
+import controladores.ControladorBuscadorDuelo;
 import controladores.ControladorTarjetaDuelo;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -15,7 +15,7 @@ import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 import org.uqbar.lacar.ui.model.ControlBuilder;
-import windowDuelo.WindowDuelo;
+import windowBuscadorDuelo.WindowBuscadorDuelo;
 
 @SuppressWarnings("all")
 public class WindowCreadorTarjetaDuelo extends TransactionalDialog<ControladorTarjetaDuelo> {
@@ -102,13 +102,27 @@ public class WindowCreadorTarjetaDuelo extends TransactionalDialog<ControladorTa
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_6);
+    Button _button_2 = new Button(panelBotones);
+    final Procedure1<Button> _function_7 = new Procedure1<Button>() {
+      public void apply(final Button it) {
+        it.setCaption("Aceptar");
+        final Action _function = new Action() {
+          public void execute() {
+            WindowCreadorTarjetaDuelo.this.buscarDuelo();
+          }
+        };
+        it.onClick(_function);
+        it.setWidth(100);
+      }
+    };
+    ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_7);
   }
   
   public void buscarDuelo() {
     ControladorTarjetaDuelo _modelObject = this.getModelObject();
-    ControladorDuelo _buscarDuelo = _modelObject.buscarDuelo();
-    WindowDuelo _windowDuelo = new WindowDuelo(this, _buscarDuelo);
-    this.openDialog(_windowDuelo);
+    ControladorBuscadorDuelo _buscarDuelo = _modelObject.buscarDuelo();
+    WindowBuscadorDuelo _windowBuscadorDuelo = new WindowBuscadorDuelo(this, _buscarDuelo);
+    this.openDialog(_windowBuscadorDuelo);
   }
   
   public void openDialog(final Dialog<?> dialog) {
@@ -123,6 +137,5 @@ public class WindowCreadorTarjetaDuelo extends TransactionalDialog<ControladorTa
   }
   
   protected void createFormPanel(final Panel mainPanel) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
   }
 }

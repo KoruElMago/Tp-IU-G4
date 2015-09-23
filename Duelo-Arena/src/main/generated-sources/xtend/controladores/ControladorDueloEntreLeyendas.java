@@ -1,12 +1,14 @@
 package controladores;
 
 import Core.DueloEntreLeyendas;
+import Exepcion.UsuarioExisteException;
 import Personaje.Personaje;
 import TarjetaDeDuelo.TarjetaDeDuelo;
 import com.google.common.base.Objects;
 import controladores.ControladorUsuario;
 import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.uqbar.commons.utils.TransactionalAndObservable;
 import usuario.Usuario;
@@ -85,34 +87,54 @@ public class ControladorDueloEntreLeyendas {
   }
   
   public String registrarUsuario() {
-    String _xifexpression = null;
-    boolean _esUsuario = this.esUsuario();
-    if (_esUsuario) {
-      String _xblockexpression = null;
-      {
-        this.mensajeLogIn = "Usuario Existente";
-        this.nombreUsuario = "";
-        _xblockexpression = this.contraseñaUsuario = "";
-      }
-      _xifexpression = _xblockexpression;
-    } else {
-      String _xifexpression_1 = null;
-      boolean _equals = Objects.equal(this.contraseñaUsuario, "");
-      if (_equals) {
-        _xifexpression_1 = this.mensajeLogIn = "Escribe una contraseña";
-      } else {
-        String _xblockexpression_1 = null;
+    try {
+      String _xtrycatchfinallyexpression = null;
+      try {
+        String _xblockexpression = null;
         {
-          final Usuario us = new Usuario(this.nombreUsuario, this.contraseñaUsuario);
-          List<Usuario> _usuarios = this.del.getUsuarios();
-          _usuarios.add(us);
-          _xblockexpression_1 = this.mensajeLogIn = "Usuario creado exitosamente";
+          this.del.agregarUsuario(this.nombreUsuario, this.contraseñaUsuario);
+          _xblockexpression = this.mensajeLogIn = "Usuario creado exitosamente";
         }
-        _xifexpression_1 = _xblockexpression_1;
+        _xtrycatchfinallyexpression = _xblockexpression;
+      } catch (final Throwable _t) {
+        if (_t instanceof UsuarioExisteException) {
+          final UsuarioExisteException e = (UsuarioExisteException)_t;
+          String _string = e.toString();
+          _xtrycatchfinallyexpression = this.mensajeLogIn = _string;
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
       }
-      _xifexpression = _xifexpression_1;
+      return _xtrycatchfinallyexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
-    return _xifexpression;
+  }
+  
+  public boolean puedoLoguear() {
+    boolean _equals = Objects.equal(this.nombreUsuario, "");
+    if (_equals) {
+      this.mensajeLogIn = "Usuario vacio";
+      return false;
+    } else {
+      List<Usuario> _usuarios = this.del.getUsuarios();
+      for (final Usuario us : _usuarios) {
+        String _nombre = us.getNombre();
+        boolean _equals_1 = Objects.equal(_nombre, this.nombreUsuario);
+        if (_equals_1) {
+          String _contraseña = us.getContraseña();
+          boolean _equals_2 = Objects.equal(_contraseña, this.contraseñaUsuario);
+          if (_equals_2) {
+            return true;
+          } else {
+            this.mensajeLogIn = "Contraseña incorrecta";
+            return false;
+          }
+        }
+      }
+      this.mensajeLogIn = "Usuario no existe";
+      return false;
+    }
   }
   
   @Pure

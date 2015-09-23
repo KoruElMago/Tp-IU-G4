@@ -1,10 +1,12 @@
 package controladores;
 
+import Core.DueloEntreLeyendas;
 import Duelo.Duelo;
 import Jugador.Jugador;
 import Personaje.Personaje;
 import TarjetaDeDuelo.Linea;
 import TarjetaDeDuelo.TarjetaDeDuelo;
+import com.google.common.base.Objects;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
 import org.uqbar.commons.utils.TransactionalAndObservable;
@@ -13,6 +15,10 @@ import org.uqbar.commons.utils.TransactionalAndObservable;
 @TransactionalAndObservable
 @SuppressWarnings("all")
 public class ControladorDuelo {
+  private DueloEntreLeyendas del;
+  
+  private Duelo duelo;
+  
   private TarjetaDeDuelo t1;
   
   private TarjetaDeDuelo t2;
@@ -29,7 +35,15 @@ public class ControladorDuelo {
   
   private String nombre2;
   
-  public ControladorDuelo(final Duelo duelo) {
+  private Integer puntaje1;
+  
+  private Integer puntaje2;
+  
+  private String nombreGanador;
+  
+  public ControladorDuelo(final Duelo duelo, final DueloEntreLeyendas del) {
+    this.duelo = duelo;
+    this.del = del;
     TarjetaDeDuelo _tarjetaJugador1 = duelo.getTarjetaJugador1();
     this.t1 = _tarjetaJugador1;
     TarjetaDeDuelo _tarjetaJugador2 = duelo.getTarjetaJugador2();
@@ -50,6 +64,49 @@ public class ControladorDuelo {
     Jugador _jugador_1 = this.t2.getJugador();
     String _nombreJugador_1 = _jugador_1.getNombreJugador();
     this.nombre2 = _nombreJugador_1;
+  }
+  
+  public String comenzarDuelo() {
+    String _xblockexpression = null;
+    {
+      this.duelo.resolverse();
+      Jugador _jugador = this.t1.getJugador();
+      int _calificacion = _jugador.getCalificacion();
+      this.puntaje1 = Integer.valueOf(_calificacion);
+      Jugador _jugador_1 = this.t2.getJugador();
+      int _calificacion_1 = _jugador_1.getCalificacion();
+      this.puntaje2 = Integer.valueOf(_calificacion_1);
+      String _xifexpression = null;
+      boolean _equals = Objects.equal(this.puntaje1, this.puntaje2);
+      if (_equals) {
+        _xifexpression = this.nombreGanador = "Es empate";
+      } else {
+        TarjetaDeDuelo _tarjetaGanador = this.duelo.getTarjetaGanador();
+        Jugador _jugador_2 = _tarjetaGanador.getJugador();
+        String _nombreJugador = _jugador_2.getNombreJugador();
+        _xifexpression = this.nombreGanador = _nombreJugador;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
+  }
+  
+  @Pure
+  public DueloEntreLeyendas getDel() {
+    return this.del;
+  }
+  
+  public void setDel(final DueloEntreLeyendas del) {
+    this.del = del;
+  }
+  
+  @Pure
+  public Duelo getDuelo() {
+    return this.duelo;
+  }
+  
+  public void setDuelo(final Duelo duelo) {
+    this.duelo = duelo;
   }
   
   @Pure
@@ -122,5 +179,32 @@ public class ControladorDuelo {
   
   public void setNombre2(final String nombre2) {
     this.nombre2 = nombre2;
+  }
+  
+  @Pure
+  public Integer getPuntaje1() {
+    return this.puntaje1;
+  }
+  
+  public void setPuntaje1(final Integer puntaje1) {
+    this.puntaje1 = puntaje1;
+  }
+  
+  @Pure
+  public Integer getPuntaje2() {
+    return this.puntaje2;
+  }
+  
+  public void setPuntaje2(final Integer puntaje2) {
+    this.puntaje2 = puntaje2;
+  }
+  
+  @Pure
+  public String getNombreGanador() {
+    return this.nombreGanador;
+  }
+  
+  public void setNombreGanador(final String nombreGanador) {
+    this.nombreGanador = nombreGanador;
   }
 }

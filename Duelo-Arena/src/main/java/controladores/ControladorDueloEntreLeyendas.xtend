@@ -7,6 +7,9 @@ import java.util.List
 import Personaje.Personaje
 import TarjetaDeDuelo.TarjetaDeDuelo
 import usuario.Usuario
+import Exepcion.UsuarioExisteException
+import Exepcion.ContraseñaIncorrectaException
+import Exepcion.UsuarioNoExisteException
 
 @Accessors
 @TransactionalAndObservable
@@ -83,29 +86,52 @@ class ControladorDueloEntreLeyendas {
 	
 	
 	def loguear(){
-		new ControladorUsuario(this.getUsuario, del)
-	}
+		
+					return new ControladorUsuario(this.getUsuario, del)
+			}
+				
+				
+			
 	
 	def registrarUsuario() {
-		if(esUsuario)
-			{
-				mensajeLogIn = "Usuario Existente"
-				nombreUsuario = ""
-			    contraseñaUsuario = ""
+		try{
+			del.agregarUsuario(nombreUsuario, contraseñaUsuario)
+			mensajeLogIn = "Usuario creado exitosamente"
 			}
-					else
-					if(contraseñaUsuario == "")
-					{
-						
-						mensajeLogIn = "Escribe una contraseña"
-					}
-					else
-					{
-					val us = new Usuario(nombreUsuario, contraseñaUsuario)
-					del.usuarios.add(us)
-					mensajeLogIn = "Usuario creado exitosamente"
-					}
+			catch(UsuarioExisteException e){
+			mensajeLogIn = e.toString()
+		}
 		
-	}
+		}
 	
+	def puedoLoguear(){
+		if(nombreUsuario == "" )
+				{
+				mensajeLogIn = "Usuario vacio"
+				return false
+				}
+				else
+					{
+					for(Usuario us : del.usuarios)
+							{
+							if(us.nombre == nombreUsuario)
+									{
+									if(us.contraseña == contraseñaUsuario)
+										{
+										return true	
+										}	
+										else
+										{	
+										mensajeLogIn = "Contraseña incorrecta"
+										return false	
+										}
+									
+									
+									}
+							}
+							mensajeLogIn = "Usuario no existe"
+							return false
+					}
+	}
+			
 }

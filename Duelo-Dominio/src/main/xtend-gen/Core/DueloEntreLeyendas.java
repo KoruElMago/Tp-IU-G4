@@ -2,6 +2,9 @@ package Core;
 
 import Duelo.Duelo;
 import Exepcion.DueloEnEspera;
+import Exepcion.UsuarioExisteException;
+import Jugador.Estadisticas;
+import Jugador.Jugador;
 import Personaje.Personaje;
 import TarjetaDeDuelo.TarjetaDeDuelo;
 import com.google.common.base.Objects;
@@ -88,6 +91,46 @@ public class DueloEntreLeyendas {
   
   public Duelo dueloConBoot(final TarjetaDeDuelo tdd) {
     return new Duelo(tdd, this.tddBoot);
+  }
+  
+  public boolean agregarUsuario(final String nombre, final String contraseña) throws Exception {
+    boolean _xblockexpression = false;
+    {
+      for (final Usuario us : this.usuarios) {
+        boolean _or = false;
+        boolean _or_1 = false;
+        String _nombre = us.getNombre();
+        boolean _equals = Objects.equal(_nombre, nombre);
+        if (_equals) {
+          _or_1 = true;
+        } else {
+          boolean _equals_1 = nombre.equals("");
+          _or_1 = _equals_1;
+        }
+        if (_or_1) {
+          _or = true;
+        } else {
+          boolean _equals_2 = contraseña.equals("");
+          _or = _equals_2;
+        }
+        if (_or) {
+          throw new UsuarioExisteException();
+        }
+      }
+      Usuario user = new Usuario(nombre, contraseña);
+      this.inicializarEtadisticas(user);
+      _xblockexpression = this.usuarios.add(user);
+    }
+    return _xblockexpression;
+  }
+  
+  public void inicializarEtadisticas(final Usuario usuario) {
+    for (final Personaje p : this.personajes) {
+      Jugador _jugador = usuario.getJugador();
+      List<Estadisticas> _estadisticas = _jugador.getEstadisticas();
+      Estadisticas _estadisticas_1 = new Estadisticas(p);
+      _estadisticas.add(_estadisticas_1);
+    }
   }
   
   @Pure

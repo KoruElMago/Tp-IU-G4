@@ -102,36 +102,18 @@ class WindowLogIn extends MainWindow<ControladorDueloEntreLeyendas>{
 	}
 	
 	def loguearUsuario(){
-		if(modelObject.esUsuario)
+		if(modelObject.puedoLoguear)
 			{
-				if(modelObject.esContraseña)
-					{
-						
-						logueandoUsuario()
-						modelObject.nombreUsuario = ""
-						modelObject.contraseñaUsuario = ""
-					}
-					else
-					{
-						modelObject.mensajeLogIn = "Contraseña Incorrecta. Vuelva a intentar"
-						modelObject.nombreUsuario = ""
-						modelObject.contraseñaUsuario = ""
-					}
+		this.openDialog(new WindowPrincipal(this, modelObject.loguear))
+		}
 			}
-			else
-			{
-			modelObject.mensajeLogIn = "Usuario Inexistente"
-			modelObject.nombreUsuario = ""
-			modelObject.contraseñaUsuario = ""
-			}
-	}
 	
-	def void logueandoUsuario(){
-      this.openDialog(new WindowPrincipal(this, modelObject.loguear))
-	}
+	//def void logueandoUsuario() {
+      //this.openDialog(new WindowPrincipal(this, modelObject.loguear))
+	//}
 	
 	def openDialog(Dialog<?> dialog) {
-		dialog.onAccept[|modelObject.loguear]
+		//dialog.onAccept[|modelObject.loguear]
 		dialog.open
 	}
 	

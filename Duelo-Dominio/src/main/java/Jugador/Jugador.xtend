@@ -22,83 +22,57 @@ class Jugador {
 	
 	}
 	
+	
+	//Se asume que siempre habrá estadisticas, incluso si es 0
 	def obtenerEstadisticas(Personaje personaje) {
-			var Estadisticas res = null 
+			//var Estadisticas res = null 
 			for (Estadisticas e : estadisticas){
 				if(e.personaje == personaje){
-					res = e
+					return e
 				}
 			}
-			return res
 	}
 	
 	def derrota(Duelo duelo) {
 		
-		var Estadisticas eAux = null
+		//var Estadisticas eAux = null
 		var personaje = duelo.tarjetaDe(this).personaje
 		
 		for (Estadisticas e1 : this.estadisticas){
 			
 		if	(e1.personaje == personaje){
-			
-			eAux = e1
-			
+			e1.deads = e1.deads+1	
+			e1.vecesQueInicio = e1.vecesQueInicio+1 
 			}
  		}
-
-		if (eAux == null){
-			
-			eAux = new Estadisticas(personaje)
-			
-		}
-	
-		eAux.gano(duelo,this);
 	}
 	
 	def victoria(Duelo duelo) {
 
-		var Estadisticas eAux = null
+		//var Estadisticas eAux = null
 		var personaje = duelo.tarjetaDe(this).personaje
 		
 		for (Estadisticas e1 : this.estadisticas){
 			
 		if	(e1.personaje == personaje){
-			
-			eAux = e1
-			
+			e1.kills = e1.kills+1
+			e1.vecesQueInicio = e1.vecesQueInicio+1
 			}
- 		}
-
-		if (eAux == null){
-			
-			eAux = new Estadisticas(personaje)
-			
-		}
-	
-		eAux.perdio(duelo,this)
-		
+ 		}		
 	}
 	
 	def empate(Duelo duelo) {
 		
-		var Estadisticas eAux = null
+		//var Estadisticas eAux = null
 		var personaje = duelo.tarjetaDe(this).personaje
 		
 		for (Estadisticas e1 : this.estadisticas){
 			
 		if	(e1.personaje == personaje){
-			
-			eAux = e1
-			
+			e1.assists = e1.assists+1
+			e1.vecesQueInicio = e1.vecesQueInicio+1
 			}
  		}
-
-		if (eAux == null){
-			
-			eAux = new Estadisticas(personaje)
-			
-		}
-		eAux.empato(duelo,this)
 		
 		}
 		

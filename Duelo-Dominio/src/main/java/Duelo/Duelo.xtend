@@ -22,24 +22,37 @@ class Duelo {
 	
 	def resolverse() {
 		
-		var  Integer poderJ1 = tarjetaJugador1.obtenerPoderDeAtaque()
-		var  Integer poderJ2 = tarjetaJugador2.obtenerPoderDeAtaque()
-		if (poderJ1 > poderJ2){
+		var  double suerteJ1 = Math.random()
+		var  double suerteJ2 = Math.random()
+		
+		var  double poderJ1 = tarjetaJugador1.obtenerPoderDeAtaque()
+		var  double poderJ2 = tarjetaJugador2.obtenerPoderDeAtaque()
+		
+		actualizarPuntaje(tarjetaJugador1, poderJ1*suerteJ1 )
+		actualizarPuntaje(tarjetaJugador2, poderJ2*suerteJ2 )
+		
+		if (poderJ1*suerteJ1 > poderJ2*suerteJ2){
 			this.tarjetaGanador = tarjetaJugador1	
 			this.gano(tarjetaJugador1)
 			this.perdio(tarjetaJugador2)
 		}
-		if (poderJ2 > poderJ1){
+		if (poderJ2*suerteJ2 > poderJ1*suerteJ1){
 			this.tarjetaGanador = tarjetaJugador2	
 			this.gano(tarjetaJugador2)
 			this.perdio(tarjetaJugador1)
 		}
-		if (this.tarjetaGanador == null){
+		else
+		//if (this.tarjetaGanador == null){
 			this.empate()
 		}
+	//}
+	
+	def void actualizarPuntaje(TarjetaDeDuelo t, double d){
+		val p = t.personaje
+		t.jugador.obtenerEstadisticas(p).calificacionEnDuelo = d
+		
+		
 	}
-	
-	
 	
 	
 	def empate() {
@@ -57,7 +70,7 @@ class Duelo {
 	}
 	
 	def tarjetaDe(Jugador jugador) {
-		if(tarjetaJugador1 == jugador){
+		if(tarjetaJugador1.jugador == jugador){
 			return tarjetaJugador1
 		}
 		else{

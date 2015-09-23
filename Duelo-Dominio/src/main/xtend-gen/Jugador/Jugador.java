@@ -27,84 +27,65 @@ public class Jugador {
   }
   
   public Estadisticas obtenerEstadisticas(final Personaje personaje) {
-    Estadisticas res = null;
     for (final Estadisticas e : this.estadisticas) {
       Personaje _personaje = e.getPersonaje();
       boolean _equals = Objects.equal(_personaje, personaje);
       if (_equals) {
-        res = e;
+        return e;
       }
     }
-    return res;
+    return null;
   }
   
-  public Object derrota(final Duelo duelo) {
-    Object _xblockexpression = null;
-    {
-      Estadisticas eAux = null;
-      TarjetaDeDuelo _tarjetaDe = duelo.tarjetaDe(this);
-      Personaje personaje = _tarjetaDe.getPersonaje();
-      for (final Estadisticas e1 : this.estadisticas) {
-        Personaje _personaje = e1.getPersonaje();
-        boolean _equals = Objects.equal(_personaje, personaje);
-        if (_equals) {
-          eAux = e1;
-        }
+  public void derrota(final Duelo duelo) {
+    TarjetaDeDuelo _tarjetaDe = duelo.tarjetaDe(this);
+    Personaje personaje = _tarjetaDe.getPersonaje();
+    for (final Estadisticas e1 : this.estadisticas) {
+      Personaje _personaje = e1.getPersonaje();
+      boolean _equals = Objects.equal(_personaje, personaje);
+      if (_equals) {
+        int _deads = e1.getDeads();
+        int _plus = (_deads + 1);
+        e1.setDeads(_plus);
+        int _vecesQueInicio = e1.getVecesQueInicio();
+        int _plus_1 = (_vecesQueInicio + 1);
+        e1.setVecesQueInicio(_plus_1);
       }
-      boolean _equals_1 = Objects.equal(eAux, null);
-      if (_equals_1) {
-        Estadisticas _estadisticas = new Estadisticas(personaje);
-        eAux = _estadisticas;
-      }
-      _xblockexpression = eAux.gano(duelo, this);
     }
-    return _xblockexpression;
   }
   
-  public int victoria(final Duelo duelo) {
-    int _xblockexpression = (int) 0;
-    {
-      Estadisticas eAux = null;
-      TarjetaDeDuelo _tarjetaDe = duelo.tarjetaDe(this);
-      Personaje personaje = _tarjetaDe.getPersonaje();
-      for (final Estadisticas e1 : this.estadisticas) {
-        Personaje _personaje = e1.getPersonaje();
-        boolean _equals = Objects.equal(_personaje, personaje);
-        if (_equals) {
-          eAux = e1;
-        }
+  public void victoria(final Duelo duelo) {
+    TarjetaDeDuelo _tarjetaDe = duelo.tarjetaDe(this);
+    Personaje personaje = _tarjetaDe.getPersonaje();
+    for (final Estadisticas e1 : this.estadisticas) {
+      Personaje _personaje = e1.getPersonaje();
+      boolean _equals = Objects.equal(_personaje, personaje);
+      if (_equals) {
+        int _kills = e1.getKills();
+        int _plus = (_kills + 1);
+        e1.setKills(_plus);
+        int _vecesQueInicio = e1.getVecesQueInicio();
+        int _plus_1 = (_vecesQueInicio + 1);
+        e1.setVecesQueInicio(_plus_1);
       }
-      boolean _equals_1 = Objects.equal(eAux, null);
-      if (_equals_1) {
-        Estadisticas _estadisticas = new Estadisticas(personaje);
-        eAux = _estadisticas;
-      }
-      _xblockexpression = eAux.perdio(duelo, this);
     }
-    return _xblockexpression;
   }
   
-  public int empate(final Duelo duelo) {
-    int _xblockexpression = (int) 0;
-    {
-      Estadisticas eAux = null;
-      TarjetaDeDuelo _tarjetaDe = duelo.tarjetaDe(this);
-      Personaje personaje = _tarjetaDe.getPersonaje();
-      for (final Estadisticas e1 : this.estadisticas) {
-        Personaje _personaje = e1.getPersonaje();
-        boolean _equals = Objects.equal(_personaje, personaje);
-        if (_equals) {
-          eAux = e1;
-        }
+  public void empate(final Duelo duelo) {
+    TarjetaDeDuelo _tarjetaDe = duelo.tarjetaDe(this);
+    Personaje personaje = _tarjetaDe.getPersonaje();
+    for (final Estadisticas e1 : this.estadisticas) {
+      Personaje _personaje = e1.getPersonaje();
+      boolean _equals = Objects.equal(_personaje, personaje);
+      if (_equals) {
+        int _assists = e1.getAssists();
+        int _plus = (_assists + 1);
+        e1.setAssists(_plus);
+        int _vecesQueInicio = e1.getVecesQueInicio();
+        int _plus_1 = (_vecesQueInicio + 1);
+        e1.setVecesQueInicio(_plus_1);
       }
-      boolean _equals_1 = Objects.equal(eAux, null);
-      if (_equals_1) {
-        Estadisticas _estadisticas = new Estadisticas(personaje);
-        eAux = _estadisticas;
-      }
-      _xblockexpression = eAux.empato(duelo, this);
     }
-    return _xblockexpression;
   }
   
   @Pure

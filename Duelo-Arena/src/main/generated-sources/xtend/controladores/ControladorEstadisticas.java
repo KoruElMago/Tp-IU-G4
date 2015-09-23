@@ -75,26 +75,8 @@ public class ControladorEstadisticas {
   }
   
   public Integer actualizar(final Estadisticas estadisticas) {
-    Integer _xblockexpression = null;
-    {
-      int _vecesQueInicio = estadisticas.getVecesQueInicio();
-      this.vecesQueInicio = Integer.valueOf(_vecesQueInicio);
-      int _kills = estadisticas.getKills();
-      this.kills = Integer.valueOf(_kills);
-      int _deads = estadisticas.getDeads();
-      this.deads = Integer.valueOf(_deads);
-      int _assists = estadisticas.getAssists();
-      this.assist = Integer.valueOf(_assists);
-      int _victorias = estadisticas.getVictorias();
-      this.victorias = Integer.valueOf(_victorias);
-      Linea _mejorLinea = estadisticas.getMejorLinea();
-      this.mejorLinea = _mejorLinea;
-      List<Linea> _ubicaciones = estadisticas.getUbicaciones();
-      this.ubicaciones = _ubicaciones;
-      int _calificacionEnDuelo = estadisticas.getCalificacionEnDuelo();
-      _xblockexpression = this.calificacionEnDuelo = Integer.valueOf(_calificacionEnDuelo);
-    }
-    return _xblockexpression;
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from double to Integer");
   }
   
   public Object seleccionar() {

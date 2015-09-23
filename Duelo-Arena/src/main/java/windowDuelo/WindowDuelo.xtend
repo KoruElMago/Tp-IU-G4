@@ -7,6 +7,7 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Button
 
 class WindowDuelo extends TransactionalDialog<ControladorDuelo>{
 	
@@ -51,7 +52,14 @@ class WindowDuelo extends TransactionalDialog<ControladorDuelo>{
 			setText("Linea")	
 		]
 		new Label(panelJugador1) =>[
-			bindValueToProperty("linea1")	
+			bindValueToProperty("linea1")
+			
+			
+		new Label(panelJugador1) =>[
+			setText("puntaje")		
+		]	
+			new Label(panelJugador1) =>[
+			bindValueToProperty("puntaje1")		
 		]
 		
 		
@@ -79,7 +87,42 @@ class WindowDuelo extends TransactionalDialog<ControladorDuelo>{
 		new Label(panelJugador2) =>[
 			bindValueToProperty("linea2")
 			]
+			
+			new Label(panelJugador2) =>[
+			setText("puntaje")		
+		]	
 		
+				new Label(panelJugador2) =>[
+			bindValueToProperty("puntaje2")		
+		]
+			]
+			
+		//new Button(panel) => [
+			//caption = "Aceptar"
+			//onClick [ | comenzarDuelo 
+						
+			//]
+			//]
+		
+		new Button(panel) => [
+			caption = "Denunciar"
+			//onClick [ | comenzarDuelo 	]
+			
+			]
+			
+			new Label(panel) =>[
+			setText("ganador")		
+		]
+		new Label(panel) =>[
+			bindValueToProperty("nombreGanador")		
+		]
+			this.comenzarDuelo
 	}
+	
+	def comenzarDuelo() {
+		modelObject.comenzarDuelo()
+	}
+	
+	
 	
 }

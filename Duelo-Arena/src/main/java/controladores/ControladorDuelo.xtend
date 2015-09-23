@@ -5,11 +5,14 @@ import org.uqbar.commons.utils.TransactionalAndObservable
 import TarjetaDeDuelo.TarjetaDeDuelo
 import Duelo.Duelo
 import TarjetaDeDuelo.Linea
+import Core.DueloEntreLeyendas
 
 @Accessors
 @TransactionalAndObservable
 
 class ControladorDuelo {
+	DueloEntreLeyendas del
+	Duelo duelo
 	
 	TarjetaDeDuelo t1
 	TarjetaDeDuelo t2
@@ -23,7 +26,14 @@ class ControladorDuelo {
 	String nombre1
 	String nombre2
 	
-	new(Duelo duelo){
+	Integer puntaje1
+	Integer puntaje2
+	
+	String nombreGanador
+	
+	new(Duelo duelo, DueloEntreLeyendas del){
+		this.duelo = duelo
+		this.del = del
 		t1 = duelo.tarjetaJugador1
 		t2 = duelo.tarjetaJugador2
 		
@@ -35,6 +45,18 @@ class ControladorDuelo {
 		
 		nombre1 = t1.jugador.nombreJugador
 		nombre2 = t2.jugador.nombreJugador
+	}
+	
+	def comenzarDuelo(){
+		duelo.resolverse()
+		puntaje1 = t1.jugador.calificacion
+		puntaje2 = t2.jugador.calificacion
+		
+		if(puntaje1 == puntaje2)
+		nombreGanador = "Es empate"
+		else
+		nombreGanador = duelo.tarjetaGanador.jugador.nombreJugador
+		
 	}
 	
 }

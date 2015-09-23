@@ -55,16 +55,16 @@ public class TarjetaDeDuelo {
     return Integer.valueOf((_calificacion + _multiply));
   }
   
-  public int actualizarVictoria(final Duelo duelo) {
-    return this.jugador.victoria(duelo);
+  public void actualizarVictoria(final Duelo duelo) {
+    this.jugador.victoria(duelo);
   }
   
-  public Object actualizarDerrota(final Duelo duelo) {
-    return this.jugador.derrota(duelo);
+  public void actualizarDerrota(final Duelo duelo) {
+    this.jugador.derrota(duelo);
   }
   
-  public int actualizarEmpate(final Duelo duelo) {
-    return this.jugador.empate(duelo);
+  public void actualizarEmpate(final Duelo duelo) {
+    this.jugador.empate(duelo);
   }
   
   @Pure

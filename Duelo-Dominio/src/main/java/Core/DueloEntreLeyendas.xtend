@@ -8,6 +8,10 @@ import Duelo.Duelo
 import java.util.ArrayList
 import Personaje.Personaje
 import usuario.Usuario
+import Jugador.Estadisticas
+import Exepcion.ContraseñaIncorrectaException
+import Exepcion.UsuarioExisteException
+import Exepcion.UsuarioNoExisteException
 
 @Accessors
 
@@ -73,4 +77,26 @@ class DueloEntreLeyendas {
 	def dueloConBoot(TarjetaDeDuelo tdd){
 		return new Duelo(tdd, this.tddBoot)
 	}
+	
+	def agregarUsuario(String nombre, String contraseña) throws Exception{
+		for(Usuario us : this.usuarios)
+			{
+			if(us.nombre == nombre || nombre.equals("") || contraseña.equals(""))
+			 	{
+			 		throw new UsuarioExisteException()
+			 	}
+			}
+			var user = new Usuario(nombre, contraseña)
+			inicializarEtadisticas(user)
+			this.usuarios.add(user)
+	}
+	
+	def inicializarEtadisticas(Usuario usuario) {
+		for(Personaje p : this.personajes)
+			{
+				usuario.jugador.estadisticas.add(new Estadisticas(p))
+			}
+	}
+	
+	
 }

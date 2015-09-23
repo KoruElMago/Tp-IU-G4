@@ -1,12 +1,11 @@
 package controladores;
 
 import Core.DueloEntreLeyendas;
-import Duelo.Duelo;
 import Jugador.Jugador;
 import Personaje.Personaje;
 import TarjetaDeDuelo.Linea;
 import TarjetaDeDuelo.TarjetaDeDuelo;
-import controladores.ControladorDuelo;
+import controladores.ControladorBuscadorDuelo;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
@@ -43,7 +42,7 @@ public class ControladorTarjetaDuelo {
     this.lineas.add(Linea.Jungle);
   }
   
-  public ControladorDuelo buscarDuelo() {
+  public ControladorBuscadorDuelo buscarDuelo() {
     Jugador _jugador = this.usuario.getJugador();
     TarjetaDeDuelo tarjeta = new TarjetaDeDuelo(this.personajeElegido, _jugador, this.lineaElegida);
     TarjetaDeDuelo rival = this.del.buscarRivalDigno(tarjeta);
@@ -57,20 +56,21 @@ public class ControladorTarjetaDuelo {
       _or = _equals_1;
     }
     if (_or) {
-      return this.crearDueloConBot(tarjeta, rival);
+      return this.crearDueloConBot(this.del, tarjeta);
     } else {
-      return this.crearDueloNormal(tarjeta, rival);
+      return this.crearDueloNormal(this.del, tarjeta, rival);
     }
   }
   
-  public ControladorDuelo crearDueloNormal(final TarjetaDeDuelo usuario, final TarjetaDeDuelo retador) {
-    Duelo _duelo = new Duelo(usuario, retador);
-    return new ControladorDuelo(_duelo);
+  public ControladorBuscadorDuelo crearDueloNormal(final DueloEntreLeyendas del, final TarjetaDeDuelo usuario, final TarjetaDeDuelo retador) {
+    String text = "Se ha encontrado Rival";
+    return new ControladorBuscadorDuelo(del, usuario, retador, text);
   }
   
-  public ControladorDuelo crearDueloConBot(final TarjetaDeDuelo usuario, final TarjetaDeDuelo retador) {
-    Duelo _duelo = new Duelo(usuario, retador);
-    return new ControladorDuelo(_duelo);
+  public ControladorBuscadorDuelo crearDueloConBot(final DueloEntreLeyendas del, final TarjetaDeDuelo usuario) {
+    String text = "No se ha encontrado rival que te haga frente.\n\t\t\t\t\t¿Deseas jugar contra bot MR-X de todas maneras?";
+    TarjetaDeDuelo bot = null;
+    return new ControladorBuscadorDuelo(del, usuario, bot, text);
   }
   
   @Pure

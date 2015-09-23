@@ -18,6 +18,7 @@ import org.uqbar.arena.windows.WindowOwner
 import TarjetaDeDuelo.TarjetaDeDuelo
 import org.uqbar.arena.windows.Dialog
 import windowDuelo.WindowDuelo
+import windowBuscadorDuelo.WindowBuscadorDuelo
 
 class WindowCreadorTarjetaDuelo extends TransactionalDialog<ControladorTarjetaDuelo>{
 	
@@ -95,13 +96,19 @@ class WindowCreadorTarjetaDuelo extends TransactionalDialog<ControladorTarjetaDu
 			onClick [|cancel]
 			width = 100
 			]
+			
+			new Button(panelBotones) => [
+			caption = "Aceptar"
+			onClick [|this.buscarDuelo]
+			width = 100
+			]
 		
 	
 	
 	}
 	
 	def void buscarDuelo() {
-		this.openDialog(new WindowDuelo(this, modelObject.buscarDuelo()))
+		this.openDialog(new WindowBuscadorDuelo(this, modelObject.buscarDuelo()))
 	}
 	
 	def openDialog(Dialog<?> dialog) {
@@ -110,7 +117,7 @@ class WindowCreadorTarjetaDuelo extends TransactionalDialog<ControladorTarjetaDu
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 }

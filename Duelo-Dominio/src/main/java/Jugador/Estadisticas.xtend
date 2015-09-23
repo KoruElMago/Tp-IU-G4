@@ -18,7 +18,7 @@ class Estadisticas {
 	int victorias
 	Linea mejorLinea
 	List<Linea> ubicaciones
-	int calificacionEnDuelo
+	double calificacionEnDuelo
 	
 	
 	new(Personaje personaje) {

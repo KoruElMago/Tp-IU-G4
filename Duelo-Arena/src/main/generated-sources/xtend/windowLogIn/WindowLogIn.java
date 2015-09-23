@@ -130,49 +130,16 @@ public class WindowLogIn extends MainWindow<ControladorDueloEntreLeyendas> {
   
   public void loguearUsuario() {
     ControladorDueloEntreLeyendas _modelObject = this.getModelObject();
-    boolean _esUsuario = _modelObject.esUsuario();
-    if (_esUsuario) {
+    boolean _puedoLoguear = _modelObject.puedoLoguear();
+    if (_puedoLoguear) {
       ControladorDueloEntreLeyendas _modelObject_1 = this.getModelObject();
-      boolean _esContraseña = _modelObject_1.esContraseña();
-      if (_esContraseña) {
-        this.logueandoUsuario();
-        ControladorDueloEntreLeyendas _modelObject_2 = this.getModelObject();
-        _modelObject_2.setNombreUsuario("");
-        ControladorDueloEntreLeyendas _modelObject_3 = this.getModelObject();
-        _modelObject_3.setContraseñaUsuario("");
-      } else {
-        ControladorDueloEntreLeyendas _modelObject_4 = this.getModelObject();
-        _modelObject_4.setMensajeLogIn("Contraseña Incorrecta. Vuelva a intentar");
-        ControladorDueloEntreLeyendas _modelObject_5 = this.getModelObject();
-        _modelObject_5.setNombreUsuario("");
-        ControladorDueloEntreLeyendas _modelObject_6 = this.getModelObject();
-        _modelObject_6.setContraseñaUsuario("");
-      }
-    } else {
-      ControladorDueloEntreLeyendas _modelObject_7 = this.getModelObject();
-      _modelObject_7.setMensajeLogIn("Usuario Inexistente");
-      ControladorDueloEntreLeyendas _modelObject_8 = this.getModelObject();
-      _modelObject_8.setNombreUsuario("");
-      ControladorDueloEntreLeyendas _modelObject_9 = this.getModelObject();
-      _modelObject_9.setContraseñaUsuario("");
+      ControladorUsuario _loguear = _modelObject_1.loguear();
+      WindowPrincipal _windowPrincipal = new WindowPrincipal(this, _loguear);
+      this.openDialog(_windowPrincipal);
     }
   }
   
-  public void logueandoUsuario() {
-    ControladorDueloEntreLeyendas _modelObject = this.getModelObject();
-    ControladorUsuario _loguear = _modelObject.loguear();
-    WindowPrincipal _windowPrincipal = new WindowPrincipal(this, _loguear);
-    this.openDialog(_windowPrincipal);
-  }
-  
   public void openDialog(final Dialog<?> dialog) {
-    final Action _function = new Action() {
-      public void execute() {
-        ControladorDueloEntreLeyendas _modelObject = WindowLogIn.this.getModelObject();
-        _modelObject.loguear();
-      }
-    };
-    dialog.onAccept(_function);
     dialog.open();
   }
   

@@ -43,22 +43,27 @@ class ControladorTarjetaDuelo {
 		var rival = del.buscarRivalDigno(tarjeta)
 		if(rival.equals(del.tddBoot) || rival.equals(null))
 			{
-			return crearDueloConBot(tarjeta,rival)				
+			return crearDueloConBot(del, tarjeta)				
 			}
 			else
 			{
-			return crearDueloNormal(tarjeta, rival)	
+			return crearDueloNormal(del, tarjeta, rival)
 			}
 		
 	}
 	
-	def crearDueloNormal(TarjetaDeDuelo usuario, TarjetaDeDuelo retador) {
-		return (new ControladorDuelo(new Duelo(usuario, retador)))
+	def crearDueloNormal(DueloEntreLeyendas del, TarjetaDeDuelo usuario, TarjetaDeDuelo retador) {
+		//return (new ControladorDuelo(new Duelo(usuario, retador), del) )
+		var text = "Se ha encontrado Rival" 
+		return (new ControladorBuscadorDuelo(del, usuario, retador, text))
 	}
 	
-	def crearDueloConBot(TarjetaDeDuelo usuario, TarjetaDeDuelo retador) {
+	def crearDueloConBot(DueloEntreLeyendas del, TarjetaDeDuelo usuario) {
+		var text = "No se ha encontrado rival que te haga frente.
+					¿Deseas jugar contra bot MR-X de todas maneras?" 
 		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
-		return (new ControladorDuelo(new Duelo(usuario, retador)))
+		var TarjetaDeDuelo bot = null 
+		return (new ControladorBuscadorDuelo(del, usuario, bot, text))
 	}
 	
 	
