@@ -1,5 +1,9 @@
 package Dominio
 
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
+
 abstract class  Denuncia {
 	
 	Integer peso;

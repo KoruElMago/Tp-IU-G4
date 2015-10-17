@@ -2,9 +2,12 @@ package Dominio;
 
 import com.google.common.base.Objects;
 import java.util.List;
+import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
+import org.eclipse.xtext.xbase.lib.Pure;
 
+@Accessors
 @SuppressWarnings("all")
 public abstract class Denuncia {
   private Integer peso;
@@ -60,5 +63,41 @@ public abstract class Denuncia {
       _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
+  }
+  
+  @Pure
+  public Integer getPeso() {
+    return this.peso;
+  }
+  
+  public void setPeso(final Integer peso) {
+    this.peso = peso;
+  }
+  
+  @Pure
+  public String getDescripcion() {
+    return this.descripcion;
+  }
+  
+  public void setDescripcion(final String descripcion) {
+    this.descripcion = descripcion;
+  }
+  
+  @Pure
+  public int getPalabrasMinimas() {
+    return this.palabrasMinimas;
+  }
+  
+  public void setPalabrasMinimas(final int palabrasMinimas) {
+    this.palabrasMinimas = palabrasMinimas;
+  }
+  
+  @Pure
+  public int getCaracteresMinimos() {
+    return this.caracteresMinimos;
+  }
+  
+  public void setCaracteresMinimos(final int caracteresMinimos) {
+    this.caracteresMinimos = caracteresMinimos;
   }
 }
