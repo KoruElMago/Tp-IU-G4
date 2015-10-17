@@ -1,44 +1,35 @@
 package controladores;
 
-import Core.DueloEntreLeyendas;
-import Jugador.Jugador;
-import Personaje.Personaje;
-import TarjetaDeDuelo.Linea;
-import com.google.common.base.Objects;
 import controladores.ControladorEstadisticas;
 import controladores.ControladorPersonaje;
 import controladores.ControladorTarjetaDuelo;
 import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
-import org.uqbar.commons.utils.TransactionalAndObservable;
-import usuario.Usuario;
 
-@Accessors
-@TransactionalAndObservable
+@Accessors/* 
+@TransactionalAndObservable */
 @SuppressWarnings("all")
 public class ControladorUsuario {
-  private DueloEntreLeyendas del;
+  private /* DueloEntreLeyendas */Object del;
   
-  private Usuario usuario;
+  private /* Usuario */Object usuario;
   
-  private List<Personaje> personajesDelJuego;
+  private /* List<Personaje> */Object personajesDelJuego;
   
-  private Personaje unPersonajeDelJuego;
+  private /* Personaje */Object unPersonajeDelJuego;
   
   private String nombrePersonaje;
   
-  private Linea rolIdeal;
+  private /* Linea */Object rolIdeal;
   
   private List<String> debilidades;
   
   private List<String> fortalezas;
   
-  public ControladorUsuario(final Usuario usuario, final DueloEntreLeyendas d) {
-    this.del = d;
-    this.usuario = usuario;
-    List<Personaje> _personajes = d.getPersonajes();
-    this.personajesDelJuego = _personajes;
+  public ControladorUsuario(final /* Usuario */Object usuario, final /* DueloEntreLeyendas */Object d) {
+    throw new Error("Unresolved compilation problems:"
+      + "\ngetPersonajes cannot be resolved");
   }
   
   public void setNombrePersonaje(final String s) {
@@ -47,29 +38,24 @@ public class ControladorUsuario {
   }
   
   public void actualizar(final String s) {
-    for (final Personaje p : this.personajesDelJuego) {
-      String _nombre = p.getNombre();
-      boolean _equals = Objects.equal(_nombre, s);
-      if (_equals) {
-        this.unPersonajeDelJuego = p;
-        Linea _rolIdeal = p.getRolIdeal();
-        this.rolIdeal = _rolIdeal;
-        List<String> _debilidades = p.getDebilidades();
-        this.debilidades = _debilidades;
-        List<String> _fortalezas = p.getFortalezas();
-        this.fortalezas = _fortalezas;
-      }
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nPersonaje cannot be resolved to a type."
+      + "\ngetNombre cannot be resolved"
+      + "\n== cannot be resolved"
+      + "\nrolIdeal cannot be resolved"
+      + "\ngetDebilidades cannot be resolved"
+      + "\ngetFortalezas cannot be resolved");
   }
   
   public String toString() {
-    Jugador _jugador = this.usuario.getJugador();
-    return _jugador.getNombreJugador();
+    throw new Error("Unresolved compilation problems:"
+      + "\njugador cannot be resolved"
+      + "\nnombreJugador cannot be resolved");
   }
   
   public ControladorEstadisticas abrirSeleccionEstadistica() {
-    Jugador _jugador = this.usuario.getJugador();
-    return new ControladorEstadisticas(_jugador);
+    throw new Error("Unresolved compilation problems:"
+      + "\njugador cannot be resolved");
   }
   
   public Object getRolIdeal() {
@@ -103,11 +89,11 @@ public class ControladorUsuario {
   }
   
   @Pure
-  public List<Personaje> getPersonajesDelJuego() {
+  public /* List<Personaje> */Object getPersonajesDelJuego() {
     return this.personajesDelJuego;
   }
   
-  public void setPersonajesDelJuego(final List<Personaje> personajesDelJuego) {
+  public void setPersonajesDelJuego(final /* List<Personaje> */Object personajesDelJuego) {
     this.personajesDelJuego = personajesDelJuego;
   }
   

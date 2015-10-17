@@ -1,141 +1,81 @@
 package windowPrincipal;
 
-import controladores.ControladorEstadisticas;
-import controladores.ControladorPersonaje;
-import controladores.ControladorTarjetaDuelo;
 import controladores.ControladorUsuario;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.uqbar.arena.aop.windows.TransactionalDialog;
-import org.uqbar.arena.layout.HorizontalLayout;
-import org.uqbar.arena.layout.VerticalLayout;
-import org.uqbar.arena.widgets.Button;
-import org.uqbar.arena.widgets.Label;
-import org.uqbar.arena.widgets.Panel;
-import org.uqbar.arena.windows.Dialog;
-import org.uqbar.arena.windows.WindowOwner;
-import org.uqbar.lacar.ui.model.Action;
-import ventanaEstadisticas.WindowEstadistica;
-import windowCreadorTarjetaDeDuelo.WindowCreadorTarjetaDuelo;
-import windowPersonajes.WindowPersonajes;
 
 @SuppressWarnings("all")
-public class WindowPrincipal extends TransactionalDialog<ControladorUsuario> {
-  public WindowPrincipal(final WindowOwner owner, final ControladorUsuario model) {
-    super(owner, model);
+public class WindowPrincipal /* implements TransactionalDialog<ControladorUsuario>  */{
+  public WindowPrincipal(final /* WindowOwner */Object owner, final ControladorUsuario model) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method super is undefined for the type WindowPrincipal");
   }
   
-  public void createContents(final Panel panel) {
-    VerticalLayout _verticalLayout = new VerticalLayout();
-    panel.setLayout(_verticalLayout);
-    Label _label = new Label(panel);
-    final Procedure1<Label> _function = new Procedure1<Label>() {
-      public void apply(final Label it) {
-        it.setText("Duelo de leyendas");
-        it.setWidth(400);
-        it.setHeight(50);
-      }
-    };
-    ObjectExtensions.<Label>operator_doubleArrow(_label, _function);
-    Label _label_1 = new Label(panel);
-    final Procedure1<Label> _function_1 = new Procedure1<Label>() {
-      public void apply(final Label it) {
-        ControladorUsuario _modelObject = WindowPrincipal.this.getModelObject();
-        String _string = _modelObject.toString();
-        String _plus = ("Usuario: " + _string);
-        it.setText(_plus);
-        it.setWidth(200);
-      }
-    };
-    ObjectExtensions.<Label>operator_doubleArrow(_label_1, _function_1);
-    Button _button = new Button(panel);
-    final Procedure1<Button> _function_2 = new Procedure1<Button>() {
-      public void apply(final Button it) {
-        it.setCaption("Buscar Duelo");
-        final Action _function = new Action() {
-          public void execute() {
-            WindowPrincipal.this.buscarDuelo();
-          }
-        };
-        it.onClick(_function);
-      }
-    };
-    ObjectExtensions.<Button>operator_doubleArrow(_button, _function_2);
-    Label _label_2 = new Label(panel);
-    final Procedure1<Label> _function_3 = new Procedure1<Label>() {
-      public void apply(final Label it) {
-        it.setText("");
-        it.setWidth(400);
-        it.setHeight(20);
-      }
-    };
-    ObjectExtensions.<Label>operator_doubleArrow(_label_2, _function_3);
-    Label _label_3 = new Label(panel);
-    final Procedure1<Label> _function_4 = new Procedure1<Label>() {
-      public void apply(final Label it) {
-        it.setText("Perfil");
-        it.setWidth(400);
-      }
-    };
-    ObjectExtensions.<Label>operator_doubleArrow(_label_3, _function_4);
-    final Panel panelPerfil = new Panel(panel);
-    HorizontalLayout _horizontalLayout = new HorizontalLayout();
-    panelPerfil.setLayout(_horizontalLayout);
-    Button _button_1 = new Button(panelPerfil);
-    final Procedure1<Button> _function_5 = new Procedure1<Button>() {
-      public void apply(final Button it) {
-        it.setCaption("Personajes");
-        final Action _function = new Action() {
-          public void execute() {
-            WindowPrincipal.this.verPersonajes();
-          }
-        };
-        it.onClick(_function);
-        it.setWidth(200);
-      }
-    };
-    ObjectExtensions.<Button>operator_doubleArrow(_button_1, _function_5);
-    Button _button_2 = new Button(panelPerfil);
-    final Procedure1<Button> _function_6 = new Procedure1<Button>() {
-      public void apply(final Button it) {
-        it.setCaption("Estadisticas");
-        final Action _function = new Action() {
-          public void execute() {
-            WindowPrincipal.this.verEstadisticas();
-          }
-        };
-        it.onClick(_function);
-        it.setWidth(200);
-      }
-    };
-    ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_6);
+  public Object createContents(final /* Panel */Object panel) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nVerticalLayout cannot be resolved."
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowPrincipal"
+      + "\nThe method or field width is undefined for the type WindowPrincipal"
+      + "\nThe method or field height is undefined for the type WindowPrincipal"
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowPrincipal"
+      + "\nThe method or field modelObject is undefined for the type WindowPrincipal"
+      + "\nThe method or field width is undefined for the type WindowPrincipal"
+      + "\nButton cannot be resolved."
+      + "\nThe method or field caption is undefined for the type WindowPrincipal"
+      + "\nThe method onClick is undefined for the type WindowPrincipal"
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowPrincipal"
+      + "\nThe method or field width is undefined for the type WindowPrincipal"
+      + "\nThe method or field height is undefined for the type WindowPrincipal"
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowPrincipal"
+      + "\nThe method or field width is undefined for the type WindowPrincipal"
+      + "\nPanel cannot be resolved."
+      + "\nHorizontalLayout cannot be resolved."
+      + "\nButton cannot be resolved."
+      + "\nThe method or field caption is undefined for the type WindowPrincipal"
+      + "\nThe method onClick is undefined for the type WindowPrincipal"
+      + "\nThe method or field width is undefined for the type WindowPrincipal"
+      + "\nButton cannot be resolved."
+      + "\nThe method or field caption is undefined for the type WindowPrincipal"
+      + "\nThe method onClick is undefined for the type WindowPrincipal"
+      + "\nThe method or field width is undefined for the type WindowPrincipal"
+      + "\nsetLayout cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\ntoString cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\nsetLayout cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved");
   }
   
-  public void buscarDuelo() {
-    ControladorUsuario _modelObject = this.getModelObject();
-    ControladorTarjetaDuelo _buscarDuelo = _modelObject.buscarDuelo();
-    WindowCreadorTarjetaDuelo _windowCreadorTarjetaDuelo = new WindowCreadorTarjetaDuelo(this, _buscarDuelo);
-    this.openDialog(_windowCreadorTarjetaDuelo);
+  public Object buscarDuelo() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field modelObject is undefined for the type WindowPrincipal"
+      + "\nbuscarDuelo cannot be resolved");
   }
   
-  public void verPersonajes() {
-    ControladorUsuario _modelObject = this.getModelObject();
-    ControladorPersonaje _abrirPersonajes = _modelObject.abrirPersonajes();
-    WindowPersonajes _windowPersonajes = new WindowPersonajes(this, _abrirPersonajes);
-    this.openDialog(_windowPersonajes);
+  public Object verPersonajes() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field modelObject is undefined for the type WindowPrincipal"
+      + "\nabrirPersonajes cannot be resolved");
   }
   
-  protected void createFormPanel(final Panel mainPanel) {
+  protected Object createFormPanel(final /* Panel */Object mainPanel) {
+    return null;
   }
   
-  public void verEstadisticas() {
-    ControladorUsuario _modelObject = this.getModelObject();
-    ControladorEstadisticas _abrirSeleccionEstadistica = _modelObject.abrirSeleccionEstadistica();
-    WindowEstadistica _windowEstadistica = new WindowEstadistica(this, _abrirSeleccionEstadistica);
-    this.openDialog(_windowEstadistica);
+  public Object verEstadisticas() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field modelObject is undefined for the type WindowPrincipal"
+      + "\nabrirSeleccionEstadistica cannot be resolved");
   }
   
-  public void openDialog(final Dialog<?> dialog) {
-    dialog.open();
+  public Object openDialog(final /* Dialog<?> */Object dialog) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nopen cannot be resolved");
   }
 }

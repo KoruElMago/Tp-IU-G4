@@ -1,64 +1,52 @@
 package controladores;
 
-import Jugador.Estadisticas;
-import Jugador.Jugador;
-import Personaje.Personaje;
-import com.google.common.base.Objects;
 import controladores.ControladorEstadisticas;
 import java.util.ArrayList;
-import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
-import org.uqbar.commons.utils.TransactionalAndObservable;
 
-@TransactionalAndObservable
-@Accessors
+/* @TransactionalAndObservable */@Accessors
 @SuppressWarnings("all")
 public class ControladorJugador {
-  private Jugador jugador;
+  private /* Jugador */Object jugador;
   
   private String nombrePersonaje;
   
-  public ControladorJugador(final Jugador jugador) {
+  public ControladorJugador(final /* Jugador */Object jugador) {
     this.jugador = jugador;
   }
   
-  public String getNombreJugador() {
-    return this.jugador.getNombreJugador();
+  public Object getNombreJugador() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nnombreJugador cannot be resolved");
   }
   
   public ArrayList<String> getNombreEstadisticas() {
-    final ArrayList<String> nombres = new ArrayList<String>();
-    List<Estadisticas> _estadisticas = this.jugador.getEstadisticas();
-    for (final Estadisticas es : _estadisticas) {
-      Personaje _personaje = es.getPersonaje();
-      String _nombre = _personaje.getNombre();
-      nombres.add(_nombre);
-    }
-    return nombres;
+    throw new Error("Unresolved compilation problems:"
+      + "\nEstadisticas cannot be resolved to a type."
+      + "\nestadisticas cannot be resolved"
+      + "\npersonaje cannot be resolved"
+      + "\nnombre cannot be resolved");
   }
   
-  public List<Estadisticas> getEstadisticas() {
-    return this.jugador.getEstadisticas();
+  public Object getEstadisticas() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nestadisticas cannot be resolved");
   }
   
-  public Personaje getEstadisticaPersonaje() {
-    Estadisticas est = null;
-    List<Estadisticas> _estadisticas = this.getEstadisticas();
-    for (final Estadisticas s : _estadisticas) {
-      Personaje _personaje = s.getPersonaje();
-      String _nombre = _personaje.getNombre();
-      boolean _equals = Objects.equal(_nombre, this.nombrePersonaje);
-      if (_equals) {
-        est = s;
-      }
-    }
-    return est.getPersonaje();
+  public Object getEstadisticaPersonaje() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nEstadisticas cannot be resolved to a type."
+      + "\nEstadisticas cannot be resolved to a type."
+      + "\npersonaje cannot be resolved"
+      + "\nnombre cannot be resolved"
+      + "\n== cannot be resolved"
+      + "\npersonaje cannot be resolved");
   }
   
   public ControladorEstadisticas seleccionar() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from Personaje to Jugador");
+    Object _estadisticaPersonaje = this.getEstadisticaPersonaje();
+    return new ControladorEstadisticas(_estadisticaPersonaje);
   }
   
   @Pure

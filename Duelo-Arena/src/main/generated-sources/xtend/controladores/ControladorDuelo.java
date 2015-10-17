@@ -1,36 +1,28 @@
 package controladores;
 
-import Core.DueloEntreLeyendas;
-import Duelo.Duelo;
-import Jugador.Jugador;
-import Personaje.Personaje;
-import TarjetaDeDuelo.Linea;
-import TarjetaDeDuelo.TarjetaDeDuelo;
-import com.google.common.base.Objects;
 import controladores.ControladorDenuncia;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
-import org.uqbar.commons.utils.TransactionalAndObservable;
 
-@Accessors
-@TransactionalAndObservable
+@Accessors/* 
+@TransactionalAndObservable */
 @SuppressWarnings("all")
 public class ControladorDuelo {
-  private DueloEntreLeyendas del;
+  private /* DueloEntreLeyendas */Object del;
   
-  private Duelo duelo;
+  private /* Duelo */Object duelo;
   
-  private TarjetaDeDuelo t1;
+  private /* TarjetaDeDuelo */Object t1;
   
-  private TarjetaDeDuelo t2;
+  private /* TarjetaDeDuelo */Object t2;
   
   private String personaje1;
   
   private String personaje2;
   
-  private Linea linea1;
+  private /* Linea */Object linea1;
   
-  private Linea linea2;
+  private /* Linea */Object linea2;
   
   private String nombre1;
   
@@ -42,60 +34,38 @@ public class ControladorDuelo {
   
   private String nombreGanador;
   
-  public ControladorDuelo(final Duelo duelo, final DueloEntreLeyendas del) {
-    this.duelo = duelo;
-    this.del = del;
-    TarjetaDeDuelo _tarjetaJugador1 = duelo.getTarjetaJugador1();
-    this.t1 = _tarjetaJugador1;
-    TarjetaDeDuelo _tarjetaJugador2 = duelo.getTarjetaJugador2();
-    this.t2 = _tarjetaJugador2;
-    Personaje _personaje = this.t1.getPersonaje();
-    String _nombre = _personaje.getNombre();
-    this.personaje1 = _nombre;
-    Personaje _personaje_1 = this.t2.getPersonaje();
-    String _nombre_1 = _personaje_1.getNombre();
-    this.personaje2 = _nombre_1;
-    Linea _linea = this.t1.getLinea();
-    this.linea1 = _linea;
-    Linea _linea_1 = this.t2.getLinea();
-    this.linea2 = _linea_1;
-    Jugador _jugador = this.t1.getJugador();
-    String _nombreJugador = _jugador.getNombreJugador();
-    this.nombre1 = _nombreJugador;
-    Jugador _jugador_1 = this.t2.getJugador();
-    String _nombreJugador_1 = _jugador_1.getNombreJugador();
-    this.nombre2 = _nombreJugador_1;
+  public ControladorDuelo(final /* Duelo */Object duelo, final /* DueloEntreLeyendas */Object del) {
+    throw new Error("Unresolved compilation problems:"
+      + "\ntarjetaJugador1 cannot be resolved"
+      + "\ntarjetaJugador2 cannot be resolved"
+      + "\npersonaje cannot be resolved"
+      + "\nnombre cannot be resolved"
+      + "\npersonaje cannot be resolved"
+      + "\nnombre cannot be resolved"
+      + "\nlinea cannot be resolved"
+      + "\nlinea cannot be resolved"
+      + "\njugador cannot be resolved"
+      + "\nnombreJugador cannot be resolved"
+      + "\njugador cannot be resolved"
+      + "\nnombreJugador cannot be resolved");
   }
   
   public String comenzarDuelo() {
-    String _xblockexpression = null;
-    {
-      this.duelo.resolverse();
-      Jugador _jugador = this.t1.getJugador();
-      int _calificacion = _jugador.getCalificacion();
-      this.puntaje1 = Integer.valueOf(_calificacion);
-      Jugador _jugador_1 = this.t2.getJugador();
-      int _calificacion_1 = _jugador_1.getCalificacion();
-      this.puntaje2 = Integer.valueOf(_calificacion_1);
-      String _xifexpression = null;
-      boolean _equals = Objects.equal(this.puntaje1, this.puntaje2);
-      if (_equals) {
-        _xifexpression = this.nombreGanador = "Es empate";
-      } else {
-        TarjetaDeDuelo _tarjetaGanador = this.duelo.getTarjetaGanador();
-        Jugador _jugador_2 = _tarjetaGanador.getJugador();
-        String _nombreJugador = _jugador_2.getNombreJugador();
-        _xifexpression = this.nombreGanador = _nombreJugador;
-      }
-      _xblockexpression = _xifexpression;
-    }
-    return _xblockexpression;
+    throw new Error("Unresolved compilation problems:"
+      + "\nresolverse cannot be resolved"
+      + "\njugador cannot be resolved"
+      + "\ncalificacion cannot be resolved"
+      + "\njugador cannot be resolved"
+      + "\ncalificacion cannot be resolved"
+      + "\ntarjetaGanador cannot be resolved"
+      + "\njugador cannot be resolved"
+      + "\nnombreJugador cannot be resolved");
   }
   
   public ControladorDenuncia comenzarDenuncia() {
-    Jugador _jugador = this.t1.getJugador();
-    Jugador _jugador_1 = this.t2.getJugador();
-    return new ControladorDenuncia(this.del, _jugador, _jugador_1);
+    throw new Error("Unresolved compilation problems:"
+      + "\njugador cannot be resolved"
+      + "\njugador cannot be resolved");
   }
   
   @Pure

@@ -1,25 +1,20 @@
 package controladores;
 
-import Jugador.Estadisticas;
-import Jugador.Jugador;
-import Personaje.Personaje;
-import TarjetaDeDuelo.Linea;
-import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
-import org.uqbar.commons.utils.TransactionalAndObservable;
 
-@Accessors
-@TransactionalAndObservable
+@Accessors/* 
+@TransactionalAndObservable */
 @SuppressWarnings("all")
 public class ControladorEstadisticas {
-  private Jugador jugador;
+  private /* //de control de jugador
+  	Jugador */Object jugador;
   
-  private List<Estadisticas> estadisticas;
+  private /* List<Estadisticas> */Object estadisticas;
   
-  private Estadisticas estadisticaSeleccionada;
+  private /* Estadisticas */Object estadisticaSeleccionada;
   
   private String nombrePersonaje;
   
@@ -33,70 +28,53 @@ public class ControladorEstadisticas {
   
   private Integer victorias;
   
-  private Linea mejorLinea;
+  private /* Linea */Object mejorLinea;
   
-  private List<Linea> ubicaciones = new ArrayList<Linea>();
+  private /* List<Linea> */Object ubicaciones /* Skipped initializer because of errors */;
   
   private double calificacionEnDuelo;
   
-  public ControladorEstadisticas(final Jugador jugador) {
+  public ControladorEstadisticas(final /* Jugador */Object jugador) {
     this.jugador = jugador;
   }
   
-  public String getNombreJugador() {
-    return this.jugador.getNombreJugador();
+  public Object getNombreJugador() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nnombreJugador cannot be resolved");
   }
   
   public ArrayList<String> getNombreEstadisticas() {
-    final ArrayList<String> nombres = new ArrayList<String>();
-    List<Estadisticas> _estadisticas = this.jugador.getEstadisticas();
-    for (final Estadisticas es : _estadisticas) {
-      Personaje _personaje = es.getPersonaje();
-      String _nombre = _personaje.getNombre();
-      nombres.add(_nombre);
-    }
-    return nombres;
+    throw new Error("Unresolved compilation problems:"
+      + "\nEstadisticas cannot be resolved to a type."
+      + "\nestadisticas cannot be resolved"
+      + "\npersonaje cannot be resolved"
+      + "\nnombre cannot be resolved");
   }
   
-  public List<Estadisticas> getEstadisticas() {
-    return this.jugador.getEstadisticas();
+  public Object getEstadisticas() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nestadisticas cannot be resolved");
   }
   
   public Estadisticas getEstadisticaPersonaje() {
-    Estadisticas est = null;
-    List<Estadisticas> _estadisticas = this.getEstadisticas();
-    for (final Estadisticas s : _estadisticas) {
-      Personaje _personaje = s.getPersonaje();
-      String _nombre = _personaje.getNombre();
-      boolean _equals = Objects.equal(_nombre, this.nombrePersonaje);
-      if (_equals) {
-        est = s;
-      }
-    }
-    return est;
+    throw new Error("Unresolved compilation problems:"
+      + "\nEstadisticas cannot be resolved to a type."
+      + "\nEstadisticas cannot be resolved to a type."
+      + "\npersonaje cannot be resolved"
+      + "\nnombre cannot be resolved"
+      + "\n== cannot be resolved");
   }
   
-  public double actualizar(final Estadisticas estadisticas) {
-    double _xblockexpression = (double) 0;
-    {
-      int _vecesQueInicio = estadisticas.getVecesQueInicio();
-      this.vecesQueInicio = Integer.valueOf(_vecesQueInicio);
-      int _kills = estadisticas.getKills();
-      this.kills = Integer.valueOf(_kills);
-      int _deads = estadisticas.getDeads();
-      this.deads = Integer.valueOf(_deads);
-      int _assists = estadisticas.getAssists();
-      this.assist = Integer.valueOf(_assists);
-      int _victorias = estadisticas.getVictorias();
-      this.victorias = Integer.valueOf(_victorias);
-      Linea _mejorLinea = estadisticas.getMejorLinea();
-      this.mejorLinea = _mejorLinea;
-      List<Linea> _ubicaciones = estadisticas.getUbicaciones();
-      this.ubicaciones = _ubicaciones;
-      double _calificacionEnDuelo = estadisticas.getCalificacionEnDuelo();
-      _xblockexpression = this.calificacionEnDuelo = _calificacionEnDuelo;
-    }
-    return _xblockexpression;
+  public double actualizar(final /* Estadisticas */Object estadisticas) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nvecesQueInicio cannot be resolved"
+      + "\nkills cannot be resolved"
+      + "\ndeads cannot be resolved"
+      + "\nassists cannot be resolved"
+      + "\nvictorias cannot be resolved"
+      + "\nmejorLinea cannot be resolved"
+      + "\nubicaciones cannot be resolved"
+      + "\ncalificacionEnDuelo cannot be resolved");
   }
   
   public Object seleccionar() {
@@ -104,16 +82,12 @@ public class ControladorEstadisticas {
   }
   
   public void abrirEstadistica() {
-    List<Estadisticas> _estadisticas = this.jugador.getEstadisticas();
-    for (final Estadisticas est : _estadisticas) {
-      Personaje _personaje = est.getPersonaje();
-      String _nombre = _personaje.getNombre();
-      boolean _equals = Objects.equal(_nombre, this.nombrePersonaje);
-      if (_equals) {
-        this.actualizar(est);
-        this.setEstadisticaSeleccionada(est);
-      }
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nEstadisticas cannot be resolved to a type."
+      + "\nestadisticas cannot be resolved"
+      + "\npersonaje cannot be resolved"
+      + "\nnombre cannot be resolved"
+      + "\n== cannot be resolved");
   }
   
   public void setNombrePersonaje(final String nombrePersonaje) {
@@ -121,21 +95,23 @@ public class ControladorEstadisticas {
     this.abrirEstadistica();
   }
   
-  public void setEstadisticaSeleccionada(final Estadisticas s) {
+  public void setEstadisticaSeleccionada(final /* Estadisticas */Object s) {
     this.estadisticaSeleccionada = s;
     this.actualizar(s);
   }
   
   @Pure
-  public Jugador getJugador() {
+  public //de control de jugador
+  	Jugador getJugador() {
     return this.jugador;
   }
   
-  public void setJugador(final Jugador jugador) {
+  public void setJugador(final //de control de jugador
+  	Jugador jugador) {
     this.jugador = jugador;
   }
   
-  public void setEstadisticas(final List<Estadisticas> estadisticas) {
+  public void setEstadisticas(final /* List<Estadisticas> */Object estadisticas) {
     this.estadisticas = estadisticas;
   }
   
@@ -204,11 +180,11 @@ public class ControladorEstadisticas {
   }
   
   @Pure
-  public List<Linea> getUbicaciones() {
+  public /* List<Linea> */Object getUbicaciones() {
     return this.ubicaciones;
   }
   
-  public void setUbicaciones(final List<Linea> ubicaciones) {
+  public void setUbicaciones(final /* List<Linea> */Object ubicaciones) {
     this.ubicaciones = ubicaciones;
   }
   

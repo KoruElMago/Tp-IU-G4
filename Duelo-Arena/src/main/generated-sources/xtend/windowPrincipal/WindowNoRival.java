@@ -1,19 +1,79 @@
 package windowPrincipal;
 
-import org.uqbar.arena.widgets.Panel;
-import org.uqbar.arena.windows.MainWindow;
-
 @SuppressWarnings("all")
-public class WindowNoRival extends MainWindow<Object> {
+public class WindowNoRival /* implements MainWindow<Object>  */{
   public WindowNoRival(final Object model) {
-    super(model);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method super is undefined for the type WindowNoRival");
   }
   
-  public void createContents(final Panel panel) {
+  public Object createContents(final /* Panel */Object panel) {
     throw new Error("Unresolved compilation problems:"
+      + "\nThe method setTitle is undefined for the type WindowNoRival"
+      + "\nVerticalLayout cannot be resolved."
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowNoRival"
+      + "\nThe method or field width is undefined for the type WindowNoRival"
+      + "\nThe method or field height is undefined for the type WindowNoRival"
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowNoRival"
+      + "\nThe method or field width is undefined for the type WindowNoRival"
+      + "\nThe method or field height is undefined for the type WindowNoRival"
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowNoRival"
+      + "\nThe method or field width is undefined for the type WindowNoRival"
+      + "\nThe method or field height is undefined for the type WindowNoRival"
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowNoRival"
+      + "\nThe method or field width is undefined for the type WindowNoRival"
+      + "\nThe method or field height is undefined for the type WindowNoRival"
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowNoRival"
+      + "\nThe method or field width is undefined for the type WindowNoRival"
+      + "\nThe method or field height is undefined for the type WindowNoRival"
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowNoRival"
+      + "\nThe method or field width is undefined for the type WindowNoRival"
+      + "\nThe method or field height is undefined for the type WindowNoRival"
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowNoRival"
+      + "\nThe method or field width is undefined for the type WindowNoRival"
+      + "\nThe method or field height is undefined for the type WindowNoRival"
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowNoRival"
+      + "\nThe method or field width is undefined for the type WindowNoRival"
+      + "\nThe method or field height is undefined for the type WindowNoRival"
+      + "\nPanel cannot be resolved."
+      + "\nHorizontalLayout cannot be resolved."
       + "\nColumnLayout cannot be resolved."
+      + "\nButton cannot be resolved."
+      + "\nThe method or field caption is undefined for the type WindowNoRival"
+      + "\nThe method or field onClick is undefined for the type WindowNoRival"
       + "\nThe method accept is undefined for the type WindowNoRival"
+      + "\nThe method or field width is undefined for the type WindowNoRival"
+      + "\nButton cannot be resolved."
+      + "\nThe method or field caption is undefined for the type WindowNoRival"
+      + "\nThe method or field onClick is undefined for the type WindowNoRival"
       + "\nThe method cancel is undefined for the type WindowNoRival"
-      + "\nThe method accept is undefined for the type WindowNoRival");
+      + "\nThe method or field width is undefined for the type WindowNoRival"
+      + "\nButton cannot be resolved."
+      + "\nThe method or field caption is undefined for the type WindowNoRival"
+      + "\nThe method or field onClick is undefined for the type WindowNoRival"
+      + "\nThe method accept is undefined for the type WindowNoRival"
+      + "\nThe method or field width is undefined for the type WindowNoRival"
+      + "\nsetLayout cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\nsetLayout cannot be resolved"
+      + "\nlayout cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved");
   }
 }

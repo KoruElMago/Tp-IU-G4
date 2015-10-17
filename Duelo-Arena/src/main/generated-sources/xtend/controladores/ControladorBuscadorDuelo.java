@@ -1,26 +1,27 @@
 package controladores;
 
-import Core.DueloEntreLeyendas;
-import Duelo.Duelo;
-import TarjetaDeDuelo.TarjetaDeDuelo;
 import controladores.ControladorDuelo;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
-import org.uqbar.commons.utils.TransactionalAndObservable;
 
-@Accessors
-@TransactionalAndObservable
+@Accessors/* 
+@TransactionalAndObservable */
 @SuppressWarnings("all")
 public class ControladorBuscadorDuelo {
-  private DueloEntreLeyendas del;
+  private /* DueloEntreLeyendas */Object del;
   
-  private TarjetaDeDuelo tarjetaUsuario;
+  private /* //Usuario usuario
+  	//List<Linea> lineas
+  	//List<Personaje> personajes
+  	//Personaje personajeElegido
+  	//Linea lineaElegida
+  	TarjetaDeDuelo */Object tarjetaUsuario;
   
-  private TarjetaDeDuelo tarjetaRetador;
+  private /* TarjetaDeDuelo */Object tarjetaRetador;
   
   private String textoAMostrar;
   
-  public ControladorBuscadorDuelo(final DueloEntreLeyendas del, final TarjetaDeDuelo us, final TarjetaDeDuelo retador, final String text) {
+  public ControladorBuscadorDuelo(final /* DueloEntreLeyendas */Object del, final /* TarjetaDeDuelo */Object us, final /* TarjetaDeDuelo */Object retador, final String text) {
     this.del = del;
     this.tarjetaUsuario = us;
     this.textoAMostrar = text;
@@ -28,8 +29,9 @@ public class ControladorBuscadorDuelo {
   }
   
   public ControladorDuelo aceptarDuelo() {
-    Duelo duelo = new Duelo(this.tarjetaUsuario, this.tarjetaRetador);
-    return new ControladorDuelo(duelo, this.del);
+    throw new Error("Unresolved compilation problems:"
+      + "\nDuelo cannot be resolved to a type."
+      + "\nDuelo cannot be resolved.");
   }
   
   @Pure
@@ -42,11 +44,21 @@ public class ControladorBuscadorDuelo {
   }
   
   @Pure
-  public TarjetaDeDuelo getTarjetaUsuario() {
+  public //Usuario usuario
+  	//List<Linea> lineas
+  	//List<Personaje> personajes
+  	//Personaje personajeElegido
+  	//Linea lineaElegida
+  	TarjetaDeDuelo getTarjetaUsuario() {
     return this.tarjetaUsuario;
   }
   
-  public void setTarjetaUsuario(final TarjetaDeDuelo tarjetaUsuario) {
+  public void setTarjetaUsuario(final //Usuario usuario
+  	//List<Linea> lineas
+  	//List<Personaje> personajes
+  	//Personaje personajeElegido
+  	//Linea lineaElegida
+  	TarjetaDeDuelo tarjetaUsuario) {
     this.tarjetaUsuario = tarjetaUsuario;
   }
   

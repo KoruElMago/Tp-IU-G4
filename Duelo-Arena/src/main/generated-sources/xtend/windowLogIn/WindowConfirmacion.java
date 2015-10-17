@@ -1,26 +1,73 @@
 package windowLogIn;
 
-import org.uqbar.arena.widgets.Panel;
-import org.uqbar.arena.windows.MainWindow;
-
 @SuppressWarnings("all")
-public class WindowConfirmacion /* extends /* MainWindow<Controlador> */  */{
+public class WindowConfirmacion /* implements MainWindow<Controlador>  */{
   public WindowConfirmacion(final Object model) {
-    super(model);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method super is undefined for the type WindowConfirmacion");
   }
   
-  public void createContents(final Panel panel) {
+  public Object createContents(final /* Panel */Object panel) {
     throw new Error("Unresolved compilation problems:"
       + "\nmismatched input \'<EOF>\' expecting \'}\'"
+      + "\nThe method setTitle is undefined for the type WindowConfirmacion"
+      + "\nVerticalLayout cannot be resolved."
+      + "\nLabel cannot be resolved."
       + "\nThe method or field panelUsuario is undefined for the type WindowConfirmacion"
+      + "\nThe method setText is undefined for the type WindowConfirmacion"
+      + "\nThe method or field width is undefined for the type WindowConfirmacion"
+      + "\nTextBox cannot be resolved."
       + "\nThe method or field panelUsuario is undefined for the type WindowConfirmacion"
+      + "\nThe method or field width is undefined for the type WindowConfirmacion"
+      + "\nThe method bindValueToProperty is undefined for the type WindowConfirmacion"
+      + "\nPanel cannot be resolved."
+      + "\nHorizontalLayout cannot be resolved."
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowConfirmacion"
+      + "\nThe method or field width is undefined for the type WindowConfirmacion"
+      + "\nTextBox cannot be resolved."
+      + "\nThe method or field width is undefined for the type WindowConfirmacion"
+      + "\nThe method or field width is undefined for the type WindowConfirmacion"
+      + "\nThe method bindValueToProperty is undefined for the type WindowConfirmacion"
+      + "\nLabel cannot be resolved."
+      + "\nThe method setText is undefined for the type WindowConfirmacion"
+      + "\nThe method or field width is undefined for the type WindowConfirmacion"
+      + "\nTextBox cannot be resolved."
+      + "\nThe method or field width is undefined for the type WindowConfirmacion"
+      + "\nThe method or field width is undefined for the type WindowConfirmacion"
+      + "\nThe method bindValueToProperty is undefined for the type WindowConfirmacion"
+      + "\nPanel cannot be resolved."
+      + "\nHorizontalLayout cannot be resolved."
+      + "\nColumnLayout cannot be resolved."
+      + "\nButton cannot be resolved."
+      + "\nThe method or field caption is undefined for the type WindowConfirmacion"
+      + "\nThe method or field onClick is undefined for the type WindowConfirmacion"
+      + "\nThe method or field modelObject is undefined for the type WindowConfirmacion"
       + "\nThe method or field mensaje is undefined for the type WindowConfirmacion"
+      + "\nThe method modelObject is undefined for the type WindowConfirmacion"
       + "\nThe method accept is undefined for the type WindowConfirmacion"
+      + "\nThe method or field modelObject is undefined for the type WindowConfirmacion"
       + "\nThe method or field mensaje is undefined for the type WindowConfirmacion"
+      + "\nButton cannot be resolved."
+      + "\nThe method or field caption is undefined for the type WindowConfirmacion"
+      + "\nThe method or field onClick is undefined for the type WindowConfirmacion"
       + "\nThe method cancel is undefined for the type WindowConfirmacion"
-      + "\nThe field onClick is not visible"
+      + "\nThe method or field width is undefined for the type WindowConfirmacion"
+      + "\nsetLayout cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\nsetLayout cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\nsetLayout cannot be resolved"
+      + "\nlayout cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\n=> cannot be resolved"
       + "\ncontraseñaValida cannot be resolved"
       + "\nnombre cannot be resolved"
-      + "\nperdioElJuego cannot be resolved");
+      + "\nperdioElJuego cannot be resolved"
+      + "\n=> cannot be resolved");
   }
 }

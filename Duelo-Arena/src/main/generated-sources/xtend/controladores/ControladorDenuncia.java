@@ -1,54 +1,39 @@
 package controladores;
 
-import Core.DueloEntreLeyendas;
-import Denuncia.AbusoHabilDenuncia;
-import Denuncia.ComAbusivaDenuncia;
-import Denuncia.Denuncia;
-import Denuncia.FeedIntencionalDenuncia;
-import Denuncia.TipoDenuncia;
-import Jugador.Jugador;
 import controladores.ControladorDenunciaEnviada;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
-import org.uqbar.commons.utils.TransactionalAndObservable;
 
-@TransactionalAndObservable
-@Accessors
+/* @TransactionalAndObservable */@Accessors
 @SuppressWarnings("all")
 public class ControladorDenuncia {
-  private DueloEntreLeyendas del;
+  private /* DueloEntreLeyendas */Object del;
   
-  private Jugador denunciante;
+  private /* Jugador */Object denunciante;
   
-  private Jugador denunciado;
+  private /* Jugador */Object denunciado;
   
-  private TipoDenuncia motivo;
+  private /* TipoDenuncia */Object motivo;
   
-  private List<TipoDenuncia> motivos = new ArrayList<TipoDenuncia>();
+  private /* List<TipoDenuncia> */Object motivos = new ArrayList<TipoDenuncia>();
   
   private String detalles;
   
   private String nombreDenunciado;
   
-  public ControladorDenuncia(final DueloEntreLeyendas del, final Jugador denunciante, final Jugador denunciado) {
-    this.del = del;
-    this.denunciado = denunciado;
-    this.denunciante = denunciante;
-    AbusoHabilDenuncia _abusoHabilDenuncia = new AbusoHabilDenuncia();
-    this.motivos.add(_abusoHabilDenuncia);
-    ComAbusivaDenuncia _comAbusivaDenuncia = new ComAbusivaDenuncia();
-    this.motivos.add(_comAbusivaDenuncia);
-    FeedIntencionalDenuncia _feedIntencionalDenuncia = new FeedIntencionalDenuncia();
-    this.motivos.add(_feedIntencionalDenuncia);
-    String _nombreJugador = denunciado.getNombreJugador();
-    this.nombreDenunciado = _nombreJugador;
+  public ControladorDenuncia(final /* DueloEntreLeyendas */Object del, final /* Jugador */Object denunciante, final /* Jugador */Object denunciado) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nAbusoHabilDenuncia cannot be resolved."
+      + "\nComAbusivaDenuncia cannot be resolved."
+      + "\nFeedIntencionalDenuncia cannot be resolved."
+      + "\nnombreJugador cannot be resolved");
   }
   
   public ControladorDenunciaEnviada crearDenuncia() {
-    final Denuncia denuncia = new Denuncia(this.detalles, this.motivo, this.denunciante, this.denunciado);
-    return new ControladorDenunciaEnviada(this.del, denuncia);
+    throw new Error("Unresolved compilation problems:"
+      + "\nDenuncia cannot be resolved.");
   }
   
   @Pure
@@ -88,11 +73,11 @@ public class ControladorDenuncia {
   }
   
   @Pure
-  public List<TipoDenuncia> getMotivos() {
+  public /* List<TipoDenuncia> */Object getMotivos() {
     return this.motivos;
   }
   
-  public void setMotivos(final List<TipoDenuncia> motivos) {
+  public void setMotivos(final /* List<TipoDenuncia> */Object motivos) {
     this.motivos = motivos;
   }
   
