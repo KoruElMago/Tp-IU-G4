@@ -25,6 +25,10 @@ public abstract class Denuncia {
     this.caracteresMinimos = 20;
   }
   
+  public int getPeso() {
+    return this.peso;
+  }
+  
   public Object validar() {
     Object _xblockexpression = null;
     {
@@ -63,11 +67,6 @@ public abstract class Denuncia {
       _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
-  }
-  
-  @Pure
-  public int getPeso() {
-    return this.peso;
   }
   
   public void setPeso(final int peso) {

@@ -23,7 +23,7 @@ class Jugador {
 	def calcularPesoDenuncias(){
 		var pesoTot = 0
 		for(Denuncia d: denuncias){
-			pesoTot = pesoTot + d.peso	
+			pesoTot = pesoTot + d.peso;	
 		}
 		return pesoTot;
 	}

@@ -19,7 +19,9 @@ abstract class  Denuncia {
 		caracteresMinimos = 20;
 	}
 	
-		
+	def getPeso(){
+		return peso;
+	}	
 	def validar() {
 	var ant = " "
 	var cont = 0	
