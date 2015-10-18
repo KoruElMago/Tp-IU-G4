@@ -19,8 +19,23 @@ public class Jugador {
     this.duelosGanados = Integer.valueOf(0);
   }
   
-  public Object calcularRaiting() {
-    return null;
+  public int calcularRaiting() {
+    int _calcularPesoDenuncias = this.calcularPesoDenuncias();
+    return ((this.duelosGanados).intValue() * _calcularPesoDenuncias);
+  }
+  
+  public int calcularPesoDenuncias() {
+    int pesoTot = 0;
+    for (final Denuncia d : this.denuncias) {
+      int _peso = d.getPeso();
+      int _plus = (pesoTot + _peso);
+      pesoTot = _plus;
+    }
+    return pesoTot;
+  }
+  
+  public Integer gano() {
+    return this.duelosGanados++;
   }
   
   @Pure

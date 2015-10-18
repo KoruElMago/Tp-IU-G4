@@ -17,6 +17,18 @@ class Jugador {
 	}
 	
 	def calcularRaiting(){
-		
+		return(duelosGanados * this.calcularPesoDenuncias());
+	}
+	
+	def calcularPesoDenuncias(){
+		var pesoTot = 0
+		for(Denuncia d: denuncias){
+			pesoTot = pesoTot + d.peso	
+		}
+		return pesoTot;
+	}
+	
+	def gano(){
+		duelosGanados++
 	}
 }

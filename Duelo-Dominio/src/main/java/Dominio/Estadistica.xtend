@@ -38,6 +38,7 @@ class Estadistica {
 		ubicacion = linea;
 		posiciones.add(linea);
 		victorias++;
+		jugador.gano()
 	}
 	
 	def perdio(Linea linea){

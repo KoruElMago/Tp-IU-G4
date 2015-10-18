@@ -45,12 +45,13 @@ public class Estadistica {
     this.calificacion = 0;
   }
   
-  public float gano(final Linea linea) {
-    float _xblockexpression = (float) 0;
+  public Integer gano(final Linea linea) {
+    Integer _xblockexpression = null;
     {
       this.ubicacion = linea;
       this.posiciones.add(linea);
-      _xblockexpression = this.victorias++;
+      this.victorias++;
+      _xblockexpression = this.jugador.gano();
     }
     return _xblockexpression;
   }

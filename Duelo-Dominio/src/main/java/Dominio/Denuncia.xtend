@@ -6,7 +6,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 abstract class  Denuncia {
 	
-	Integer peso;
+	int peso;
 	String descripcion;
 	int palabrasMinimas;
 	int caracteresMinimos;
@@ -19,10 +19,7 @@ abstract class  Denuncia {
 		caracteresMinimos = 20;
 	}
 	
-	
-	
-	
-	
+		
 	def validar() {
 	var ant = " "
 	var cont = 0	
