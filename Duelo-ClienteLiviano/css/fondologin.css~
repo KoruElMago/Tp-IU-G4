@@ -1,6 +1,6 @@
 
 body {
-    background-image: url(image/winter.gif);
+    background-image: url(image/zyra.gif);
     background-repeat: no-repeat center center fixed;
     background-position: left top;
     background-size: 103%;
