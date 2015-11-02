@@ -1,145 +1,34 @@
-<!DOCTYPE html>
-<html class="full" lang="en">
-<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+html {
+  	 background: url(../fonts/image/fondo_index.gif) no-repeat fixed center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100%;
+}
+.titulo{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.panel-estadisticas{
+	margin-top: 50px;
+    border-top: 3px solid green;
+    border-bottom: 3px double green;
+	border-bottom-style: dotted;
+	border-top-style: dotted;
+}
+.buffer{
+	margin-right: 100px;
+}
+.ndp{
+	background-color: black;
+	color: white;
+	text-align: center;
+	width: 306px;
+}
+.stats{
+	text-align: center;
+}
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>The Big Picture - Start Bootstrap Template</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-
-   <h1 class="titulo" align="center" style="background-color: transparent">Elige tu Personaje</h1>
-  
-  <div class="row" style="background-color: transparent">
-    <div class="col-md-2">
-      imagen Perfil
-      <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" align="center" width="96" height="96"/>
-    </div>
-    <div class="col-md-6">
-       <span class="label label-success" >// bind nombre de usuario Logueado</span>
-    </div>
-    <div class="col-md-2">
-      <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" align="center" width="96" height="96" />
-      clasificacion General
-    </div>
-    <div class="col-md-2">
-       
-      <button type="button" class="btn btn-block btn-danger" align="center">
-        Cerrar Sesion
-      </button>
-    </div>
-  </div>    
-
-
-  <div class="row">
-
-        <div class="col-md-2" align="right" padding-top="50px;" >
-             <ul class="list-unstyled">
-                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
-                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
-                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
-                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
-             </ul>
-        </div>
-        <div class="col-md-2" aling="left">
-              <ol class="list-unstyled">
-                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
-                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
-                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
-                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
-             </ol>
-        </div>
-
-    <div class="col-md-4" align="center">
-      <h3 class="ndp">
-        //nombre personaje bind
-      </h3>
-      <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="306" height="560" />
-    </div>
-    <div class="col-md-4">
-      <div class="panel-especialidades">
-         <span class="label label-default">Especialidades :</span>
-         <p class="text-right"> //to bind </p>
-
-         <span class="label label-default">Debilidad :</span>
-         <p class="text-right"> //to bind  </p>
-
-         <span class="label label-default">Mejor Posicion :</span>
-         <p class="text-right"> //to bind </p>
-      </div>
-
-      <div class="panel-botones">
-         <button type="button" class="btn btn-primary btn-block btn-sm">
-          Top
-         </button>
-
-         <button type="button" class="btn btn-primary btn-block btn-sm">
-          Jungle
-         </button> 
-         <button type="button" class="btn btn-sm btn-block btn-primary">
-          Mid
-         </button> 
-         <button type="button" class="btn btn-sm btn-primary btn-block">
-          Bottom
-         </button>
-      </div>
-
-      <div class="panel-estadisticas">
-        <h3 class="stats">Stats</h3>
-       <table class="table">
-        <tbody>
-          <TR><TH>Jugadas</TH>
-              <TD>//to bind</TD> 
-          <TR><TH>Ganadas</TH>
-              <TD>//to bind</TD> 
-          <TR><TH>Kills</TH>
-              <TD>//to bind</TD> 
-          <TR><TH>Deads</TH>
-              <TD>//to bind</TD> 
-          <TR><TH>Assist</TH>
-              <TD>//to bind</TD> 
-          <TR><TH>Mejor Ubicacion</TH>
-              <TD>//to bind</TD>
-          <TR><TH>Puntaje</TH>
-              <TD>//to bind</TD>
-        </tbody>
-       </table>
-      </div>
-    </div>
-  </div>
-
-
-
-  
-    <!-- /.container -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+body {
+  background:none;
+}
