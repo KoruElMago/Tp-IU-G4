@@ -6,111 +6,98 @@
   <link rel="stylesheet" href="css/app.css"/>
   <link rel="stylesheet"
 	href="css/style.css">
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
   <!-- Importamos los archivos extras que vamos a usar -->
   <script src="js/app.js"></script>  
   <script src="js/service.js"></script>  
   <script src="js/controllers.js"></script>  
 
+
+
   <!-- Agregamos angular para que funcione  -->
   <script src="lib/angular.js"></script>
 
   <h1 class="titulo" align="center">Elige tu Personaje</h1>
-  <div class="listaDePersonaje">
   	
-  	
-  <div class="panelDer">
-  		
-  		<ul>
-  			<li><a href="#"><img src="/home/koru/Imágenes/ProfileIcon_Diana.png" border="0" alt=""/><br /></a></li>
-  		
-  			<li><a href="#"><img src="/home/koru/Imágenes/Grand_Master_Beta_Tester.jpg" border="0" alt=""/><br /></a></li>
-  		
-  			<li><a href="#"><img src="/home/koru/Imágenes/Azir.Powsta cie!.png" style=" width:128px " alt=""/><br /></a></li>
-  		
-  			<li><a href="#"><img src="/home/koru/Imágenes/ProfileIcon_Diana.png" border="0" alt=""/><br /></a></li>
-  		
-  			<li><a href="#"><img src="/home/koru/Imágenes/ProfileIcon_Diana.png" border="0" alt=""/><br /></a></li>
-  		</ul>
+  <div class="row">
+    ::before
+    <div class="col-md-2" >
+         <ul class="list-unstyled">
+            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
+            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
+            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
+            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
+         </ul>
+    </div>
+    <div class="col-md-2">
+      <ol>
+        <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
+            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
+            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
+            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
+      </ol>
+    </div>
+    <div class="col-md-4" align="center">
+      <h3 class="ndp">
+        //nombre personaje bind
+      </h3>
+      <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="306" height="560" />
+    </div>
+    <div class="col-md-4">
+      <div class="panel-especialidades">
+         <span class="label label-default">Especialidades :</span>
+         <p class="text-right"> //to bind </p>
+
+         <span class="label label-default">Debilidad :</span>
+         <p class="text-right"> //to bind  </p>
+
+         <span class="label label-default">Mejor Posicion :</span>
+         <p class="text-right"> //to bind </p>
+      </div>
+
+      <div class="panel-botones">
+         <button type="button" class="btn btn-primary btn-block btn-sm">
+          Top
+         </button>
+
+         <button type="button" class="btn btn-primary btn-block btn-sm">
+          Jungle
+         </button> 
+         <button type="button" class="btn btn-sm btn-block btn-primary">
+          Mid
+         </button> 
+         <button type="button" class="btn btn-sm btn-primary btn-block">
+          Bottom
+         </button>
+      </div>
+
+      <div class="panel-estadisticas">
+        <h3 class="stats">Stats</h3>
+       <table class="table">
+        <tbody>
+          <TR><TH>Jugadas</TH>
+              <TD>//to bind</TD> 
+          <TR><TH>Ganadas</TH>
+              <TD>//to bind</TD> 
+          <TR><TH>Kills</TH>
+              <TD>//to bind</TD> 
+          <TR><TH>Deads</TH>
+              <TD>//to bind</TD> 
+          <TR><TH>Assist</TH>
+              <TD>//to bind</TD> 
+          <TR><TH>Mejor Ubicacion</TH>
+              <TD>//to bind</TD>
+          <TR><TH>Puntaje</TH>
+              <TD>//to bind</TD>
+        </tbody>
+       </table>
+      </div>
+    </div>
   </div>
 
-  <div class="panelIzq">
-  		<div class="Especialidades">
-  				<h3 class="esp">Especialidades:</h3>
-  				<p> //proximamente solo en binding
-  					
-  				</p>
-  		</div>
-  		<div class="Debilidades">
-  				<h3 class="deb">Debilidad:</h3>
-  				<p> //proximamente solo en binding
-  					
-  				</p>
-  		</div>
-  		<div class="Posicion">
-  				<h3 class="esp">Mejor Posicion:</h3>
-  				<p> //proximamente solo en binding
-  					
-  				</p>
-  		</div>
-  		
-  		<div class="botonera"  align="center">
-  				<h3 class="jugar">Jugar!</h3>
-  				<div class="boton1" align="center">
-						<button style="width:100%;" class="btn btn-primary" type="submit">Jungle</button>
-  				</div>
-  			
-  				<div class="boton2" align="center">
-						<button style="width:100%;" class="btn btn-primary" type="submit">Mid</button>
-  				</div>
-  			
-  				<div class="boton3" align="center">
-						<button  style="width:100%;"class="btn btn-primary" type="submit">Top</button>
-  				</div>
 
-	  			<div class="boton4" align="center">
-						<button style="width:100%;" class="btn btn-primary" type="submit">Bottom</button>
-  				</div>
 
-  		</div>
-
-  		<div class="estadisticas">
-  				<h3 class="estTit" align="center">Stats</h3>
-  				<table>
-  					<tbody>
-  						<tr>
-  							<td>Jugadas</td>
-  							<th>// to bind</th>
-  						</tr>
-  						<tr>
-  							<td>Ganadas</td>
-  							<th>// to bind</th>
-  						</tr>
-  						<tr>
-  							<td>Kills</td>
-  							<th>// to bind</th>
-  						</tr>
-  						<tr>
-  							<td>Deads</td>
-  							<th>// to bind</th>
-  						</tr>
-  						<tr>
-  							<td>Assists</td>
-  							<th>// to bind</th>
-  						</tr>
-  						<tr>
-  							<td>Mejor Ubicacion</td>
-  							<th>// to bind</th>
-  						</tr>
-  						<tr>
-  							<td>Puntaje</td>
-  							<th>// to bind</th>
-  						</tr>
-  					</tbody>
-  				</table>
-  					
-  		</div>
-  
-  </div>
   
 </head>
 
