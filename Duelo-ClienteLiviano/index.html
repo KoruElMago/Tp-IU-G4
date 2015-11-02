@@ -1,43 +1,76 @@
-<!doctype html>
-<html lang="en" ng-app="librosApp">
+<!DOCTYPE html>
+<html class="full" lang="en">
+<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+
 <head>
-  <meta charset="utf-8">
-  <title>Duelo Entre Leyendas</title>
-  <link rel="stylesheet" href="css/app.css"/>
-  <link rel="stylesheet"
-	href="css/style.css">
 
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- Importamos los archivos extras que vamos a usar -->
-  <script src="js/app.js"></script>  
-  <script src="js/service.js"></script>  
-  <script src="js/controllers.js"></script>  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
+    <title>The Big Picture - Start Bootstrap Template</title>
 
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Agregamos angular para que funcione  -->
-  <script src="lib/angular.js"></script>
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
 
-  <h1 class="titulo" align="center">Elige tu Personaje</h1>
-  	
-  <div class="row">
-    ::before
-    <div class="col-md-2" >
-         <ul class="list-unstyled">
-            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
-            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
-            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
-            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
-         </ul>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+   <h1 class="titulo" align="center" style="background-color: transparent">Elige tu Personaje</h1>
+  
+  <div class="row" style="background-color: transparent">
+    <div class="col-md-2">
+      imagen Perfil
+      <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" align="center" width="96" height="96"/>
+    </div>
+    <div class="col-md-6">
+       <span class="label label-success" >// bind nombre de usuario Logueado</span>
     </div>
     <div class="col-md-2">
-      <ol class="list-unstyled">
-        <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
-            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
-            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
-            <li> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" /></li>
-      </ol>
+      <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" align="center" width="96" height="96" />
+      clasificacion General
     </div>
+    <div class="col-md-2">
+       
+      <button type="button" class="btn btn-block btn-danger" align="center">
+        Cerrar Sesion
+      </button>
+    </div>
+  </div>    
+
+
+  <div class="row">
+
+        <div class="col-md-2" align="right" padding-top="50px;" >
+             <ul class="list-unstyled">
+                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
+                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
+                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
+                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
+             </ul>
+        </div>
+        <div class="col-md-2" aling="left">
+              <ol class="list-unstyled">
+                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
+                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
+                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
+                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
+             </ol>
+        </div>
+
     <div class="col-md-4" align="center">
       <h3 class="ndp">
         //nombre personaje bind
@@ -99,9 +132,14 @@
 
 
   
-</head>
+    <!-- /.container -->
 
-		
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
 
 </html>
-
