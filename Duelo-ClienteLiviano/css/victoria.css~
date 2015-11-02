@@ -1,5 +1,5 @@
 body {
-    background-image: url(image/Jinx2.jpg);
+    background-image: url(image/jinx.jpg);
     background-repeat: no-repeat center center fixed;
     background-position: right top;
 
