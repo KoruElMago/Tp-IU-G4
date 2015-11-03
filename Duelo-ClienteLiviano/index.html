@@ -25,6 +25,14 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+		<SCRIPT LANGUAGE="JavaScript">
+		mi_imagen2=new Image
+		var i=1;
+		function cambia_imagen(name) { 
+			mi_imagen2.src= "css/image/"+name+"_panel.jpg"                 
+			document.images['prueba'].src=mi_imagen2.src
+	    }
+		</script>
 </head>
 
 <body>
@@ -56,10 +64,25 @@
 
         <div class="col-md-2" align="right" padding-top="50px;" >
              <ul class="list-unstyled">
-                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
-                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
-                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
-                <li class="icono"> <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="128" height="128"/></li>
+                <li class="icono"> <img onclick="cambia_imagen('kayle')"
+                						alt="Bootstrap Image Preview" 
+                						src="css/image/kayle_icon.jpg" 
+                						width="128" height="128"/>
+                </li>
+                <li class="icono"> <img onclick="cambia_imagen('invoker')"
+                						alt="Bootstrap Image Preview" 
+                						src="css/image/invoker_icon.jpg" 
+                						width="128" height="128"/></li>
+
+                <li class="icono"> <img onclick="cambia_imagen('crystal-maiden')"
+                						alt="Bootstrap Image Preview" 
+                						src="css/image/crystal-maiden_icon.jpg" 
+                						width="128" height="128"/></li>
+
+                <li class="icono"> <img onclick="cambia_imagen('fiddlesticks')"
+                						alt="Bootstrap Image Preview" 
+                						src="css/image/fiddlesticks_icon.jpg" 
+                						width="128" height="128"/></li>
              </ul>
         </div>
         <div class="col-md-2" aling="left">
@@ -75,7 +98,8 @@
       <h3 class="ndp">
         //nombre personaje bind
       </h3>
-      <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="306" height="560" />
+      <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="306" height="560" 
+      	   name="prueba" />
     </div>
     <div class="col-md-4">
       <div class="panel-especialidades">

@@ -1,9 +1,9 @@
 html {
-  	 background: url(../fonts/image/fondo_index.gif) no-repeat fixed center;
+  	 background: url(image/fondo_index3.gif) no-repeat fixed center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: 100%;
+    background-size: auto 100%;
 }
 .titulo{
 	margin-top: 50px;
