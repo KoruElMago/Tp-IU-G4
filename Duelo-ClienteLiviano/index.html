@@ -25,14 +25,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-		<SCRIPT LANGUAGE="JavaScript">
-		mi_imagen2=new Image
-		var i=1;
-		function cambia_imagen(name) { 
-			mi_imagen2.src= "css/image/"+name+"_panel.jpg"                 
-			document.images['prueba'].src=mi_imagen2.src
-	    }
-		</script>
+		
 </head>
 
 <body>
@@ -64,22 +57,22 @@
 
         <div class="col-md-2" align="right" padding-top="50px;" >
              <ul class="list-unstyled">
-                <li class="icono"> <img onclick="cambia_imagen('kayle')"
+                <li class="icono"> <img onclick="cambia_panel('kayle')"
                 						alt="Bootstrap Image Preview" 
                 						src="css/image/kayle_icon.jpg" 
                 						width="128" height="128"/>
                 </li>
-                <li class="icono"> <img onclick="cambia_imagen('invoker')"
+                <li class="icono"> <img onclick="cambia_panel('invoker')"
                 						alt="Bootstrap Image Preview" 
                 						src="css/image/invoker_icon.jpg" 
                 						width="128" height="128"/></li>
 
-                <li class="icono"> <img onclick="cambia_imagen('crystal-maiden')"
+                <li class="icono"> <img onclick="cambia_panel('crystal-maiden')"
                 						alt="Bootstrap Image Preview" 
                 						src="css/image/crystal-maiden_icon.jpg" 
                 						width="128" height="128"/></li>
 
-                <li class="icono"> <img onclick="cambia_imagen('fiddlesticks')"
+                <li class="icono"> <img onclick="cambia_panel('fiddlesticks')"
                 						alt="Bootstrap Image Preview" 
                 						src="css/image/fiddlesticks_icon.jpg" 
                 						width="128" height="128"/></li>
@@ -95,9 +88,7 @@
         </div>
 
     <div class="col-md-4" align="center">
-      <h3 class="ndp">
-        //nombre personaje bind
-      </h3>
+      <h3 id="ndp"> ??? </h3>
       <img alt="Bootstrap Image Preview" src="http://lorempixel.com/140/140/" width="306" height="560" 
       	   name="prueba" />
     </div>
@@ -155,8 +146,39 @@
 
 
 
-  
-    <!-- /.container -->
+
+
+  	<SCRIPT LANGUAGE = "JavaScript">
+
+
+  	function cambia_panel(name){
+
+  		cambia_imagen(name);
+  		cambia_label(name);
+  	}
+
+
+  	</script>
+
+
+  	<SCRIPT LANGUAGE="JavaScript">
+		mi_imagen2=new Image
+	
+		function cambia_imagen(name) { 
+			mi_imagen2.src= "css/image/"+name+"_panel.jpg" ;                
+			document.images['prueba'].src=mi_imagen2.src;
+			
+	    }
+		</script>
+
+		<SCRIPT>
+		
+			function cambia_label(name) {
+			document.getElementById('ndm').innerHTML=name ;
+  		
+  		}
+  		</script>
+   <!-- /.container -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
